@@ -4,11 +4,7 @@
 
 **사용 중 어떤 값도 인터넷으로 전송되거나 외부 서버에 저장되지 않습니다.** 입력한 정보, 업로드한 엑셀 내용은 전부 그 컴퓨터의 브라우저(또는 Excel) 안에서만 처리됩니다.
 
-### 📌 그림으로 한눈에 보기
-
-글보다 그림이 편하시면, 세 가지 방법을 카드뉴스 12장으로 정리해뒀습니다.
-
-**👉 [카드뉴스 보러 가기](https://claude.ai/code/artifact/e8c75799-f3a3-4e4b-9497-681bbe07234b)**
+글보다 그림이 편하시면, 아래 카드뉴스만 보고도 세 가지 방법을 바로 이해하실 수 있습니다. (각 방법 설명 위에도 같은 카드가 있습니다.)
 
 ---
 
@@ -28,6 +24,8 @@
 
 ## 1. 웹에서 바로 쓰기 (설치 없음)
 
+![웹에서 바로 쓰기 카드뉴스](artifacts/cardnews/images/method-1-web.png)
+
 1. 아래 주소를 웹 브라우저(크롬, 엣지 등)에서 엽니다.
 
    **https://cic8822-cpu.github.io/School-Uniform-Contract/**
@@ -40,6 +38,8 @@
 ---
 
 ## 2. 프로그램 설치(exe) — 한 번 설치하면 계속 사용
+
+![프로그램 설치(exe) 카드뉴스](artifacts/cardnews/images/method-2-exe.png)
 
 1. 아래 페이지로 들어갑니다.
 
@@ -57,6 +57,8 @@
 ---
 
 ## 3. 엑셀-HWPX 연계 프로그램 (서식 자동 작성)
+
+![엑셀-HWPX 연동 카드뉴스](artifacts/cardnews/images/method-3-excel.png)
 
 여러 서식(구매요청 기안문, 평가표, 계약서 등)을 엑셀 하나에서 관리하고, 버튼 한 번으로 HWPX 공문서까지 자동으로 만들고 싶으신 분께 추천합니다.
 
@@ -91,4 +93,4 @@
 
 ---
 
-**관련 링크**: [카드뉴스](https://claude.ai/code/artifact/e8c75799-f3a3-4e4b-9497-681bbe07234b) · [웹앱 바로가기](https://cic8822-cpu.github.io/School-Uniform-Contract/) · [exe 다운로드](https://github.com/cic8822-cpu/School-Uniform-Contract/releases/tag/v1.0.0)
+**관련 링크**: [웹앱 바로가기](https://cic8822-cpu.github.io/School-Uniform-Contract/) · [exe 다운로드](https://github.com/cic8822-cpu/School-Uniform-Contract/releases/tag/v1.0.0)
