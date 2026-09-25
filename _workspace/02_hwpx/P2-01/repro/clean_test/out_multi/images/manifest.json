@@ -1,0 +1,32 @@
+[
+  {
+    "name": "image_001.png",
+    "mimeType": "image/png",
+    "bytes": 18189,
+    "source": "BinData/t012.png"
+  },
+  {
+    "name": "image_002.png",
+    "mimeType": "image/png",
+    "bytes": 10747,
+    "source": "BinData/t013.png"
+  },
+  {
+    "name": "image_003.png",
+    "mimeType": "image/png",
+    "bytes": 11224,
+    "source": "BinData/t014.png"
+  },
+  {
+    "name": "image_004.png",
+    "mimeType": "image/png",
+    "bytes": 22976,
+    "source": "BinData/t015.png"
+  },
+  {
+    "name": "image_005.png",
+    "mimeType": "image/png",
+    "bytes": 14103,
+    "source": "BinData/t016.png"
+  }
+]

@@ -1,0 +1,31 @@
+/* 키보드 포커스 표시·스킵 링크 등 페이지 전역 접근성 스타일.
+   기존 App.css(시각 디자인)는 건드리지 않고 이 파일만 별도로 추가한다. */
+
+:focus-visible {
+  outline: 3px solid #2e5aac;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.skip-link:focus {
+  position: fixed;
+  left: 16px;
+  top: 16px;
+  width: auto;
+  height: auto;
+  padding: 10px 16px;
+  background: #1b2a5b;
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 800;
+}

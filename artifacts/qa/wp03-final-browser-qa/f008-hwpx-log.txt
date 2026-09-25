@@ -1,0 +1,6 @@
+Invocation 1: F-008 preview → HWPX 작성 with missing 학교명.
+Observed: HWPX was not generated and visible status was “다음 값을 먼저 입력해야 HWPX를 생성할 수 있습니다: 학교명”.
+
+Invocation 2: filled non-identifying 학교명=테스트학교, 구매명=교복 구매, 품목명=재킷; reopened F-008 → HWPX 작성.
+Observed: visible status “HWPX 파일을 내려받았습니다.”; no personal data entered.
+

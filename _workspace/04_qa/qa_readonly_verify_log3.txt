@@ -1,0 +1,67 @@
+=== 기초자료입력 B27:E39 수식/값 전체 (품목 반복행 영역) ===
+    B27 : HasFormula=False, Formula/Value=(값), Value2=4. 품목 반복행 (R-04 품목명 / R-05 수량 / R-06 단가 / K-01 금액 자동계산) — F-024 등에서 사용
+    C27 : HasFormula=False, Formula/Value=(값), Value2=
+    D27 : HasFormula=False, Formula/Value=(값), Value2=
+    E27 : HasFormula=False, Formula/Value=(값), Value2=
+    B28 : HasFormula=False, Formula/Value=(값), Value2=품목명
+    C28 : HasFormula=False, Formula/Value=(값), Value2=수량
+    D28 : HasFormula=False, Formula/Value=(값), Value2=단가(원)
+    E28 : HasFormula=False, Formula/Value=(값), Value2=금액(자동, K-01)
+    B29 : HasFormula=False, Formula/Value=(값), Value2=
+    C29 : HasFormula=False, Formula/Value=(값), Value2=
+    D29 : HasFormula=False, Formula/Value=(값), Value2=
+    E29 : HasFormula=True, Formula/Value==IF(AND(B29<>"",C29<>"",D29<>""),C29*D29,""), Value2=
+    B30 : HasFormula=False, Formula/Value=(값), Value2=
+    C30 : HasFormula=False, Formula/Value=(값), Value2=
+    D30 : HasFormula=False, Formula/Value=(값), Value2=
+    E30 : HasFormula=True, Formula/Value==IF(AND(B30<>"",C30<>"",D30<>""),C30*D30,""), Value2=
+    B31 : HasFormula=False, Formula/Value=(값), Value2=
+    C31 : HasFormula=False, Formula/Value=(값), Value2=
+    D31 : HasFormula=False, Formula/Value=(값), Value2=
+    E31 : HasFormula=True, Formula/Value==IF(AND(B31<>"",C31<>"",D31<>""),C31*D31,""), Value2=
+    B32 : HasFormula=False, Formula/Value=(값), Value2=
+    C32 : HasFormula=False, Formula/Value=(값), Value2=
+    D32 : HasFormula=False, Formula/Value=(값), Value2=
+    E32 : HasFormula=True, Formula/Value==IF(AND(B32<>"",C32<>"",D32<>""),C32*D32,""), Value2=
+    B33 : HasFormula=False, Formula/Value=(값), Value2=
+    C33 : HasFormula=False, Formula/Value=(값), Value2=
+    D33 : HasFormula=False, Formula/Value=(값), Value2=
+    E33 : HasFormula=True, Formula/Value==IF(AND(B33<>"",C33<>"",D33<>""),C33*D33,""), Value2=
+    B34 : HasFormula=False, Formula/Value=(값), Value2=
+    C34 : HasFormula=False, Formula/Value=(값), Value2=
+    D34 : HasFormula=False, Formula/Value=(값), Value2=
+    E34 : HasFormula=True, Formula/Value==IF(AND(B34<>"",C34<>"",D34<>""),C34*D34,""), Value2=
+    B35 : HasFormula=False, Formula/Value=(값), Value2=
+    C35 : HasFormula=False, Formula/Value=(값), Value2=
+    D35 : HasFormula=False, Formula/Value=(값), Value2=
+    E35 : HasFormula=True, Formula/Value==IF(AND(B35<>"",C35<>"",D35<>""),C35*D35,""), Value2=
+    B36 : HasFormula=False, Formula/Value=(값), Value2=
+    C36 : HasFormula=False, Formula/Value=(값), Value2=
+    D36 : HasFormula=False, Formula/Value=(값), Value2=
+    E36 : HasFormula=True, Formula/Value==IF(AND(B36<>"",C36<>"",D36<>""),C36*D36,""), Value2=
+    B37 : HasFormula=False, Formula/Value=(값), Value2=
+    C37 : HasFormula=False, Formula/Value=(값), Value2=
+    D37 : HasFormula=False, Formula/Value=(값), Value2=
+    E37 : HasFormula=True, Formula/Value==IF(AND(B37<>"",C37<>"",D37<>""),C37*D37,""), Value2=
+    B38 : HasFormula=False, Formula/Value=(값), Value2=
+    C38 : HasFormula=False, Formula/Value=(값), Value2=
+    D38 : HasFormula=False, Formula/Value=(값), Value2=
+    E38 : HasFormula=True, Formula/Value==IF(AND(B38<>"",C38<>"",D38<>""),C38*D38,""), Value2=
+    B39 : HasFormula=False, Formula/Value=(값), Value2=합계 (K-02)
+    C39 : HasFormula=False, Formula/Value=(값), Value2=
+    D39 : HasFormula=False, Formula/Value=(값), Value2=
+    E39 : HasFormula=True, Formula/Value==SUM(E29:E38), Value2=0
+=== 기초자료입력 주요 셀 DataValidation 존재 여부 ===
+    C4 : Validation.Type=
+    C5 : Validation.Type=
+    C14 : Validation.Type=
+    C21 : Validation.Type=
+=== 서식선택_출력 A1:F4 헤더 ===
+    A1 : 서식 선택 · 출력
+    A2 : 선택(TRUE) 열에 TRUE를 입력한 뒤 매크로 버튼을 눌러 인쇄 미리보기/PDF 저장을 실행합니다. 구현상태가 'N'인 서식은 아직 연결된 시트가 없어 선택해도 건너뜁니다.
+    A4 : 선택
+    B4 : Form ID
+    C4 : 서식명
+    D4 : 업무단계
+    E4 : 구현상태
+    F4 : 연결시트

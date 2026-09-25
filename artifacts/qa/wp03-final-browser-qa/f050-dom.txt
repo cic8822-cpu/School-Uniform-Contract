@@ -1,0 +1,4 @@
+Invocation: 서식함 → getByRole('button',{name:/^F-050/}) → dialog DOM snapshot and read-only evaluate of dialog inputs.
+Observed: privacy banner states personal response fields remain blank and are not entered/saved/auto-reflected; dialog had 0 input/textarea/select controls; satisfaction table response cells and 기타 의견 cell were empty. School placeholder remained {{학교명}} in the template notice; no personal identifier appeared.
+Measured modal: scrollHeight=1527 (or 1535 after explicit 1280 viewport), clientHeight=648, overflowY=auto.
+

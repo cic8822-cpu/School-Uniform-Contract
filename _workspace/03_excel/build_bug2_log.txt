@@ -1,0 +1,27 @@
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+Buttons 클래스 중 Add 속성을 구할 수 없습니다.
+위치 C:\Users\최익창\Downloads\나연수_26.9.10\scripts\build_excel_v1_vba.ps1:3161 문자:5
++     $btnDbClose = $wsDbHome.Buttons().Add($wsDbHome.Columns.Item(25). ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], COMException
+    + FullyQualifiedErrorId : System.Runtime.InteropServices.COMException
+ 

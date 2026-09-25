@@ -1,0 +1,4 @@
+Invocation: viewport.set({width:1280,height:720}); reload; 서식함 → F-008.
+Observed JSON: {"w":1280,"h":720,"bodyScroll":1265,"client":1265,"dialog":{"clientHeight":648,"overflow":"auto","scrollHeight":1535}}
+No page-level horizontal overflow; long document reachable through modal vertical scroll.
+

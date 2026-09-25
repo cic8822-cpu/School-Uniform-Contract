@@ -1,0 +1,5 @@
+Surface: Codex In-app Browser / http://127.0.0.1:4176/
+Invocation: 서식함 → getByRole('button',{name:/^F-008/}) → dialog DOM snapshot
+Observed: dialog heading F-008 교복 사양서; 학교명 반영 후 테스트학교 교복 사양서(규격서); 전체 원문 문단(섬유혼용률, 제작 시 유의사항, 규정 및 유의사항, 디자인 및 규격서, 교복 사진); 3 tables (섬유 혼용률, 디자인·규격, 교복 사진); HWPX 작성/PDF 출력 controls.
+Viewport: explicit 1280x720 and 320x720 runs.
+

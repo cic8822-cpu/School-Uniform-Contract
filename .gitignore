@@ -1,0 +1,20 @@
+# Windows reserved device name; cannot be tracked by Git on Windows
+nul
+
+# Excel 검증 중 생성되는 마스킹 테스트 PDF와 일회성 검증 사본은 배포·Git 대상이 아님
+artifacts/excel/_validation*/
+artifacts/excel/output/
+artifacts/excel/build.xlsm
+
+# verify-phase.ps1의 Stop 훅 반복 알림 억제용 세션 상태 파일(휘발성, Git 추적 대상 아님)
+.claude/.verify-phase-stop-state.json
+
+# verify_f007_source_preserving_template.ps1이 실행마다 재생성하는 골든 JSON 스크래치 출력
+_workspace/02_hwpx/P2-01/원본보존형_토큰검증/
+
+# Excel/HWP가 파일을 열 때 생기는 임시 잠금 파일(버전 관리 대상 아님)
+**/~$*.xls*
+**/~$*.hwp*
+
+# 웹앱 단일 exe 배포본(약 295MB) — GitHub 파일당 100MB 제한 초과, 별도 배포로만 유통함
+*.exe

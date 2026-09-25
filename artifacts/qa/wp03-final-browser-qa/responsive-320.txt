@@ -1,0 +1,4 @@
+Invocation: viewport.set({width:320,height:720}); reload; 서식함 → F-008.
+Observed JSON: {"w":320,"h":720,"bodyScroll":305,"client":305,"dialog":{"clientHeight":633,"overflow":"auto","scrollHeight":3544,"rect":{"left":15.2375,"right":289.5625,"width":274.325}}}
+Observed inner paper is wider than the narrow modal and exposes a horizontal scrollbar; modal also exposes vertical scrolling. This keeps the full document reachable and operable at 320px, with no page-level horizontal overflow.
+

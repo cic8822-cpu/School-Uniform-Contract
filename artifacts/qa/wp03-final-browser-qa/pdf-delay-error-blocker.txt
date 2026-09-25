@@ -1,0 +1,4 @@
+Required scenarios: source HWPX fetch delay and source HWPX fetch failure.
+Attempt: F-008 was opened immediately after reload at 1280x720; local Vite static fetch completed before a state snapshot (PDF remained enabled, no pending/error message). The Codex browser surface exposes no network throttling/offline or request interception capability, and no source/template fault injection was authorized. No source asset was modified.
+Result: delay/error branches were not executed. This is recorded as BLOCK, never inferred as PASS.
+

@@ -1,0 +1,40 @@
+À§Ä¡ C:\Users\user\Downloads\³ª¿¬¼ö_26.9.10\scripts\build_f007_clickhere_hancom.ps1:29 ¹®ÀÚ:19
++         $token = '{{' + $name + '}}'
++                   ~
+½Ä ¶Ç´Â ¹®¿¡¼­ ¿¹±âÄ¡ ¾ÊÀº '{' ÅäÅ«ÀÔ´Ï´Ù.
+À§Ä¡ C:\Users\user\Downloads\³ª¿¬¼ö_26.9.10\scripts\build_f007_clickhere_hancom.ps1:29 ¹®ÀÚ:36
++         $token = '{{' + $name + '}}'
++                                    ~
+½Ä ¶Ç´Â ¹®¿¡¼­ ¿¹±âÄ¡ ¾ÊÀº ''
+        $pset = $hwp.HParameterSet.HFindReplace
+        $null = $hwp.HAction.GetDefault('' ÅäÅ«ÀÔ´Ï´Ù.
+À§Ä¡ C:\Users\user\Downloads\³ª¿¬¼ö_26.9.10\scripts\build_f007_clickhere_hancom.ps1:31 ¹®ÀÚ:42
++         $null = $hwp.HAction.GetDefault('RepeatFind', $pset.HSet)
++                                          ~~~~~~~~~~~~~~~~~~~~~~~~
+½Ä ¶Ç´Â ¹®¿¡¼­ ¿¹±âÄ¡ ¾ÊÀº 'RepeatFind', $pset.HSet)
+        $pset.FindString = $token
+        $pset.Direction = $hwp.FindDir('Forward')
+        $pset.FindType = 1
+        $pset.MatchCase = $false
+        $pset.WholeWordOnly = $false
+        $pset.UseWildCards = $false
+        if (-not $hwp.HAction.Execute('RepeatFind', $pset.HSet)) { throw "? í°??ì°¾ì? ëª»í–ˆ?µë‹ˆ?? $token" }
+        if (-not $hwp.CreateField('?…ë ¥', 'F-007' ÅäÅ«ÀÔ´Ï´Ù.
+À§Ä¡ C:\Users\user\Downloads\³ª¿¬¼ö_26.9.10\scripts\build_f007_clickhere_hancom.ps1:43 ¹®ÀÚ:110
++ ... eralPath $Output).Path, 'HWPX', '')) { throw 'HWPX ?€?¥ì— ?¤íŒ¨?ˆìŠµ?ˆë‹¤' }
++                                                                       ~~~
+¹®ÀÚ¿­¿¡ ' Á¾°áÀÚ°¡ ¾ø½À´Ï´Ù.
+À§Ä¡ C:\Users\user\Downloads\³ª¿¬¼ö_26.9.10\scripts\build_f007_clickhere_hancom.ps1:26 ¹®ÀÚ:89
++ ... lve-Path -LiteralPath $Output).Path, '', 'forceopen:true')) { throw ' ...
++                                                                 ~
+¹® ºí·Ï ¶Ç´Â Çü½Ä Á¤ÀÇ¿¡ ´İ´Â '}'°¡ ¾ø½À´Ï´Ù.
+À§Ä¡ C:\Users\user\Downloads\³ª¿¬¼ö_26.9.10\scripts\build_f007_clickhere_hancom.ps1:24 ¹®ÀÚ:5
++ try {
++     ~
+¹® ºí·Ï ¶Ç´Â Çü½Ä Á¤ÀÇ¿¡ ´İ´Â '}'°¡ ¾ø½À´Ï´Ù.
+À§Ä¡ C:\Users\user\Downloads\³ª¿¬¼ö_26.9.10\scripts\build_f007_clickhere_hancom.ps1:53 ¹®ÀÚ:1
++ 
+Try ¹®¿¡ ÇØ´ç Catch ºí·Ï ¶Ç´Â Finally ºí·ÏÀÌ ¾ø½À´Ï´Ù.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : UnexpectedToken
+ 

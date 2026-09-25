@@ -1,0 +1,6 @@
+warning: in the working copy of '웹앱_task.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '웹앱_test.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '웹앱_계획.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '웹앱_로그.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '웹앱_로드맵.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '웹앱_체크리스트.md', LF will be replaced by CRLF the next time Git touches it

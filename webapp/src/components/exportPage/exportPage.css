@@ -1,0 +1,30 @@
+.export-panel {
+  background: #fff;
+  border: 1px solid #e1e5ed;
+  border-radius: 18px;
+  padding: 28px;
+  max-width: 760px;
+  margin-top: 20px;
+}
+
+.export-panel p {
+  color: #6c7587;
+  line-height: 1.6;
+}
+
+.export-summary {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.export-summary li {
+  color: #6c7587;
+}
+
+.export-summary b {
+  color: #1b2a5b;
+  font-size: 20px;
+}

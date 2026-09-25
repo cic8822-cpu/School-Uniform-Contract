@@ -1,0 +1,5313 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-25",
+  "sources": [
+    "scripts/build_excel_v1_structure.ps1 서식선택_출력($forms·$implemented·$deferred)",
+    "서식_인벤토리.md §2·§3·§6",
+    "서식_매핑표.md §2·§6",
+    "scripts/build_excel_v1_vba.ps1 frmContractGuide.초기화(contractMethods·workflowSteps 역산)",
+    "artifacts/hwpx/P2-04/*_템플릿.hwpx(읽기 전용 스캔)"
+  ],
+  "enums": {
+    "author": [
+      "학교작성",
+      "업체작성",
+      "학교·업체공동",
+      "참고자료"
+    ],
+    "implementationStatus": {
+      "implemented": "Excel 구현(Y)",
+      "hwpxPriority": "HWPX 우선(복합조판, Excel D)",
+      "notImplemented": "미구현(Excel N, 2026-09-18 범위 제외 결정)"
+    },
+    "outputMethod": {
+      "both": "PDF+HWPX",
+      "hwpx": "HWPX만",
+      "pdf": "PDF만",
+      "none": "출력 없음(미구현)"
+    },
+    "runtimeReadiness": [
+      "● 작성가능",
+      "▲ 기초자료 필요",
+      "○ 미구현"
+    ]
+  },
+  "notes": [
+    "author는 매뉴얼 원문에 별도 필드가 없어 F-017~F-031을 업체 제출서류(F-021 제출서류 목록·입찰 3단계 업무설명·서식_매핑표 §6)로, 나머지를 학교작성으로 분류함. 학교·업체공동으로 확정할 근거가 있는 서식은 발견하지 못함.",
+    "outputMethod의 PDF는 Excel 서식 구현(Y) 여부, HWPX는 P2-04 검증 템플릿 존재 여부 기준임.",
+    "F-053~F-057(참고자료 5종)은 출력 대상이 아니므로 이 목록(52종)에 포함하지 않음."
+  ],
+  "forms": [
+    {
+      "formId": "F-001",
+      "manualNo": "[1]",
+      "title": "교복선정위원회 구성 기안",
+      "titleInventory": "교복선정위원회 구성 기안",
+      "manualPage": 3,
+      "stage": "준비",
+      "standardPhases": [
+        "1. 준비"
+      ],
+      "docType": "기안문",
+      "layout": "표",
+      "author": "학교작성",
+      "authorNote": null,
+      "owner": "학교 업무담당",
+      "difficulty": "M",
+      "contractMethods": [],
+      "contractMethodsNote": "계약절차 팝업(frmContractGuide) 어느 단계에도 연결되지 않은 서식 — 계약방법별 사용 여부 매뉴얼 확인 필요",
+      "workflowSteps": [],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "C-03",
+        "C-04",
+        "C-05",
+        "C-06",
+        "D-01",
+        "D-02",
+        "D-03",
+        "D-04",
+        "R-01",
+        "R-02",
+        "C-07",
+        "C-08"
+      ],
+      "requiredRaw": "C-01, C-02, D-02, 위원 역할",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-01"
+      ],
+      "computedFieldIds": [],
+      "fieldGroups": [
+        "공통",
+        "문서별",
+        "반복"
+      ],
+      "boundary": "위원 식별표시는 마스킹값만 허용",
+      "boundaryNote": "서식_매핑표 §2의 마스킹 문구는 2026-09-23 결정 이전 기준임 — §6·입력데이터_사전 R-02에 따라 위원 실명(R-02) 자동반영 허용, 연락처·서명은 계속 금지",
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-001_위원회구성기안",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-001_위원회구성기안_템플릿.hwpx",
+      "hwpxTokens": [
+        "문서번호",
+        "발행일",
+        "학교명",
+        "학년도"
+      ],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "C-03",
+        "C-04",
+        "C-05",
+        "C-06",
+        "D-01",
+        "D-02",
+        "D-03",
+        "D-04",
+        "R-01",
+        "R-02",
+        "C-07",
+        "C-08"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "C-06",
+          "C-05",
+          "C-01",
+          "C-02"
+        ],
+        "unsupportedFieldIds": [
+          "C-03",
+          "C-04",
+          "D-01",
+          "D-02",
+          "D-03",
+          "D-04",
+          "R-01",
+          "R-02",
+          "C-07",
+          "C-08"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      },
+      "contractMethodScope": {
+        "status": "manual-confirmation-required",
+        "displayLabel": "계약방법 확인 필요",
+        "reason": "Excel 계약절차 안내에 계약방법별 연결 근거가 없음",
+        "source": "scripts/build_excel_v1_vba.ps1 frmContractGuide.초기화 및 서식_매핑표.md 대조",
+        "filterBehavior": "계약방법 필터에서는 확인 필요로만 표시"
+      }
+    },
+    {
+      "formId": "F-002",
+      "manualNo": "[1-1]",
+      "title": "위원 수락 및 확인서",
+      "titleInventory": "위원 수락 및 확인서",
+      "manualPage": 4,
+      "stage": "준비",
+      "standardPhases": [
+        "1. 준비"
+      ],
+      "docType": "확인서",
+      "layout": "표",
+      "author": "학교작성",
+      "authorNote": "위원 본인이 성명·서명을 자필 작성(서식_매핑표 §6)",
+      "owner": "학교 업무담당",
+      "difficulty": "M",
+      "contractMethods": [],
+      "contractMethodsNote": "계약절차 팝업(frmContractGuide) 어느 단계에도 연결되지 않은 서식 — 계약방법별 사용 여부 매뉴얼 확인 필요",
+      "workflowSteps": [],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-01"
+      ],
+      "requiredRaw": "C-01, C-02, D-02",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02"
+      ],
+      "computedFieldIds": [],
+      "fieldGroups": [
+        "공통",
+        "문서별",
+        "반복"
+      ],
+      "boundary": "성명·서명란은 빈칸 유지(R-02 위원 성명 자동반영 금지 — quality-compliance-reviewer H-1)",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-002_위원수락확인서",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-002_위원수락확인서_템플릿.hwpx",
+      "hwpxTokens": [
+        "학교명"
+      ],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-01"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "C-01"
+        ],
+        "unsupportedFieldIds": [
+          "C-02",
+          "D-02",
+          "R-01"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      },
+      "contractMethodScope": {
+        "status": "manual-confirmation-required",
+        "displayLabel": "계약방법 확인 필요",
+        "reason": "Excel 계약절차 안내에 계약방법별 연결 근거가 없음",
+        "source": "scripts/build_excel_v1_vba.ps1 frmContractGuide.초기화 및 서식_매핑표.md 대조",
+        "filterBehavior": "계약방법 필터에서는 확인 필요로만 표시"
+      }
+    },
+    {
+      "formId": "F-003",
+      "manualNo": "[1-2]",
+      "title": "위원 청렴 및 보안 서약서",
+      "titleInventory": "위원 청렴 및 보안 서약서",
+      "manualPage": 5,
+      "stage": "준비",
+      "standardPhases": [
+        "1. 준비"
+      ],
+      "docType": "서약서",
+      "layout": "표",
+      "author": "학교작성",
+      "authorNote": "위원 본인이 성명·서명을 자필 작성(서식_매핑표 §6)",
+      "owner": "학교 업무담당",
+      "difficulty": "M",
+      "contractMethods": [],
+      "contractMethodsNote": "계약절차 팝업(frmContractGuide) 어느 단계에도 연결되지 않은 서식 — 계약방법별 사용 여부 매뉴얼 확인 필요",
+      "workflowSteps": [],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-01"
+      ],
+      "requiredRaw": "C-01, C-02, D-02",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02"
+      ],
+      "computedFieldIds": [],
+      "fieldGroups": [
+        "공통",
+        "문서별",
+        "반복"
+      ],
+      "boundary": "성명·서명란은 빈칸 유지(R-02 위원 성명 자동반영 금지 — quality-compliance-reviewer H-1)",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-003_위원청렴보안서약서",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-003_위원청렴보안서약서_템플릿.hwpx",
+      "hwpxTokens": [
+        "학교명"
+      ],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-01"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "C-01"
+        ],
+        "unsupportedFieldIds": [
+          "C-02",
+          "D-02",
+          "R-01"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      },
+      "contractMethodScope": {
+        "status": "manual-confirmation-required",
+        "displayLabel": "계약방법 확인 필요",
+        "reason": "Excel 계약절차 안내에 계약방법별 연결 근거가 없음",
+        "source": "scripts/build_excel_v1_vba.ps1 frmContractGuide.초기화 및 서식_매핑표.md 대조",
+        "filterBehavior": "계약방법 필터에서는 확인 필요로만 표시"
+      }
+    },
+    {
+      "formId": "F-004",
+      "manualNo": "[2]",
+      "title": "구매 추진 계획 수립",
+      "titleInventory": "구매 추진 계획 수립",
+      "manualPage": 6,
+      "stage": "준비",
+      "standardPhases": [
+        "1. 준비"
+      ],
+      "docType": "기안문",
+      "layout": "표",
+      "author": "학교작성",
+      "authorNote": null,
+      "owner": "학교 업무담당",
+      "difficulty": "M",
+      "contractMethods": [],
+      "contractMethodsNote": "계약절차 팝업(frmContractGuide) 어느 단계에도 연결되지 않은 서식 — 계약방법별 사용 여부 매뉴얼 확인 필요",
+      "workflowSteps": [],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "C-03",
+        "C-04",
+        "C-05",
+        "C-06",
+        "B-01",
+        "B-02",
+        "B-03",
+        "B-04",
+        "B-05",
+        "B-06",
+        "B-07",
+        "D-01",
+        "D-02",
+        "D-03",
+        "D-04",
+        "R-04",
+        "R-05",
+        "R-06",
+        "C-07",
+        "C-08"
+      ],
+      "requiredRaw": "C-01, C-02, B-01, D-02",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "D-02"
+      ],
+      "computedFieldIds": [
+        "K-01",
+        "K-02"
+      ],
+      "fieldGroups": [
+        "계산",
+        "공통",
+        "문서별",
+        "반복",
+        "사업"
+      ],
+      "boundary": "날짜·금액 관계 검사",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-004_구매추진계획수립기안문",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-004_구매추진계획수립기안문_템플릿.hwpx",
+      "hwpxTokens": [
+        "관련문서",
+        "문서번호",
+        "학교명",
+        "학년도"
+      ],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "C-03",
+        "C-04",
+        "C-05",
+        "C-06",
+        "B-01",
+        "B-02",
+        "B-03",
+        "B-04",
+        "B-05",
+        "B-06",
+        "B-07",
+        "D-01",
+        "D-02",
+        "D-03",
+        "D-04",
+        "R-04",
+        "R-05",
+        "R-06",
+        "C-07",
+        "C-08",
+        "K-01",
+        "K-02"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "D-03",
+          "C-06",
+          "C-01",
+          "C-02"
+        ],
+        "unsupportedFieldIds": [
+          "C-03",
+          "C-04",
+          "C-05",
+          "B-01",
+          "B-02",
+          "B-03",
+          "B-04",
+          "B-05",
+          "B-06",
+          "B-07",
+          "D-01",
+          "D-02",
+          "D-04",
+          "R-04",
+          "R-05",
+          "R-06",
+          "C-07",
+          "C-08",
+          "K-01",
+          "K-02"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      },
+      "contractMethodScope": {
+        "status": "manual-confirmation-required",
+        "displayLabel": "계약방법 확인 필요",
+        "reason": "Excel 계약절차 안내에 계약방법별 연결 근거가 없음",
+        "source": "scripts/build_excel_v1_vba.ps1 frmContractGuide.초기화 및 서식_매핑표.md 대조",
+        "filterBehavior": "계약방법 필터에서는 확인 필요로만 표시"
+      }
+    },
+    {
+      "formId": "F-005",
+      "manualNo": "[2-1]",
+      "title": "구매 추진 계획안",
+      "titleInventory": "구매 추진 계획안",
+      "manualPage": 7,
+      "stage": "준비",
+      "standardPhases": [
+        "1. 준비"
+      ],
+      "docType": "계획서",
+      "layout": "표",
+      "author": "학교작성",
+      "authorNote": null,
+      "owner": "학교 업무담당",
+      "difficulty": "M",
+      "contractMethods": [],
+      "contractMethodsNote": "계약절차 팝업(frmContractGuide) 어느 단계에도 연결되지 않은 서식 — 계약방법별 사용 여부 매뉴얼 확인 필요",
+      "workflowSteps": [],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "B-02",
+        "B-03",
+        "B-04",
+        "B-05",
+        "B-06",
+        "B-07",
+        "D-02",
+        "R-04",
+        "R-05",
+        "R-06"
+      ],
+      "requiredRaw": "C-01, C-02, B-01, D-02",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "D-02"
+      ],
+      "computedFieldIds": [
+        "K-01",
+        "K-02"
+      ],
+      "fieldGroups": [
+        "계산",
+        "공통",
+        "문서별",
+        "반복",
+        "사업"
+      ],
+      "boundary": "반복 품목 빈 행 제외",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-005_구매추진계획안",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-005_구매추진계획안_템플릿.hwpx",
+      "hwpxTokens": [
+        "학교명",
+        "학년도"
+      ],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "B-02",
+        "B-03",
+        "B-04",
+        "B-05",
+        "B-06",
+        "B-07",
+        "D-02",
+        "R-04",
+        "R-05",
+        "R-06",
+        "K-01",
+        "K-02"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "C-01",
+          "C-02"
+        ],
+        "unsupportedFieldIds": [
+          "B-01",
+          "B-02",
+          "B-03",
+          "B-04",
+          "B-05",
+          "B-06",
+          "B-07",
+          "D-02",
+          "R-04",
+          "R-05",
+          "R-06",
+          "K-01",
+          "K-02"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      },
+      "contractMethodScope": {
+        "status": "manual-confirmation-required",
+        "displayLabel": "계약방법 확인 필요",
+        "reason": "Excel 계약절차 안내에 계약방법별 연결 근거가 없음",
+        "source": "scripts/build_excel_v1_vba.ps1 frmContractGuide.초기화 및 서식_매핑표.md 대조",
+        "filterBehavior": "계약방법 필터에서는 확인 필요로만 표시"
+      }
+    },
+    {
+      "formId": "F-006",
+      "manualNo": "[3]",
+      "title": "학교운영위원회 심의(안)",
+      "titleInventory": "학교운영위원회 심의(안)",
+      "manualPage": 13,
+      "stage": "준비",
+      "standardPhases": [
+        "1. 준비",
+        "2. 심의"
+      ],
+      "docType": "심의안",
+      "layout": "표",
+      "author": "학교작성",
+      "authorNote": null,
+      "owner": "학교 업무담당",
+      "difficulty": "M",
+      "contractMethods": [],
+      "contractMethodsNote": "계약절차 팝업(frmContractGuide) 어느 단계에도 연결되지 않은 서식 — 계약방법별 사용 여부 매뉴얼 확인 필요",
+      "workflowSteps": [],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "C-03",
+        "C-04",
+        "C-05",
+        "C-06",
+        "B-01",
+        "B-02",
+        "B-03",
+        "B-04",
+        "B-05",
+        "B-06",
+        "B-07",
+        "D-01",
+        "D-02",
+        "D-03",
+        "D-04",
+        "R-04",
+        "R-05",
+        "R-06"
+      ],
+      "requiredRaw": "C-01, C-02, B-01, D-02",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "D-02"
+      ],
+      "computedFieldIds": [
+        "K-01",
+        "K-02"
+      ],
+      "fieldGroups": [
+        "계산",
+        "공통",
+        "문서별",
+        "반복",
+        "사업"
+      ],
+      "boundary": "심의안 전용값만 반영",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-006_운영위원회심의안",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-006_운영위원회심의안_템플릿.hwpx",
+      "hwpxTokens": [
+        "학교명",
+        "학년도"
+      ],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "C-03",
+        "C-04",
+        "C-05",
+        "C-06",
+        "B-01",
+        "B-02",
+        "B-03",
+        "B-04",
+        "B-05",
+        "B-06",
+        "B-07",
+        "D-01",
+        "D-02",
+        "D-03",
+        "D-04",
+        "R-04",
+        "R-05",
+        "R-06",
+        "K-01",
+        "K-02"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "C-01",
+          "C-02"
+        ],
+        "unsupportedFieldIds": [
+          "C-03",
+          "C-04",
+          "C-05",
+          "C-06",
+          "B-01",
+          "B-02",
+          "B-03",
+          "B-04",
+          "B-05",
+          "B-06",
+          "B-07",
+          "D-01",
+          "D-02",
+          "D-03",
+          "D-04",
+          "R-04",
+          "R-05",
+          "R-06",
+          "K-01",
+          "K-02"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      },
+      "contractMethodScope": {
+        "status": "manual-confirmation-required",
+        "displayLabel": "계약방법 확인 필요",
+        "reason": "Excel 계약절차 안내에 계약방법별 연결 근거가 없음",
+        "source": "scripts/build_excel_v1_vba.ps1 frmContractGuide.초기화 및 서식_매핑표.md 대조",
+        "filterBehavior": "계약방법 필터에서는 확인 필요로만 표시"
+      }
+    },
+    {
+      "formId": "F-007",
+      "manualNo": "[6]",
+      "title": "교복구매 구매 요청",
+      "titleInventory": "교복구매 구매 요청",
+      "manualPage": 14,
+      "stage": "입찰",
+      "standardPhases": [
+        "3. 구매요청·기초조사"
+      ],
+      "docType": "기안문",
+      "layout": "표",
+      "author": "학교작성",
+      "authorNote": null,
+      "owner": "계약 담당",
+      "difficulty": "H",
+      "contractMethods": [],
+      "contractMethodsNote": "계약절차 팝업(frmContractGuide) 어느 단계에도 연결되지 않은 서식 — 계약방법별 사용 여부 매뉴얼 확인 필요",
+      "workflowSteps": [],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "C-03",
+        "C-04",
+        "C-05",
+        "C-06",
+        "B-01",
+        "B-02",
+        "B-03",
+        "B-04",
+        "B-05",
+        "B-06",
+        "D-01",
+        "D-02",
+        "D-03",
+        "D-04",
+        "C-07",
+        "C-08"
+      ],
+      "requiredRaw": "C-01, C-02, B-01, D-02",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "D-02"
+      ],
+      "computedFieldIds": [],
+      "fieldGroups": [
+        "공통",
+        "문서별",
+        "사업"
+      ],
+      "boundary": "관련문서·붙임 조건부 검사",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-007_구매요청기안문",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-007_구매요청_템플릿.hwpx",
+      "hwpxTokens": [
+        "관련문서",
+        "문서번호",
+        "학교명",
+        "학년도"
+      ],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "C-03",
+        "C-04",
+        "C-05",
+        "C-06",
+        "B-01",
+        "B-02",
+        "B-03",
+        "B-04",
+        "B-05",
+        "B-06",
+        "D-01",
+        "D-02",
+        "D-03",
+        "D-04",
+        "C-07",
+        "C-08"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "D-03",
+          "C-06",
+          "C-01",
+          "C-02"
+        ],
+        "unsupportedFieldIds": [
+          "C-03",
+          "C-04",
+          "C-05",
+          "B-01",
+          "B-02",
+          "B-03",
+          "B-04",
+          "B-05",
+          "B-06",
+          "D-01",
+          "D-02",
+          "D-04",
+          "C-07",
+          "C-08"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      },
+      "contractMethodScope": {
+        "status": "manual-confirmation-required",
+        "displayLabel": "계약방법 확인 필요",
+        "reason": "Excel 계약절차 안내에 계약방법별 연결 근거가 없음",
+        "source": "scripts/build_excel_v1_vba.ps1 frmContractGuide.초기화 및 서식_매핑표.md 대조",
+        "filterBehavior": "계약방법 필터에서는 확인 필요로만 표시"
+      }
+    },
+    {
+      "formId": "F-008",
+      "manualNo": "[6-1]",
+      "title": "교복 사양서",
+      "titleInventory": "교복 사양서",
+      "manualPage": 15,
+      "stage": "입찰",
+      "standardPhases": [
+        "3. 구매요청·기초조사"
+      ],
+      "docType": "규격서",
+      "layout": "표·이미지",
+      "author": "학교작성",
+      "authorNote": null,
+      "owner": "계약 담당",
+      "difficulty": "H",
+      "contractMethods": [
+        "CM-01",
+        "CM-02",
+        "CM-03",
+        "CM-04"
+      ],
+      "contractMethodsNote": null,
+      "workflowSteps": [
+        {
+          "workflowId": "WF-QUOTE1",
+          "stepNo": 1
+        },
+        {
+          "workflowId": "WF-QUOTE2",
+          "stepNo": 1
+        },
+        {
+          "workflowId": "WF-BID",
+          "stepNo": 1
+        }
+      ],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "D-02",
+        "R-04",
+        "R-05",
+        "R-06"
+      ],
+      "requiredRaw": "C-01, C-02, B-01, R-04",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "R-04"
+      ],
+      "computedFieldIds": [
+        "K-01"
+      ],
+      "fieldGroups": [
+        "공통",
+        "문서별",
+        "반복",
+        "사업"
+      ],
+      "boundary": "이미지·병합표는 P2 조판 검증",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-008_교복사양서",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-008_교복사양서_템플릿.hwpx",
+      "hwpxTokens": [
+        "학교명"
+      ],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "D-02",
+        "R-04",
+        "R-05",
+        "R-06",
+        "K-01"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "C-01"
+        ],
+        "unsupportedFieldIds": [
+          "C-02",
+          "B-01",
+          "D-02",
+          "R-04",
+          "R-05",
+          "R-06",
+          "K-01"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      }
+    },
+    {
+      "formId": "F-009",
+      "manualNo": "[7]",
+      "title": "기초금액 및 계약방법 결정",
+      "titleInventory": "기초금액 및 계약방법 결정",
+      "manualPage": 17,
+      "stage": "입찰",
+      "standardPhases": [
+        "3. 구매요청·기초조사"
+      ],
+      "docType": "기안문",
+      "layout": "표",
+      "author": "학교작성",
+      "authorNote": null,
+      "owner": "계약 담당",
+      "difficulty": "H",
+      "contractMethods": [
+        "CM-03",
+        "CM-04"
+      ],
+      "contractMethodsNote": null,
+      "workflowSteps": [
+        {
+          "workflowId": "WF-BID",
+          "stepNo": 1
+        }
+      ],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "C-03",
+        "C-04",
+        "C-05",
+        "C-06",
+        "B-01",
+        "B-03",
+        "B-04",
+        "B-05",
+        "B-06",
+        "D-01",
+        "D-02",
+        "D-03",
+        "D-04",
+        "R-04",
+        "R-05",
+        "R-06",
+        "C-07",
+        "C-08"
+      ],
+      "requiredRaw": "C-01, C-02, B-01, B-04, D-02",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "B-04",
+        "D-02"
+      ],
+      "computedFieldIds": [
+        "K-01",
+        "K-02"
+      ],
+      "fieldGroups": [
+        "계산",
+        "공통",
+        "문서별",
+        "반복",
+        "사업"
+      ],
+      "boundary": "금액·계약방식 검사",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-009_기초금액계약방법결정",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-009_기초금액계약방법결정_템플릿.hwpx",
+      "hwpxTokens": [
+        "관련문서",
+        "문서번호",
+        "학교명",
+        "학년도"
+      ],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "C-03",
+        "C-04",
+        "C-05",
+        "C-06",
+        "B-01",
+        "B-03",
+        "B-04",
+        "B-05",
+        "B-06",
+        "D-01",
+        "D-02",
+        "D-03",
+        "D-04",
+        "R-04",
+        "R-05",
+        "R-06",
+        "C-07",
+        "C-08",
+        "K-01",
+        "K-02"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "D-03",
+          "C-06",
+          "C-01",
+          "C-02"
+        ],
+        "unsupportedFieldIds": [
+          "C-03",
+          "C-04",
+          "C-05",
+          "B-01",
+          "B-03",
+          "B-04",
+          "B-05",
+          "B-06",
+          "D-01",
+          "D-02",
+          "D-04",
+          "R-04",
+          "R-05",
+          "R-06",
+          "C-07",
+          "C-08",
+          "K-01",
+          "K-02"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      }
+    },
+    {
+      "formId": "F-010",
+      "manualNo": "[8]",
+      "title": "사전규격공개 기안문",
+      "titleInventory": "사전규격공개 기안문",
+      "manualPage": 18,
+      "stage": "입찰",
+      "standardPhases": [
+        "3. 구매요청·기초조사"
+      ],
+      "docType": "기안문",
+      "layout": "표",
+      "author": "학교작성",
+      "authorNote": null,
+      "owner": "계약 담당",
+      "difficulty": "H",
+      "contractMethods": [
+        "CM-03",
+        "CM-04"
+      ],
+      "contractMethodsNote": null,
+      "workflowSteps": [
+        {
+          "workflowId": "WF-BID",
+          "stepNo": 1
+        }
+      ],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "C-03",
+        "C-04",
+        "C-05",
+        "C-06",
+        "B-01",
+        "B-07",
+        "D-01",
+        "D-02",
+        "D-03",
+        "D-04",
+        "C-07",
+        "C-08"
+      ],
+      "requiredRaw": "C-01, C-02, B-01, B-07, D-02",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "B-07",
+        "D-02"
+      ],
+      "computedFieldIds": [],
+      "fieldGroups": [
+        "공통",
+        "문서별",
+        "사업"
+      ],
+      "boundary": "제출기한은 발행일 이후",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-010_사전규격공개기안문",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-010_사전규격공개기안문_템플릿.hwpx",
+      "hwpxTokens": [
+        "문서번호",
+        "학교명",
+        "학년도"
+      ],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "C-03",
+        "C-04",
+        "C-05",
+        "C-06",
+        "B-01",
+        "B-07",
+        "D-01",
+        "D-02",
+        "D-03",
+        "D-04",
+        "C-07",
+        "C-08"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "C-06",
+          "C-01",
+          "C-02"
+        ],
+        "unsupportedFieldIds": [
+          "C-03",
+          "C-04",
+          "C-05",
+          "B-01",
+          "B-07",
+          "D-01",
+          "D-02",
+          "D-03",
+          "D-04",
+          "C-07",
+          "C-08"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      }
+    },
+    {
+      "formId": "F-011",
+      "manualNo": "[9]",
+      "title": "교복 학교주관구매 입찰 공고",
+      "titleInventory": "교복 학교주관구매 입찰 공고",
+      "manualPage": 19,
+      "stage": "입찰",
+      "standardPhases": [
+        "4. 입찰공고"
+      ],
+      "docType": "공고문",
+      "layout": "표",
+      "author": "학교작성",
+      "authorNote": null,
+      "owner": "계약 담당",
+      "difficulty": "H",
+      "contractMethods": [
+        "CM-03",
+        "CM-04"
+      ],
+      "contractMethodsNote": null,
+      "workflowSteps": [
+        {
+          "workflowId": "WF-BID",
+          "stepNo": 1
+        },
+        {
+          "workflowId": "WF-BID",
+          "stepNo": 2
+        }
+      ],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "C-03",
+        "C-04",
+        "C-05",
+        "C-06",
+        "B-01",
+        "B-02",
+        "B-03",
+        "B-04",
+        "B-05",
+        "B-06",
+        "B-07",
+        "D-02",
+        "D-05",
+        "R-04",
+        "R-05",
+        "R-06"
+      ],
+      "requiredRaw": "C-01, C-02, B-01, B-03, B-07, D-02",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "B-03",
+        "B-07",
+        "D-02"
+      ],
+      "computedFieldIds": [
+        "K-01",
+        "K-02"
+      ],
+      "fieldGroups": [
+        "계산",
+        "공통",
+        "문서별",
+        "반복",
+        "사업"
+      ],
+      "boundary": "공고 본문·첨부는 담당자 확인",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-011_입찰공고",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-011_입찰공고_템플릿.hwpx",
+      "hwpxTokens": [
+        "학교명",
+        "학년도"
+      ],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "C-03",
+        "C-04",
+        "C-05",
+        "C-06",
+        "B-01",
+        "B-02",
+        "B-03",
+        "B-04",
+        "B-05",
+        "B-06",
+        "B-07",
+        "D-02",
+        "D-05",
+        "R-04",
+        "R-05",
+        "R-06",
+        "K-01",
+        "K-02"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "C-01",
+          "C-02"
+        ],
+        "unsupportedFieldIds": [
+          "C-03",
+          "C-04",
+          "C-05",
+          "C-06",
+          "B-01",
+          "B-02",
+          "B-03",
+          "B-04",
+          "B-05",
+          "B-06",
+          "B-07",
+          "D-02",
+          "D-05",
+          "R-04",
+          "R-05",
+          "R-06",
+          "K-01",
+          "K-02"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      }
+    },
+    {
+      "formId": "F-012",
+      "manualNo": "[9-1]",
+      "title": "계약 특수조건",
+      "titleInventory": "계약 특수조건",
+      "manualPage": 26,
+      "stage": "입찰",
+      "standardPhases": [
+        "4. 입찰공고"
+      ],
+      "docType": "계약조건",
+      "layout": "본문",
+      "author": "학교작성",
+      "authorNote": null,
+      "owner": "계약 담당",
+      "difficulty": "H",
+      "contractMethods": [
+        "CM-01",
+        "CM-02",
+        "CM-03",
+        "CM-04"
+      ],
+      "contractMethodsNote": null,
+      "workflowSteps": [
+        {
+          "workflowId": "WF-QUOTE1",
+          "stepNo": 1
+        },
+        {
+          "workflowId": "WF-QUOTE2",
+          "stepNo": 1
+        },
+        {
+          "workflowId": "WF-BID",
+          "stepNo": 1
+        }
+      ],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "B-06",
+        "D-02",
+        "D-05"
+      ],
+      "requiredRaw": "C-01, C-02, B-01, D-02",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "D-02"
+      ],
+      "computedFieldIds": [],
+      "fieldGroups": [
+        "공통",
+        "문서별",
+        "사업"
+      ],
+      "boundary": "계약 문구는 자동 판단·변경 금지",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-012_계약특수조건",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-012_계약특수조건_템플릿.hwpx",
+      "hwpxTokens": [
+        "학교명",
+        "학년도"
+      ],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "B-06",
+        "D-02",
+        "D-05"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "C-01",
+          "C-02"
+        ],
+        "unsupportedFieldIds": [
+          "B-01",
+          "B-06",
+          "D-02",
+          "D-05"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      }
+    },
+    {
+      "formId": "F-013",
+      "manualNo": "[9-2]",
+      "title": "교복 디자인 및 규격서",
+      "titleInventory": "교복 디자인 및 규격서",
+      "manualPage": 30,
+      "stage": "입찰",
+      "standardPhases": [
+        "4. 입찰공고"
+      ],
+      "docType": "규격서",
+      "layout": "표·이미지",
+      "author": "학교작성",
+      "authorNote": null,
+      "owner": "계약 담당",
+      "difficulty": "H",
+      "contractMethods": [],
+      "contractMethodsNote": "계약절차 팝업(frmContractGuide) 어느 단계에도 연결되지 않은 서식 — 계약방법별 사용 여부 매뉴얼 확인 필요",
+      "workflowSteps": [],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "D-02",
+        "R-04",
+        "R-05",
+        "R-06"
+      ],
+      "requiredRaw": "C-01, C-02, B-01, R-04",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "R-04"
+      ],
+      "computedFieldIds": [
+        "K-01"
+      ],
+      "fieldGroups": [
+        "공통",
+        "문서별",
+        "반복",
+        "사업"
+      ],
+      "boundary": "이미지·다쪽 규격서는 P2 조판 검증",
+      "boundaryNote": null,
+      "implementationStatus": "hwpxPriority",
+      "excelStatus": "D",
+      "excelSheet": null,
+      "excelStatusNote": "HWPX 우선순위 위임(표·이미지 복합조판)",
+      "outputMethod": "hwpx",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-013_교복디자인규격서_템플릿.hwpx",
+      "hwpxTokens": [
+        "학교명"
+      ],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "D-02",
+        "R-04",
+        "R-05",
+        "R-06",
+        "K-01"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "C-01"
+        ],
+        "unsupportedFieldIds": [
+          "C-02",
+          "B-01",
+          "D-02",
+          "R-04",
+          "R-05",
+          "R-06",
+          "K-01"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      },
+      "contractMethodScope": {
+        "status": "manual-confirmation-required",
+        "displayLabel": "계약방법 확인 필요",
+        "reason": "Excel 계약절차 안내에 계약방법별 연결 근거가 없음",
+        "source": "scripts/build_excel_v1_vba.ps1 frmContractGuide.초기화 및 서식_매핑표.md 대조",
+        "filterBehavior": "계약방법 필터에서는 확인 필요로만 표시"
+      }
+    },
+    {
+      "formId": "F-014",
+      "manualNo": "[9-3]",
+      "title": "제안서 평가항목 및 배점기준",
+      "titleInventory": "제안서 평가항목 및 배점기준",
+      "manualPage": 41,
+      "stage": "평가",
+      "standardPhases": [
+        "6. 평가"
+      ],
+      "docType": "평가기준",
+      "layout": "표",
+      "author": "학교작성",
+      "authorNote": null,
+      "owner": "평가 담당",
+      "difficulty": "M",
+      "contractMethods": [
+        "CM-03",
+        "CM-04"
+      ],
+      "contractMethodsNote": null,
+      "workflowSteps": [
+        {
+          "workflowId": "WF-BID",
+          "stepNo": 4
+        }
+      ],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-04",
+        "R-07"
+      ],
+      "requiredRaw": "C-01, C-02, D-02, R-07",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-07"
+      ],
+      "computedFieldIds": [
+        "K-03"
+      ],
+      "fieldGroups": [
+        "계산",
+        "공통",
+        "문서별",
+        "반복"
+      ],
+      "boundary": "배점 상한 초과 차단",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-014_평가항목배점기준",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-014_평가항목배점기준_템플릿.hwpx",
+      "hwpxTokens": [],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-04",
+        "R-07",
+        "K-03"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [],
+        "unsupportedFieldIds": [
+          "C-01",
+          "C-02",
+          "D-02",
+          "R-04",
+          "R-07",
+          "K-03"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      }
+    },
+    {
+      "formId": "F-015",
+      "manualNo": "[9-4]",
+      "title": "정량적 평가",
+      "titleInventory": "정량적 평가",
+      "manualPage": 43,
+      "stage": "평가",
+      "standardPhases": [
+        "6. 평가"
+      ],
+      "docType": "평가표",
+      "layout": "표",
+      "author": "학교작성",
+      "authorNote": null,
+      "owner": "평가 담당",
+      "difficulty": "M",
+      "contractMethods": [
+        "CM-03",
+        "CM-04"
+      ],
+      "contractMethodsNote": null,
+      "workflowSteps": [
+        {
+          "workflowId": "WF-BID",
+          "stepNo": 4
+        }
+      ],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-03",
+        "R-07"
+      ],
+      "requiredRaw": "C-01, C-02, D-02, R-03, R-07",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-03",
+        "R-07"
+      ],
+      "computedFieldIds": [
+        "K-03"
+      ],
+      "fieldGroups": [
+        "계산",
+        "공통",
+        "문서별",
+        "반복"
+      ],
+      "boundary": "업체 중복 경고",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-015_정량적평가",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-015_정량적평가_템플릿.hwpx",
+      "hwpxTokens": [
+        "학교명"
+      ],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-03",
+        "R-07",
+        "K-03"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "C-01"
+        ],
+        "unsupportedFieldIds": [
+          "C-02",
+          "D-02",
+          "R-03",
+          "R-07",
+          "K-03"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      }
+    },
+    {
+      "formId": "F-016",
+      "manualNo": "[9-5]",
+      "title": "정성적 평가",
+      "titleInventory": "정성적 평가",
+      "manualPage": 44,
+      "stage": "평가",
+      "standardPhases": [
+        "6. 평가"
+      ],
+      "docType": "평가표",
+      "layout": "표",
+      "author": "학교작성",
+      "authorNote": null,
+      "owner": "평가 담당",
+      "difficulty": "M",
+      "contractMethods": [
+        "CM-03",
+        "CM-04"
+      ],
+      "contractMethodsNote": null,
+      "workflowSteps": [
+        {
+          "workflowId": "WF-BID",
+          "stepNo": 4
+        }
+      ],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-03",
+        "R-07"
+      ],
+      "requiredRaw": "C-01, C-02, D-02, R-03, R-07",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-03",
+        "R-07"
+      ],
+      "computedFieldIds": [
+        "K-03"
+      ],
+      "fieldGroups": [
+        "계산",
+        "공통",
+        "문서별",
+        "반복"
+      ],
+      "boundary": "배점 상한 초과 차단",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-016_정성적평가",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-016_정성적평가_템플릿.hwpx",
+      "hwpxTokens": [
+        "학교명"
+      ],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-03",
+        "R-07",
+        "K-03"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "C-01"
+        ],
+        "unsupportedFieldIds": [
+          "C-02",
+          "D-02",
+          "R-03",
+          "R-07",
+          "K-03"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      }
+    },
+    {
+      "formId": "F-017",
+      "manualNo": "[9-6]",
+      "title": "제출서류 자기확인서",
+      "titleInventory": "제출서류 자기확인서",
+      "manualPage": 45,
+      "stage": "입찰",
+      "standardPhases": [
+        "5. 제안·접수"
+      ],
+      "docType": "확인서",
+      "layout": "표",
+      "author": "업체작성",
+      "authorNote": null,
+      "owner": "계약 담당",
+      "difficulty": "M",
+      "contractMethods": [
+        "CM-03",
+        "CM-04"
+      ],
+      "contractMethodsNote": null,
+      "workflowSteps": [
+        {
+          "workflowId": "WF-BID",
+          "stepNo": 3
+        }
+      ],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-03",
+        "R-08",
+        "R-09"
+      ],
+      "requiredRaw": "C-01, C-02, D-02, R-03",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-03"
+      ],
+      "computedFieldIds": [],
+      "fieldGroups": [
+        "공통",
+        "문서별",
+        "반복"
+      ],
+      "boundary": "업체 입력은 해당 문서에만 반영",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-017_제출서류자기확인서",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-017_제출서류자기확인서_템플릿.hwpx",
+      "hwpxTokens": [
+        "학년도"
+      ],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-03",
+        "R-08",
+        "R-09"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "C-02"
+        ],
+        "unsupportedFieldIds": [
+          "C-01",
+          "D-02",
+          "R-03",
+          "R-08",
+          "R-09"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      }
+    },
+    {
+      "formId": "F-018",
+      "manualNo": "[9-7]",
+      "title": "정량적 평가 자기 평점표",
+      "titleInventory": "정량적 평가 자기 평점표",
+      "manualPage": 46,
+      "stage": "입찰",
+      "standardPhases": [
+        "5. 제안·접수"
+      ],
+      "docType": "자기평가표",
+      "layout": "표",
+      "author": "업체작성",
+      "authorNote": "업체 자기평가표(학교 평가 F-015와 혼용 금지)",
+      "owner": "계약 담당",
+      "difficulty": "M",
+      "contractMethods": [
+        "CM-03",
+        "CM-04"
+      ],
+      "contractMethodsNote": null,
+      "workflowSteps": [
+        {
+          "workflowId": "WF-BID",
+          "stepNo": 3
+        }
+      ],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-03",
+        "R-07",
+        "R-08",
+        "R-09"
+      ],
+      "requiredRaw": "C-01, C-02, D-02, R-03, R-07",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-03",
+        "R-07"
+      ],
+      "computedFieldIds": [
+        "K-03"
+      ],
+      "fieldGroups": [
+        "계산",
+        "공통",
+        "문서별",
+        "반복"
+      ],
+      "boundary": "자기평가와 학교평가를 혼용하지 않음",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-018_정량적평가자기평점표",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-018_정량평가자기평점표_템플릿.hwpx",
+      "hwpxTokens": [
+        "학교명"
+      ],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-03",
+        "R-07",
+        "R-08",
+        "R-09",
+        "K-03"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "C-01"
+        ],
+        "unsupportedFieldIds": [
+          "C-02",
+          "D-02",
+          "R-03",
+          "R-07",
+          "R-08",
+          "R-09",
+          "K-03"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      }
+    },
+    {
+      "formId": "F-019",
+      "manualNo": "[9-7]",
+      "title": "입찰참가신청서",
+      "titleInventory": "입찰참가신청서",
+      "manualPage": 47,
+      "stage": "입찰",
+      "standardPhases": [
+        "5. 제안·접수"
+      ],
+      "docType": "신청서",
+      "layout": "표",
+      "author": "업체작성",
+      "authorNote": null,
+      "owner": "계약 담당",
+      "difficulty": "M",
+      "contractMethods": [
+        "CM-03",
+        "CM-04"
+      ],
+      "contractMethodsNote": null,
+      "workflowSteps": [
+        {
+          "workflowId": "WF-BID",
+          "stepNo": 3
+        }
+      ],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-03",
+        "R-08",
+        "R-09"
+      ],
+      "requiredRaw": "C-01, C-02, D-02, R-03",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-03"
+      ],
+      "computedFieldIds": [],
+      "fieldGroups": [
+        "공통",
+        "문서별",
+        "반복"
+      ],
+      "boundary": "신청서 서명란은 빈칸 유지",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-019_입찰참가신청서",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-019_입찰참가신청서_템플릿.hwpx",
+      "hwpxTokens": [
+        "학교명",
+        "학년도"
+      ],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-03",
+        "R-08",
+        "R-09"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "C-01",
+          "C-02"
+        ],
+        "unsupportedFieldIds": [
+          "D-02",
+          "R-03",
+          "R-08",
+          "R-09"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      }
+    },
+    {
+      "formId": "F-020",
+      "manualNo": "[9-8]",
+      "title": "입찰 참가 신고서",
+      "titleInventory": "입찰 참가 신고서",
+      "manualPage": 48,
+      "stage": "입찰",
+      "standardPhases": [
+        "5. 제안·접수"
+      ],
+      "docType": "신고서",
+      "layout": "표",
+      "author": "업체작성",
+      "authorNote": null,
+      "owner": "계약 담당",
+      "difficulty": "M",
+      "contractMethods": [
+        "CM-03",
+        "CM-04"
+      ],
+      "contractMethodsNote": null,
+      "workflowSteps": [
+        {
+          "workflowId": "WF-BID",
+          "stepNo": 3
+        }
+      ],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-03"
+      ],
+      "requiredRaw": "C-01, C-02, D-02, R-03",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-03"
+      ],
+      "computedFieldIds": [],
+      "fieldGroups": [
+        "공통",
+        "문서별",
+        "반복"
+      ],
+      "boundary": "신고서 서명란은 빈칸 유지",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-020_입찰참가신고서",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-020_입찰참가신고서_템플릿.hwpx",
+      "hwpxTokens": [
+        "학교명"
+      ],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-03"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "C-01"
+        ],
+        "unsupportedFieldIds": [
+          "C-02",
+          "D-02",
+          "R-03"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      }
+    },
+    {
+      "formId": "F-021",
+      "manualNo": "[9-9]",
+      "title": "교복 납품 제안서",
+      "titleInventory": "교복 납품 제안서",
+      "manualPage": 49,
+      "stage": "입찰",
+      "standardPhases": [
+        "5. 제안·접수"
+      ],
+      "docType": "제안서",
+      "layout": "표",
+      "author": "업체작성",
+      "authorNote": null,
+      "owner": "계약 담당",
+      "difficulty": "M",
+      "contractMethods": [
+        "CM-03",
+        "CM-04"
+      ],
+      "contractMethodsNote": null,
+      "workflowSteps": [
+        {
+          "workflowId": "WF-BID",
+          "stepNo": 3
+        }
+      ],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "D-02",
+        "D-05",
+        "R-03",
+        "R-04",
+        "R-05",
+        "R-06",
+        "R-08",
+        "R-09"
+      ],
+      "requiredRaw": "C-01, C-02, B-01, D-02, R-03",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "D-02",
+        "R-03"
+      ],
+      "computedFieldIds": [
+        "K-01",
+        "K-02"
+      ],
+      "fieldGroups": [
+        "계산",
+        "공통",
+        "문서별",
+        "반복",
+        "사업"
+      ],
+      "boundary": "업체·품목 반복행 분리",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-021_교복납품제안서",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-021_교복납품제안서_템플릿.hwpx",
+      "hwpxTokens": [
+        "학교명",
+        "학년도"
+      ],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "D-02",
+        "D-05",
+        "R-03",
+        "R-04",
+        "R-05",
+        "R-06",
+        "R-08",
+        "R-09",
+        "K-01",
+        "K-02"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "C-01",
+          "C-02"
+        ],
+        "unsupportedFieldIds": [
+          "B-01",
+          "D-02",
+          "D-05",
+          "R-03",
+          "R-04",
+          "R-05",
+          "R-06",
+          "R-08",
+          "R-09",
+          "K-01",
+          "K-02"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      }
+    },
+    {
+      "formId": "F-022",
+      "manualNo": "[9-10]",
+      "title": "교복 납품 실적표",
+      "titleInventory": "교복 납품 실적표",
+      "manualPage": 50,
+      "stage": "입찰",
+      "standardPhases": [
+        "5. 제안·접수"
+      ],
+      "docType": "실적표",
+      "layout": "표",
+      "author": "업체작성",
+      "authorNote": null,
+      "owner": "계약 담당",
+      "difficulty": "M",
+      "contractMethods": [
+        "CM-03",
+        "CM-04"
+      ],
+      "contractMethodsNote": null,
+      "workflowSteps": [
+        {
+          "workflowId": "WF-BID",
+          "stepNo": 3
+        }
+      ],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-03"
+      ],
+      "requiredRaw": "C-01, C-02, D-02, R-03",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-03"
+      ],
+      "computedFieldIds": [],
+      "fieldGroups": [
+        "공통",
+        "문서별",
+        "반복"
+      ],
+      "boundary": "실적 행은 업체별 독립 관리",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-022_교복납품실적표",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-022_교복납품실적표_템플릿.hwpx",
+      "hwpxTokens": [
+        "학교명"
+      ],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-03"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "C-01"
+        ],
+        "unsupportedFieldIds": [
+          "C-02",
+          "D-02",
+          "R-03"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      }
+    },
+    {
+      "formId": "F-023",
+      "manualNo": "[9-11]",
+      "title": "교복 제조 사양서",
+      "titleInventory": "교복 제조 사양서",
+      "manualPage": 51,
+      "stage": "입찰",
+      "standardPhases": [
+        "5. 제안·접수"
+      ],
+      "docType": "규격서",
+      "layout": "표",
+      "author": "업체작성",
+      "authorNote": null,
+      "owner": "계약 담당",
+      "difficulty": "M",
+      "contractMethods": [
+        "CM-03",
+        "CM-04"
+      ],
+      "contractMethodsNote": null,
+      "workflowSteps": [
+        {
+          "workflowId": "WF-BID",
+          "stepNo": 3
+        }
+      ],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "D-02",
+        "R-04",
+        "R-05",
+        "R-06"
+      ],
+      "requiredRaw": "C-01, C-02, B-01, R-04",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "R-04"
+      ],
+      "computedFieldIds": [
+        "K-01"
+      ],
+      "fieldGroups": [
+        "공통",
+        "문서별",
+        "반복",
+        "사업"
+      ],
+      "boundary": "규격 전용값은 다른 문서로 전파 금지",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-023_교복제조사양서",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-023_납품교복제조사양서_템플릿.hwpx",
+      "hwpxTokens": [
+        "학교명"
+      ],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "D-02",
+        "R-04",
+        "R-05",
+        "R-06",
+        "K-01"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "C-01"
+        ],
+        "unsupportedFieldIds": [
+          "C-02",
+          "B-01",
+          "D-02",
+          "R-04",
+          "R-05",
+          "R-06",
+          "K-01"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      }
+    },
+    {
+      "formId": "F-024",
+      "manualNo": "[9-12]",
+      "title": "품목별 단가 비율표",
+      "titleInventory": "품목별 단가 비율표",
+      "manualPage": 52,
+      "stage": "입찰",
+      "standardPhases": [
+        "5. 제안·접수"
+      ],
+      "docType": "단가표",
+      "layout": "표",
+      "author": "업체작성",
+      "authorNote": null,
+      "owner": "계약 담당",
+      "difficulty": "M",
+      "contractMethods": [
+        "CM-03",
+        "CM-04"
+      ],
+      "contractMethodsNote": null,
+      "workflowSteps": [
+        {
+          "workflowId": "WF-BID",
+          "stepNo": 3
+        }
+      ],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-04",
+        "R-05",
+        "R-06"
+      ],
+      "requiredRaw": "C-01, C-02, D-02, R-04~R-06",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-04",
+        "R-05",
+        "R-06"
+      ],
+      "computedFieldIds": [
+        "K-01",
+        "K-02"
+      ],
+      "fieldGroups": [
+        "계산",
+        "공통",
+        "문서별",
+        "반복"
+      ],
+      "boundary": "`[9-13]` 참고 기준을 검증용으로만 사용",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-024_단가비율표",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-024_교복품목별단가비율표_템플릿.hwpx",
+      "hwpxTokens": [
+        "학교명"
+      ],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-04",
+        "R-05",
+        "R-06",
+        "K-01",
+        "K-02"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "C-01"
+        ],
+        "unsupportedFieldIds": [
+          "C-02",
+          "D-02",
+          "R-04",
+          "R-05",
+          "R-06",
+          "K-01",
+          "K-02"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      }
+    },
+    {
+      "formId": "F-025",
+      "manualNo": "[9-14]",
+      "title": "교복 A/S 계획서",
+      "titleInventory": "교복 A/S 계획서",
+      "manualPage": 54,
+      "stage": "입찰",
+      "standardPhases": [
+        "5. 제안·접수"
+      ],
+      "docType": "계획서",
+      "layout": "표",
+      "author": "업체작성",
+      "authorNote": null,
+      "owner": "계약 담당",
+      "difficulty": "M",
+      "contractMethods": [
+        "CM-03",
+        "CM-04"
+      ],
+      "contractMethodsNote": null,
+      "workflowSteps": [
+        {
+          "workflowId": "WF-BID",
+          "stepNo": 3
+        }
+      ],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "D-02",
+        "D-05",
+        "R-03"
+      ],
+      "requiredRaw": "C-01, C-02, B-01, D-02",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "D-02"
+      ],
+      "computedFieldIds": [],
+      "fieldGroups": [
+        "공통",
+        "문서별",
+        "반복",
+        "사업"
+      ],
+      "boundary": "A/S 문구는 담당자 확인",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-025_교복AS계획서",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-025_교복AS계획서_템플릿.hwpx",
+      "hwpxTokens": [
+        "학교명"
+      ],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "D-02",
+        "D-05",
+        "R-03"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "C-01"
+        ],
+        "unsupportedFieldIds": [
+          "C-02",
+          "B-01",
+          "D-02",
+          "D-05",
+          "R-03"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      }
+    },
+    {
+      "formId": "F-026",
+      "manualNo": "[9-15]",
+      "title": "소비자 불만 처리 계획",
+      "titleInventory": "소비자 불만 처리 계획",
+      "manualPage": 55,
+      "stage": "입찰",
+      "standardPhases": [
+        "5. 제안·접수"
+      ],
+      "docType": "계획서",
+      "layout": "표",
+      "author": "업체작성",
+      "authorNote": null,
+      "owner": "계약 담당",
+      "difficulty": "M",
+      "contractMethods": [],
+      "contractMethodsNote": "계약절차 팝업(frmContractGuide) 어느 단계에도 연결되지 않은 서식 — 계약방법별 사용 여부 매뉴얼 확인 필요",
+      "workflowSteps": [],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "D-02",
+        "D-05",
+        "R-03"
+      ],
+      "requiredRaw": "C-01, C-02, B-01, D-02",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "D-02"
+      ],
+      "computedFieldIds": [],
+      "fieldGroups": [
+        "공통",
+        "문서별",
+        "반복",
+        "사업"
+      ],
+      "boundary": "처리계획 문구는 담당자 확인",
+      "boundaryNote": null,
+      "implementationStatus": "notImplemented",
+      "excelStatus": "N",
+      "excelSheet": null,
+      "excelStatusNote": null,
+      "outputMethod": "none",
+      "hwpxTemplate": null,
+      "hwpxTokens": [],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "D-02",
+        "D-05",
+        "R-03"
+      ],
+      "hwpxCoverage": {
+        "level": "not-available",
+        "supportedFieldIds": [],
+        "unsupportedFieldIds": [
+          "C-01",
+          "C-02",
+          "B-01",
+          "D-02",
+          "D-05",
+          "R-03"
+        ],
+        "displayLabel": "HWPX 템플릿 미구현",
+        "outputCompletion": "not-available"
+      },
+      "contractMethodScope": {
+        "status": "manual-confirmation-required",
+        "displayLabel": "계약방법 확인 필요",
+        "reason": "Excel 계약절차 안내에 계약방법별 연결 근거가 없음",
+        "source": "scripts/build_excel_v1_vba.ps1 frmContractGuide.초기화 및 서식_매핑표.md 대조",
+        "filterBehavior": "계약방법 필터에서는 확인 필요로만 표시"
+      }
+    },
+    {
+      "formId": "F-027",
+      "manualNo": "[9-16]",
+      "title": "위임장",
+      "titleInventory": "위임장",
+      "manualPage": 56,
+      "stage": "입찰",
+      "standardPhases": [
+        "5. 제안·접수"
+      ],
+      "docType": "위임장",
+      "layout": "표",
+      "author": "업체작성",
+      "authorNote": null,
+      "owner": "계약 담당",
+      "difficulty": "M",
+      "contractMethods": [
+        "CM-03",
+        "CM-04"
+      ],
+      "contractMethodsNote": null,
+      "workflowSteps": [
+        {
+          "workflowId": "WF-BID",
+          "stepNo": 3
+        }
+      ],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02"
+      ],
+      "requiredRaw": "C-01, C-02, D-02",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02"
+      ],
+      "computedFieldIds": [],
+      "fieldGroups": [
+        "공통",
+        "문서별"
+      ],
+      "boundary": "위임인·수임인·서명 자동 처리 금지",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-027_위임장",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-027_위임장_템플릿.hwpx",
+      "hwpxTokens": [
+        "학교명",
+        "학년도"
+      ],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "C-01",
+          "C-02"
+        ],
+        "unsupportedFieldIds": [
+          "D-02"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      }
+    },
+    {
+      "formId": "F-028",
+      "manualNo": "[9-17]",
+      "title": "서약서",
+      "titleInventory": "서약서",
+      "manualPage": 57,
+      "stage": "입찰",
+      "standardPhases": [
+        "5. 제안·접수"
+      ],
+      "docType": "서약서",
+      "layout": "표",
+      "author": "업체작성",
+      "authorNote": null,
+      "owner": "계약 담당",
+      "difficulty": "M",
+      "contractMethods": [],
+      "contractMethodsNote": "계약절차 팝업(frmContractGuide) 어느 단계에도 연결되지 않은 서식 — 계약방법별 사용 여부 매뉴얼 확인 필요",
+      "workflowSteps": [],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-03"
+      ],
+      "requiredRaw": "C-01, C-02, D-02",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02"
+      ],
+      "computedFieldIds": [],
+      "fieldGroups": [
+        "공통",
+        "문서별",
+        "반복"
+      ],
+      "boundary": "서명란은 빈칸 유지",
+      "boundaryNote": null,
+      "implementationStatus": "notImplemented",
+      "excelStatus": "N",
+      "excelSheet": null,
+      "excelStatusNote": null,
+      "outputMethod": "none",
+      "hwpxTemplate": null,
+      "hwpxTokens": [],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-03"
+      ],
+      "hwpxCoverage": {
+        "level": "not-available",
+        "supportedFieldIds": [],
+        "unsupportedFieldIds": [
+          "C-01",
+          "C-02",
+          "D-02",
+          "R-03"
+        ],
+        "displayLabel": "HWPX 템플릿 미구현",
+        "outputCompletion": "not-available"
+      },
+      "contractMethodScope": {
+        "status": "manual-confirmation-required",
+        "displayLabel": "계약방법 확인 필요",
+        "reason": "Excel 계약절차 안내에 계약방법별 연결 근거가 없음",
+        "source": "scripts/build_excel_v1_vba.ps1 frmContractGuide.초기화 및 서식_매핑표.md 대조",
+        "filterBehavior": "계약방법 필터에서는 확인 필요로만 표시"
+      }
+    },
+    {
+      "formId": "F-029",
+      "manualNo": "[9-18]",
+      "title": "개인정보제공 동의서",
+      "titleInventory": "개인정보제공 동의서",
+      "manualPage": 58,
+      "stage": "입찰",
+      "standardPhases": [
+        "5. 제안·접수"
+      ],
+      "docType": "동의서",
+      "layout": "표",
+      "author": "업체작성",
+      "authorNote": null,
+      "owner": "계약 담당",
+      "difficulty": "H",
+      "contractMethods": [
+        "CM-03",
+        "CM-04"
+      ],
+      "contractMethodsNote": null,
+      "workflowSteps": [
+        {
+          "workflowId": "WF-BID",
+          "stepNo": 3
+        }
+      ],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "C-05"
+      ],
+      "requiredRaw": "C-01, C-02",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02"
+      ],
+      "computedFieldIds": [],
+      "fieldGroups": [
+        "공통"
+      ],
+      "boundary": "금지: 동의자 성명·주소·연락처·서명·식별번호; 빈 양식",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-029_개인정보제공동의서",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-029_개인정보제공동의서_템플릿.hwpx",
+      "hwpxTokens": [
+        "학교명",
+        "학년도"
+      ],
+      "privacyProtected": true,
+      "privacyAllowedFieldIds": [
+        "C-01",
+        "C-02",
+        "C-05"
+      ],
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "C-05"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "C-01",
+          "C-02"
+        ],
+        "unsupportedFieldIds": [
+          "C-05"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      }
+    },
+    {
+      "formId": "F-030",
+      "manualNo": "[9-19]",
+      "title": "청렴계약 이행서약서",
+      "titleInventory": "청렴계약 이행서약서",
+      "manualPage": 59,
+      "stage": "입찰",
+      "standardPhases": [
+        "5. 제안·접수"
+      ],
+      "docType": "서약서",
+      "layout": "표",
+      "author": "업체작성",
+      "authorNote": "업체 자체 작성 문서(서식_매핑표 §6)",
+      "owner": "계약 담당",
+      "difficulty": "M",
+      "contractMethods": [
+        "CM-03",
+        "CM-04"
+      ],
+      "contractMethodsNote": null,
+      "workflowSteps": [
+        {
+          "workflowId": "WF-BID",
+          "stepNo": 3
+        }
+      ],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-03"
+      ],
+      "requiredRaw": "C-01, C-02, D-02",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02"
+      ],
+      "computedFieldIds": [],
+      "fieldGroups": [
+        "공통",
+        "문서별",
+        "반복"
+      ],
+      "boundary": "서명란은 빈칸 유지",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-030_청렴계약이행서약서",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-030_청렴계약이행서약서_템플릿.hwpx",
+      "hwpxTokens": [
+        "학교명"
+      ],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-03"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "C-01"
+        ],
+        "unsupportedFieldIds": [
+          "C-02",
+          "D-02",
+          "R-03"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      }
+    },
+    {
+      "formId": "F-031",
+      "manualNo": "[9-20]",
+      "title": "교복 품목별 금액표",
+      "titleInventory": "교복 품목별 금액표",
+      "manualPage": 60,
+      "stage": "입찰",
+      "standardPhases": [
+        "5. 제안·접수"
+      ],
+      "docType": "단가표",
+      "layout": "표",
+      "author": "업체작성",
+      "authorNote": "최종 낙찰 업체가 작성·제출(build_excel_v1_structure.ps1 F-031 주석)",
+      "owner": "계약 담당",
+      "difficulty": "M",
+      "contractMethods": [
+        "CM-01",
+        "CM-02",
+        "CM-03",
+        "CM-04"
+      ],
+      "contractMethodsNote": null,
+      "workflowSteps": [
+        {
+          "workflowId": "WF-QUOTE1",
+          "stepNo": 2
+        },
+        {
+          "workflowId": "WF-QUOTE2",
+          "stepNo": 3
+        },
+        {
+          "workflowId": "WF-BID",
+          "stepNo": 7
+        }
+      ],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "D-02",
+        "R-04",
+        "R-05",
+        "R-06"
+      ],
+      "requiredRaw": "C-01, C-02, B-01, R-04~R-06",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "R-04",
+        "R-05",
+        "R-06"
+      ],
+      "computedFieldIds": [
+        "K-01",
+        "K-02"
+      ],
+      "fieldGroups": [
+        "계산",
+        "공통",
+        "문서별",
+        "반복",
+        "사업"
+      ],
+      "boundary": "품목별 합계 검증",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-031_교복품목별금액표",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-031_교복품목별금액표_템플릿.hwpx",
+      "hwpxTokens": [
+        "학교명",
+        "학년도"
+      ],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "D-02",
+        "R-04",
+        "R-05",
+        "R-06",
+        "K-01",
+        "K-02"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "C-01",
+          "C-02"
+        ],
+        "unsupportedFieldIds": [
+          "B-01",
+          "D-02",
+          "R-04",
+          "R-05",
+          "R-06",
+          "K-01",
+          "K-02"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      }
+    },
+    {
+      "formId": "F-032",
+      "manualNo": "[10]",
+      "title": "제안서 접수 결과",
+      "titleInventory": "제안서 접수 결과",
+      "manualPage": 61,
+      "stage": "평가",
+      "standardPhases": [
+        "5. 제안·접수"
+      ],
+      "docType": "기안문",
+      "layout": "표",
+      "author": "학교작성",
+      "authorNote": null,
+      "owner": "평가 담당",
+      "difficulty": "M",
+      "contractMethods": [
+        "CM-03",
+        "CM-04"
+      ],
+      "contractMethodsNote": null,
+      "workflowSteps": [
+        {
+          "workflowId": "WF-BID",
+          "stepNo": 4
+        }
+      ],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "C-03",
+        "C-04",
+        "C-05",
+        "C-06",
+        "B-01",
+        "D-01",
+        "D-02",
+        "D-03",
+        "D-04",
+        "R-03",
+        "C-07",
+        "C-08",
+        "R-08",
+        "R-09"
+      ],
+      "requiredRaw": "C-01, C-02, B-01, D-02, R-03",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "D-02",
+        "R-03"
+      ],
+      "computedFieldIds": [],
+      "fieldGroups": [
+        "공통",
+        "문서별",
+        "반복",
+        "사업"
+      ],
+      "boundary": "업체 접수 반복행 분리",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-032_제안서접수결과",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-032_제안서접수결과_템플릿.hwpx",
+      "hwpxTokens": [
+        "관련문서",
+        "문서번호",
+        "학교명",
+        "학년도"
+      ],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "C-03",
+        "C-04",
+        "C-05",
+        "C-06",
+        "B-01",
+        "D-01",
+        "D-02",
+        "D-03",
+        "D-04",
+        "R-03",
+        "C-07",
+        "C-08",
+        "R-08",
+        "R-09"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "D-03",
+          "C-06",
+          "C-01",
+          "C-02"
+        ],
+        "unsupportedFieldIds": [
+          "C-03",
+          "C-04",
+          "C-05",
+          "B-01",
+          "D-01",
+          "D-02",
+          "D-04",
+          "R-03",
+          "C-07",
+          "C-08",
+          "R-08",
+          "R-09"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      }
+    },
+    {
+      "formId": "F-033",
+      "manualNo": "[10-1]",
+      "title": "제안서 접수대장",
+      "titleInventory": "제안서 접수대장",
+      "manualPage": 62,
+      "stage": "평가",
+      "standardPhases": [
+        "5. 제안·접수"
+      ],
+      "docType": "대장",
+      "layout": "표",
+      "author": "학교작성",
+      "authorNote": null,
+      "owner": "평가 담당",
+      "difficulty": "M",
+      "contractMethods": [
+        "CM-03",
+        "CM-04"
+      ],
+      "contractMethodsNote": null,
+      "workflowSteps": [
+        {
+          "workflowId": "WF-BID",
+          "stepNo": 4
+        }
+      ],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "D-02",
+        "R-03",
+        "R-08",
+        "R-09"
+      ],
+      "requiredRaw": "C-01, C-02, B-01, R-03",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "R-03"
+      ],
+      "computedFieldIds": [],
+      "fieldGroups": [
+        "공통",
+        "문서별",
+        "반복",
+        "사업"
+      ],
+      "boundary": "접수대장은 업체 중복 경고",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-033_제안서접수대장",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-033_제안서접수대장_템플릿.hwpx",
+      "hwpxTokens": [
+        "학교명",
+        "학년도"
+      ],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "D-02",
+        "R-03",
+        "R-08",
+        "R-09"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "C-01",
+          "C-02"
+        ],
+        "unsupportedFieldIds": [
+          "B-01",
+          "D-02",
+          "R-03",
+          "R-08",
+          "R-09"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      }
+    },
+    {
+      "formId": "F-034",
+      "manualNo": "[11]",
+      "title": "제안서 평가위원회 개최",
+      "titleInventory": "제안서 평가위원회 개최",
+      "manualPage": 63,
+      "stage": "평가",
+      "standardPhases": [
+        "6. 평가"
+      ],
+      "docType": "기안문",
+      "layout": "표",
+      "author": "학교작성",
+      "authorNote": null,
+      "owner": "평가 담당",
+      "difficulty": "M",
+      "contractMethods": [
+        "CM-03",
+        "CM-04"
+      ],
+      "contractMethodsNote": null,
+      "workflowSteps": [
+        {
+          "workflowId": "WF-BID",
+          "stepNo": 4
+        }
+      ],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "C-03",
+        "C-04",
+        "C-05",
+        "C-06",
+        "B-01",
+        "D-01",
+        "D-02",
+        "D-03",
+        "D-04",
+        "R-01",
+        "R-02",
+        "C-07",
+        "C-08"
+      ],
+      "requiredRaw": "C-01, C-02, B-01, D-02",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "D-02"
+      ],
+      "computedFieldIds": [],
+      "fieldGroups": [
+        "공통",
+        "문서별",
+        "반복",
+        "사업"
+      ],
+      "boundary": "위원 식별표시는 마스킹값만 허용",
+      "boundaryNote": "서식_매핑표 §2의 마스킹 문구는 2026-09-23 결정 이전 기준임 — §6·입력데이터_사전 R-02에 따라 위원 실명(R-02) 자동반영 허용, 연락처·서명은 계속 금지",
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-034_평가위원회개최",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-034_제안서평가위원회개최_템플릿.hwpx",
+      "hwpxTokens": [
+        "관련문서",
+        "문서번호",
+        "학교명",
+        "학년도"
+      ],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "C-03",
+        "C-04",
+        "C-05",
+        "C-06",
+        "B-01",
+        "D-01",
+        "D-02",
+        "D-03",
+        "D-04",
+        "R-01",
+        "R-02",
+        "C-07",
+        "C-08"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "D-03",
+          "C-06",
+          "C-01",
+          "C-02"
+        ],
+        "unsupportedFieldIds": [
+          "C-03",
+          "C-04",
+          "C-05",
+          "B-01",
+          "D-01",
+          "D-02",
+          "D-04",
+          "R-01",
+          "R-02",
+          "C-07",
+          "C-08"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      }
+    },
+    {
+      "formId": "F-035",
+      "manualNo": "[12]",
+      "title": "제안서 정량평가 결과",
+      "titleInventory": "제안서 정량평가 결과",
+      "manualPage": 64,
+      "stage": "평가",
+      "standardPhases": [
+        "6. 평가"
+      ],
+      "docType": "기안문",
+      "layout": "표",
+      "author": "학교작성",
+      "authorNote": null,
+      "owner": "평가 담당",
+      "difficulty": "M",
+      "contractMethods": [
+        "CM-03",
+        "CM-04"
+      ],
+      "contractMethodsNote": null,
+      "workflowSteps": [
+        {
+          "workflowId": "WF-BID",
+          "stepNo": 4
+        }
+      ],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "C-03",
+        "C-04",
+        "C-05",
+        "C-06",
+        "B-01",
+        "D-01",
+        "D-02",
+        "D-03",
+        "D-04",
+        "R-03",
+        "R-07",
+        "C-07",
+        "C-08"
+      ],
+      "requiredRaw": "C-01, C-02, B-01, D-02, R-03, R-07",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "D-02",
+        "R-03",
+        "R-07"
+      ],
+      "computedFieldIds": [
+        "K-03"
+      ],
+      "fieldGroups": [
+        "계산",
+        "공통",
+        "문서별",
+        "반복",
+        "사업"
+      ],
+      "boundary": "점수·업체 반복행 분리",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-035_정량평가결과",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-035_정량평가결과_템플릿.hwpx",
+      "hwpxTokens": [
+        "관련문서",
+        "문서번호",
+        "학교명",
+        "학년도"
+      ],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "C-03",
+        "C-04",
+        "C-05",
+        "C-06",
+        "B-01",
+        "D-01",
+        "D-02",
+        "D-03",
+        "D-04",
+        "R-03",
+        "R-07",
+        "C-07",
+        "C-08",
+        "K-03"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "D-03",
+          "C-06",
+          "C-01",
+          "C-02"
+        ],
+        "unsupportedFieldIds": [
+          "C-03",
+          "C-04",
+          "C-05",
+          "B-01",
+          "D-01",
+          "D-02",
+          "D-04",
+          "R-03",
+          "R-07",
+          "C-07",
+          "C-08",
+          "K-03"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      }
+    },
+    {
+      "formId": "F-036",
+      "manualNo": "[13]",
+      "title": "제안서 평가 결과",
+      "titleInventory": "제안서 평가 결과",
+      "manualPage": 65,
+      "stage": "평가",
+      "standardPhases": [
+        "6. 평가"
+      ],
+      "docType": "기안문",
+      "layout": "표",
+      "author": "학교작성",
+      "authorNote": null,
+      "owner": "평가 담당",
+      "difficulty": "M",
+      "contractMethods": [
+        "CM-03",
+        "CM-04"
+      ],
+      "contractMethodsNote": null,
+      "workflowSteps": [
+        {
+          "workflowId": "WF-BID",
+          "stepNo": 4
+        }
+      ],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "C-03",
+        "C-04",
+        "C-05",
+        "C-06",
+        "B-01",
+        "D-01",
+        "D-02",
+        "D-03",
+        "D-04",
+        "R-03",
+        "R-07",
+        "C-07",
+        "C-08"
+      ],
+      "requiredRaw": "C-01, C-02, B-01, D-02, R-03, R-07",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "D-02",
+        "R-03",
+        "R-07"
+      ],
+      "computedFieldIds": [
+        "K-03"
+      ],
+      "fieldGroups": [
+        "계산",
+        "공통",
+        "문서별",
+        "반복",
+        "사업"
+      ],
+      "boundary": "결과 산식 확인",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-036_제안서평가결과",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-036_제안서평가결과_템플릿.hwpx",
+      "hwpxTokens": [
+        "관련문서",
+        "문서번호",
+        "학교명",
+        "학년도"
+      ],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "C-03",
+        "C-04",
+        "C-05",
+        "C-06",
+        "B-01",
+        "D-01",
+        "D-02",
+        "D-03",
+        "D-04",
+        "R-03",
+        "R-07",
+        "C-07",
+        "C-08",
+        "K-03"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "D-03",
+          "C-06",
+          "C-01",
+          "C-02"
+        ],
+        "unsupportedFieldIds": [
+          "C-03",
+          "C-04",
+          "C-05",
+          "B-01",
+          "D-01",
+          "D-02",
+          "D-04",
+          "R-03",
+          "R-07",
+          "C-07",
+          "C-08",
+          "K-03"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      }
+    },
+    {
+      "formId": "F-037",
+      "manualNo": "[13-1]",
+      "title": "평가위원회 참석 등록부",
+      "titleInventory": "평가위원회 참석 등록부",
+      "manualPage": 66,
+      "stage": "평가",
+      "standardPhases": [
+        "6. 평가"
+      ],
+      "docType": "등록부",
+      "layout": "표",
+      "author": "학교작성",
+      "authorNote": "참석 위원이 성명·서명을 자필 작성",
+      "owner": "평가 담당",
+      "difficulty": "M",
+      "contractMethods": [
+        "CM-03",
+        "CM-04"
+      ],
+      "contractMethodsNote": null,
+      "workflowSteps": [
+        {
+          "workflowId": "WF-BID",
+          "stepNo": 4
+        }
+      ],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-01"
+      ],
+      "requiredRaw": "C-01, C-02, D-02, R-01",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-01"
+      ],
+      "computedFieldIds": [],
+      "fieldGroups": [
+        "공통",
+        "문서별",
+        "반복"
+      ],
+      "boundary": "참석자 성명·서명은 빈칸 유지(R-02 위원 성명 자동반영 금지 — quality-compliance-reviewer H-1)",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-037_평가위원회참석등록부",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-037_평가위원회참석등록부_템플릿.hwpx",
+      "hwpxTokens": [
+        "학년도"
+      ],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-01"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "C-02"
+        ],
+        "unsupportedFieldIds": [
+          "C-01",
+          "D-02",
+          "R-01"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      }
+    },
+    {
+      "formId": "F-038",
+      "manualNo": "[13-2]",
+      "title": "업체 참가 등록부",
+      "titleInventory": "업체 참가 등록부",
+      "manualPage": 67,
+      "stage": "평가",
+      "standardPhases": [
+        "6. 평가"
+      ],
+      "docType": "등록부",
+      "layout": "표",
+      "author": "학교작성",
+      "authorNote": "참가 업체가 등록부에 서명 — 작성주체 구분 매뉴얼 확인 필요",
+      "owner": "평가 담당",
+      "difficulty": "M",
+      "contractMethods": [
+        "CM-03",
+        "CM-04"
+      ],
+      "contractMethodsNote": null,
+      "workflowSteps": [
+        {
+          "workflowId": "WF-BID",
+          "stepNo": 4
+        }
+      ],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-03",
+        "R-08",
+        "R-09"
+      ],
+      "requiredRaw": "C-01, C-02, D-02, R-03",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-03"
+      ],
+      "computedFieldIds": [],
+      "fieldGroups": [
+        "공통",
+        "문서별",
+        "반복"
+      ],
+      "boundary": "참가자 개인 정보 자동 처리 금지",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-038_업체참가등록부",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-038_업체참가등록부_템플릿.hwpx",
+      "hwpxTokens": [
+        "학교명"
+      ],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-03",
+        "R-08",
+        "R-09"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "C-01"
+        ],
+        "unsupportedFieldIds": [
+          "C-02",
+          "D-02",
+          "R-03",
+          "R-08",
+          "R-09"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      }
+    },
+    {
+      "formId": "F-039",
+      "manualNo": "[13-3]",
+      "title": "업체별 제안서 평가표",
+      "titleInventory": "업체별 제안서 평가표",
+      "manualPage": 68,
+      "stage": "평가",
+      "standardPhases": [
+        "6. 평가"
+      ],
+      "docType": "평가표",
+      "layout": "표",
+      "author": "학교작성",
+      "authorNote": null,
+      "owner": "평가 담당",
+      "difficulty": "M",
+      "contractMethods": [
+        "CM-03",
+        "CM-04"
+      ],
+      "contractMethodsNote": null,
+      "workflowSteps": [
+        {
+          "workflowId": "WF-BID",
+          "stepNo": 4
+        }
+      ],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "D-02",
+        "R-03",
+        "R-07"
+      ],
+      "requiredRaw": "C-01, C-02, B-01, R-03, R-07",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "R-03",
+        "R-07"
+      ],
+      "computedFieldIds": [
+        "K-03"
+      ],
+      "fieldGroups": [
+        "계산",
+        "공통",
+        "문서별",
+        "반복",
+        "사업"
+      ],
+      "boundary": "평가위원 식별정보 자동 처리 금지",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-039_업체별제안서평가표",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-039_업체별제안서평가표_템플릿.hwpx",
+      "hwpxTokens": [
+        "학년도"
+      ],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "D-02",
+        "R-03",
+        "R-07",
+        "K-03"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "C-02"
+        ],
+        "unsupportedFieldIds": [
+          "C-01",
+          "B-01",
+          "D-02",
+          "R-03",
+          "R-07",
+          "K-03"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      }
+    },
+    {
+      "formId": "F-040",
+      "manualNo": "[13-4]",
+      "title": "위원 청렴 및 보안 서약서",
+      "titleInventory": "위원 청렴 및 보안 서약서",
+      "manualPage": 69,
+      "stage": "평가",
+      "standardPhases": [
+        "6. 평가"
+      ],
+      "docType": "서약서",
+      "layout": "표",
+      "author": "학교작성",
+      "authorNote": "위원 본인이 성명·서명을 자필 작성(서식_매핑표 §6)",
+      "owner": "평가 담당",
+      "difficulty": "M",
+      "contractMethods": [
+        "CM-03",
+        "CM-04"
+      ],
+      "contractMethodsNote": null,
+      "workflowSteps": [
+        {
+          "workflowId": "WF-BID",
+          "stepNo": 4
+        }
+      ],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-01"
+      ],
+      "requiredRaw": "C-01, C-02, D-02, R-01",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-01"
+      ],
+      "computedFieldIds": [],
+      "fieldGroups": [
+        "공통",
+        "문서별",
+        "반복"
+      ],
+      "boundary": "위원 성명·서명은 빈칸 유지(R-02 위원 성명 자동반영 금지 — quality-compliance-reviewer H-1)",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-040_위원청렴보안서약서",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-040_위원청렴보안서약서_템플릿.hwpx",
+      "hwpxTokens": [
+        "학교명"
+      ],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02",
+        "R-01"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "C-01"
+        ],
+        "unsupportedFieldIds": [
+          "C-02",
+          "D-02",
+          "R-01"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      }
+    },
+    {
+      "formId": "F-041",
+      "manualNo": "[14]",
+      "title": "낙찰자 결정",
+      "titleInventory": "낙찰자 결정",
+      "manualPage": 70,
+      "stage": "계약",
+      "standardPhases": [
+        "7. 낙찰"
+      ],
+      "docType": "기안문",
+      "layout": "표",
+      "author": "학교작성",
+      "authorNote": null,
+      "owner": "계약 담당",
+      "difficulty": "M",
+      "contractMethods": [
+        "CM-03",
+        "CM-04"
+      ],
+      "contractMethodsNote": null,
+      "workflowSteps": [
+        {
+          "workflowId": "WF-BID",
+          "stepNo": 6
+        }
+      ],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "C-03",
+        "C-04",
+        "C-05",
+        "C-06",
+        "B-01",
+        "B-03",
+        "B-04",
+        "B-05",
+        "B-06",
+        "D-01",
+        "D-02",
+        "D-03",
+        "D-04",
+        "R-03",
+        "C-07",
+        "C-08",
+        "R-08",
+        "R-09"
+      ],
+      "requiredRaw": "C-01, C-02, B-01, R-03, K-02",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "R-03",
+        "K-02"
+      ],
+      "computedFieldIds": [
+        "K-02"
+      ],
+      "fieldGroups": [
+        "계산",
+        "공통",
+        "문서별",
+        "반복",
+        "사업"
+      ],
+      "boundary": "낙찰 정보는 담당자 확인",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-041_낙찰자결정",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-041_낙찰자결정_템플릿.hwpx",
+      "hwpxTokens": [
+        "관련문서",
+        "문서번호",
+        "학교명",
+        "학년도"
+      ],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "C-03",
+        "C-04",
+        "C-05",
+        "C-06",
+        "B-01",
+        "B-03",
+        "B-04",
+        "B-05",
+        "B-06",
+        "D-01",
+        "D-02",
+        "D-03",
+        "D-04",
+        "R-03",
+        "C-07",
+        "C-08",
+        "R-08",
+        "R-09",
+        "K-02"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "D-03",
+          "C-06",
+          "C-01",
+          "C-02"
+        ],
+        "unsupportedFieldIds": [
+          "C-03",
+          "C-04",
+          "C-05",
+          "B-01",
+          "B-03",
+          "B-04",
+          "B-05",
+          "B-06",
+          "D-01",
+          "D-02",
+          "D-04",
+          "R-03",
+          "C-07",
+          "C-08",
+          "R-08",
+          "R-09",
+          "K-02"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      }
+    },
+    {
+      "formId": "F-042",
+      "manualNo": "[15]",
+      "title": "낙찰자 결정 통보",
+      "titleInventory": "낙찰자 결정 통보",
+      "manualPage": 71,
+      "stage": "계약",
+      "standardPhases": [
+        "7. 낙찰"
+      ],
+      "docType": "통보문",
+      "layout": "표",
+      "author": "학교작성",
+      "authorNote": null,
+      "owner": "계약 담당",
+      "difficulty": "M",
+      "contractMethods": [
+        "CM-03",
+        "CM-04"
+      ],
+      "contractMethodsNote": null,
+      "workflowSteps": [
+        {
+          "workflowId": "WF-BID",
+          "stepNo": 7
+        }
+      ],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "C-03",
+        "C-04",
+        "C-05",
+        "C-06",
+        "B-01",
+        "B-06",
+        "D-01",
+        "D-02",
+        "D-03",
+        "D-04",
+        "R-03",
+        "C-07",
+        "C-08",
+        "R-08",
+        "R-09"
+      ],
+      "requiredRaw": "C-01, C-02, B-01, R-03, B-06",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "R-03",
+        "B-06"
+      ],
+      "computedFieldIds": [],
+      "fieldGroups": [
+        "공통",
+        "문서별",
+        "반복",
+        "사업"
+      ],
+      "boundary": "수신 업체·기한 확인",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-042_낙찰자결정통보",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-042_낙찰자결정통보_템플릿.hwpx",
+      "hwpxTokens": [
+        "문서번호",
+        "제출기한",
+        "학교명",
+        "학년도"
+      ],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "C-03",
+        "C-04",
+        "C-05",
+        "C-06",
+        "B-01",
+        "B-06",
+        "D-01",
+        "D-02",
+        "D-03",
+        "D-04",
+        "R-03",
+        "C-07",
+        "C-08",
+        "R-08",
+        "R-09",
+        "B-07"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "C-06",
+          "B-07",
+          "C-01",
+          "C-02"
+        ],
+        "unsupportedFieldIds": [
+          "C-03",
+          "C-04",
+          "C-05",
+          "B-01",
+          "B-06",
+          "D-01",
+          "D-02",
+          "D-03",
+          "D-04",
+          "R-03",
+          "C-07",
+          "C-08",
+          "R-08",
+          "R-09"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      },
+      "hwpxRequiredFieldIds": [
+        "B-07"
+      ]
+    },
+    {
+      "formId": "F-043",
+      "manualNo": "[16]",
+      "title": "계약체결",
+      "titleInventory": "계약체결",
+      "manualPage": 72,
+      "stage": "계약",
+      "standardPhases": [
+        "8. 계약·납품"
+      ],
+      "docType": "기안문",
+      "layout": "표",
+      "author": "학교작성",
+      "authorNote": null,
+      "owner": "계약 담당",
+      "difficulty": "M",
+      "contractMethods": [
+        "CM-01",
+        "CM-02",
+        "CM-03",
+        "CM-04"
+      ],
+      "contractMethodsNote": null,
+      "workflowSteps": [
+        {
+          "workflowId": "WF-QUOTE1",
+          "stepNo": 2
+        },
+        {
+          "workflowId": "WF-QUOTE2",
+          "stepNo": 3
+        },
+        {
+          "workflowId": "WF-BID",
+          "stepNo": 7
+        }
+      ],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "C-03",
+        "C-04",
+        "C-05",
+        "C-06",
+        "B-01",
+        "B-03",
+        "B-04",
+        "B-05",
+        "B-06",
+        "D-01",
+        "D-02",
+        "D-03",
+        "D-04",
+        "R-03",
+        "R-04",
+        "R-05",
+        "R-06",
+        "C-07",
+        "C-08",
+        "R-08",
+        "R-09"
+      ],
+      "requiredRaw": "C-01, C-02, B-01, B-03, R-03~R-06",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "B-03",
+        "R-03",
+        "R-04",
+        "R-05",
+        "R-06"
+      ],
+      "computedFieldIds": [
+        "K-01",
+        "K-02"
+      ],
+      "fieldGroups": [
+        "계산",
+        "공통",
+        "문서별",
+        "반복",
+        "사업"
+      ],
+      "boundary": "계약금액은 품목 합계와 대조",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-043_계약체결",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-043_계약체결_템플릿.hwpx",
+      "hwpxTokens": [
+        "관련문서",
+        "문서번호",
+        "학교명",
+        "학년도"
+      ],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "C-03",
+        "C-04",
+        "C-05",
+        "C-06",
+        "B-01",
+        "B-03",
+        "B-04",
+        "B-05",
+        "B-06",
+        "D-01",
+        "D-02",
+        "D-03",
+        "D-04",
+        "R-03",
+        "R-04",
+        "R-05",
+        "R-06",
+        "C-07",
+        "C-08",
+        "R-08",
+        "R-09",
+        "K-01",
+        "K-02"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "D-03",
+          "C-06",
+          "C-01",
+          "C-02"
+        ],
+        "unsupportedFieldIds": [
+          "C-03",
+          "C-04",
+          "C-05",
+          "B-01",
+          "B-03",
+          "B-04",
+          "B-05",
+          "B-06",
+          "D-01",
+          "D-02",
+          "D-04",
+          "R-03",
+          "R-04",
+          "R-05",
+          "R-06",
+          "C-07",
+          "C-08",
+          "R-08",
+          "R-09",
+          "K-01",
+          "K-02"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      }
+    },
+    {
+      "formId": "F-044",
+      "manualNo": "[17]",
+      "title": "사전 안내 가정통신문 안내",
+      "titleInventory": "사전 안내 가정통신문 안내",
+      "manualPage": 73,
+      "stage": "구매",
+      "standardPhases": [
+        "9. 구매안내·사후평가"
+      ],
+      "docType": "기안문",
+      "layout": "표",
+      "author": "학교작성",
+      "authorNote": null,
+      "owner": "학교 업무담당",
+      "difficulty": "L",
+      "contractMethods": [],
+      "contractMethodsNote": "계약절차 팝업(frmContractGuide) 어느 단계에도 연결되지 않은 서식 — 계약방법별 사용 여부 매뉴얼 확인 필요",
+      "workflowSteps": [],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "C-03",
+        "C-04",
+        "C-05",
+        "C-06",
+        "B-01",
+        "B-02",
+        "B-07",
+        "D-01",
+        "D-02",
+        "D-03",
+        "D-04",
+        "D-05",
+        "C-07",
+        "C-08"
+      ],
+      "requiredRaw": "C-01, C-02, B-01, D-02",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "D-02"
+      ],
+      "computedFieldIds": [],
+      "fieldGroups": [
+        "공통",
+        "문서별",
+        "사업"
+      ],
+      "boundary": "안내 대상은 비식별 설명만 사용",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-044_사전안내가정통신문안내",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-044_사전안내가정통신문안내_템플릿.hwpx",
+      "hwpxTokens": [
+        "문서번호",
+        "학교명"
+      ],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "C-03",
+        "C-04",
+        "C-05",
+        "C-06",
+        "B-01",
+        "B-02",
+        "B-07",
+        "D-01",
+        "D-02",
+        "D-03",
+        "D-04",
+        "D-05",
+        "C-07",
+        "C-08"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "C-06",
+          "C-01"
+        ],
+        "unsupportedFieldIds": [
+          "C-02",
+          "C-03",
+          "C-04",
+          "C-05",
+          "B-01",
+          "B-02",
+          "B-07",
+          "D-01",
+          "D-02",
+          "D-03",
+          "D-04",
+          "D-05",
+          "C-07",
+          "C-08"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      },
+      "contractMethodScope": {
+        "status": "manual-confirmation-required",
+        "displayLabel": "계약방법 확인 필요",
+        "reason": "Excel 계약절차 안내에 계약방법별 연결 근거가 없음",
+        "source": "scripts/build_excel_v1_vba.ps1 frmContractGuide.초기화 및 서식_매핑표.md 대조",
+        "filterBehavior": "계약방법 필터에서는 확인 필요로만 표시"
+      }
+    },
+    {
+      "formId": "F-045",
+      "manualNo": "[17-1]",
+      "title": "교복구매 사전 안내 가정통신문",
+      "titleInventory": "교복구매 사전 안내 가정통신문",
+      "manualPage": 74,
+      "stage": "구매",
+      "standardPhases": [
+        "9. 구매안내·사후평가"
+      ],
+      "docType": "가정통신문",
+      "layout": "표",
+      "author": "학교작성",
+      "authorNote": null,
+      "owner": "학교 업무담당",
+      "difficulty": "L",
+      "contractMethods": [],
+      "contractMethodsNote": "계약절차 팝업(frmContractGuide) 어느 단계에도 연결되지 않은 서식 — 계약방법별 사용 여부 매뉴얼 확인 필요",
+      "workflowSteps": [],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "C-05",
+        "B-01",
+        "B-02",
+        "B-07",
+        "D-02",
+        "D-05"
+      ],
+      "requiredRaw": "C-01, C-02, B-01, D-02",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "D-02"
+      ],
+      "computedFieldIds": [],
+      "fieldGroups": [
+        "공통",
+        "문서별",
+        "사업"
+      ],
+      "boundary": "개인 응답란 없는 안내문. 발행일(C-05)은 학교장 서명란 날짜에 반영함",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-045_사전안내가정통신문",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-045_사전안내가정통신문_템플릿.hwpx",
+      "hwpxTokens": [
+        "학교명"
+      ],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "C-05",
+        "B-01",
+        "B-02",
+        "B-07",
+        "D-02",
+        "D-05"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "C-01"
+        ],
+        "unsupportedFieldIds": [
+          "C-02",
+          "C-05",
+          "B-01",
+          "B-02",
+          "B-07",
+          "D-02",
+          "D-05"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      },
+      "contractMethodScope": {
+        "status": "manual-confirmation-required",
+        "displayLabel": "계약방법 확인 필요",
+        "reason": "Excel 계약절차 안내에 계약방법별 연결 근거가 없음",
+        "source": "scripts/build_excel_v1_vba.ps1 frmContractGuide.초기화 및 서식_매핑표.md 대조",
+        "filterBehavior": "계약방법 필터에서는 확인 필요로만 표시"
+      }
+    },
+    {
+      "formId": "F-046",
+      "manualNo": "[18]",
+      "title": "수요조사 가정통신문 안내",
+      "titleInventory": "수요조사 가정통신문 안내",
+      "manualPage": 75,
+      "stage": "구매",
+      "standardPhases": [
+        "9. 구매안내·사후평가"
+      ],
+      "docType": "기안문",
+      "layout": "표",
+      "author": "학교작성",
+      "authorNote": null,
+      "owner": "학교 업무담당",
+      "difficulty": "L",
+      "contractMethods": [],
+      "contractMethodsNote": "계약절차 팝업(frmContractGuide) 어느 단계에도 연결되지 않은 서식 — 계약방법별 사용 여부 매뉴얼 확인 필요",
+      "workflowSteps": [],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "C-03",
+        "C-04",
+        "C-05",
+        "C-06",
+        "B-01",
+        "B-02",
+        "B-07",
+        "D-01",
+        "D-02",
+        "D-03",
+        "D-04",
+        "D-05",
+        "C-07",
+        "C-08"
+      ],
+      "requiredRaw": "C-01, C-02, B-01, D-02",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "D-02"
+      ],
+      "computedFieldIds": [],
+      "fieldGroups": [
+        "공통",
+        "문서별",
+        "사업"
+      ],
+      "boundary": "안내 대상은 비식별 설명만 사용",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-046_수요조사가정통신문안내",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-046_수요조사가정통신문안내_템플릿.hwpx",
+      "hwpxTokens": [
+        "문서번호",
+        "학교명"
+      ],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "C-03",
+        "C-04",
+        "C-05",
+        "C-06",
+        "B-01",
+        "B-02",
+        "B-07",
+        "D-01",
+        "D-02",
+        "D-03",
+        "D-04",
+        "D-05",
+        "C-07",
+        "C-08"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "C-06",
+          "C-01"
+        ],
+        "unsupportedFieldIds": [
+          "C-02",
+          "C-03",
+          "C-04",
+          "C-05",
+          "B-01",
+          "B-02",
+          "B-07",
+          "D-01",
+          "D-02",
+          "D-03",
+          "D-04",
+          "D-05",
+          "C-07",
+          "C-08"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      },
+      "contractMethodScope": {
+        "status": "manual-confirmation-required",
+        "displayLabel": "계약방법 확인 필요",
+        "reason": "Excel 계약절차 안내에 계약방법별 연결 근거가 없음",
+        "source": "scripts/build_excel_v1_vba.ps1 frmContractGuide.초기화 및 서식_매핑표.md 대조",
+        "filterBehavior": "계약방법 필터에서는 확인 필요로만 표시"
+      }
+    },
+    {
+      "formId": "F-047",
+      "manualNo": "[18-2]",
+      "title": "교복구매 수요조사 가정통신문",
+      "titleInventory": "교복구매 수요조사 가정통신문",
+      "manualPage": 76,
+      "stage": "구매",
+      "standardPhases": [
+        "9. 구매안내·사후평가"
+      ],
+      "docType": "가정통신문",
+      "layout": "표",
+      "author": "학교작성",
+      "authorNote": null,
+      "owner": "학교 업무담당",
+      "difficulty": "H",
+      "contractMethods": [],
+      "contractMethodsNote": "계약절차 팝업(frmContractGuide) 어느 단계에도 연결되지 않은 서식 — 계약방법별 사용 여부 매뉴얼 확인 필요",
+      "workflowSteps": [],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "C-05",
+        "B-07",
+        "D-02"
+      ],
+      "requiredRaw": "C-01, C-02, D-02",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02"
+      ],
+      "computedFieldIds": [],
+      "fieldGroups": [
+        "공통",
+        "문서별",
+        "사업"
+      ],
+      "boundary": "금지: 학생·학부모 성명·연락처·신청 여부·치수·개별 수량; 빈 응답란. 발행일(C-05)은 학교장 서명란 날짜에 반영함",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-047_수요조사가정통신문",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-047_수요조사가정통신문_템플릿.hwpx",
+      "hwpxTokens": [
+        "학교명"
+      ],
+      "privacyProtected": true,
+      "privacyAllowedFieldIds": [
+        "C-01",
+        "C-02",
+        "C-05",
+        "B-07",
+        "D-02"
+      ],
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "C-05",
+        "B-07",
+        "D-02"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "C-01"
+        ],
+        "unsupportedFieldIds": [
+          "C-02",
+          "C-05",
+          "B-07",
+          "D-02"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      },
+      "contractMethodScope": {
+        "status": "manual-confirmation-required",
+        "displayLabel": "계약방법 확인 필요",
+        "reason": "Excel 계약절차 안내에 계약방법별 연결 근거가 없음",
+        "source": "scripts/build_excel_v1_vba.ps1 frmContractGuide.초기화 및 서식_매핑표.md 대조",
+        "filterBehavior": "계약방법 필터에서는 확인 필요로만 표시"
+      }
+    },
+    {
+      "formId": "F-048",
+      "manualNo": "[18-3]",
+      "title": "교복 구매 안내(신청 수량 파악)",
+      "titleInventory": "교복 구매 안내(신청 수량 파악)",
+      "manualPage": 77,
+      "stage": "구매",
+      "standardPhases": [
+        "9. 구매안내·사후평가"
+      ],
+      "docType": "가정통신문",
+      "layout": "표",
+      "author": "학교작성",
+      "authorNote": null,
+      "owner": "학교 업무담당",
+      "difficulty": "L",
+      "contractMethods": [],
+      "contractMethodsNote": "계약절차 팝업(frmContractGuide) 어느 단계에도 연결되지 않은 서식 — 계약방법별 사용 여부 매뉴얼 확인 필요",
+      "workflowSteps": [],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "C-05",
+        "B-01",
+        "B-02",
+        "B-07",
+        "D-02",
+        "D-05"
+      ],
+      "requiredRaw": "C-01, C-02, B-01, D-02",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "D-02"
+      ],
+      "computedFieldIds": [],
+      "fieldGroups": [
+        "공통",
+        "문서별",
+        "사업"
+      ],
+      "boundary": "신청 수량은 안내만 하고 수집하지 않음. 발행일(C-05)은 학교장 서명란 날짜에 반영함",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-048_교복구매안내신청수량파악",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-048_교복구매안내_템플릿.hwpx",
+      "hwpxTokens": [
+        "학교명"
+      ],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "C-05",
+        "B-01",
+        "B-02",
+        "B-07",
+        "D-02",
+        "D-05"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "C-01"
+        ],
+        "unsupportedFieldIds": [
+          "C-02",
+          "C-05",
+          "B-01",
+          "B-02",
+          "B-07",
+          "D-02",
+          "D-05"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      },
+      "contractMethodScope": {
+        "status": "manual-confirmation-required",
+        "displayLabel": "계약방법 확인 필요",
+        "reason": "Excel 계약절차 안내에 계약방법별 연결 근거가 없음",
+        "source": "scripts/build_excel_v1_vba.ps1 frmContractGuide.초기화 및 서식_매핑표.md 대조",
+        "filterBehavior": "계약방법 필터에서는 확인 필요로만 표시"
+      }
+    },
+    {
+      "formId": "F-049",
+      "manualNo": "[19]",
+      "title": "만족도 설문조사 실시",
+      "titleInventory": "만족도 설문조사 실시",
+      "manualPage": 78,
+      "stage": "사후평가",
+      "standardPhases": [
+        "9. 구매안내·사후평가"
+      ],
+      "docType": "기안문",
+      "layout": "표",
+      "author": "학교작성",
+      "authorNote": null,
+      "owner": "학교 업무담당",
+      "difficulty": "L",
+      "contractMethods": [],
+      "contractMethodsNote": "계약절차 팝업(frmContractGuide) 어느 단계에도 연결되지 않은 서식 — 계약방법별 사용 여부 매뉴얼 확인 필요",
+      "workflowSteps": [],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "C-03",
+        "C-04",
+        "C-05",
+        "C-06",
+        "B-01",
+        "B-02",
+        "D-01",
+        "D-02",
+        "D-03",
+        "D-04",
+        "D-05",
+        "C-07",
+        "C-08"
+      ],
+      "requiredRaw": "C-01, C-02, B-01, D-02",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "D-02"
+      ],
+      "computedFieldIds": [],
+      "fieldGroups": [
+        "공통",
+        "문서별",
+        "사업"
+      ],
+      "boundary": "설문 실시 기안문",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-049_만족도설문조사실시",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-049_만족도설문조사실시_템플릿.hwpx",
+      "hwpxTokens": [
+        "문서번호",
+        "학교명"
+      ],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "C-03",
+        "C-04",
+        "C-05",
+        "C-06",
+        "B-01",
+        "B-02",
+        "D-01",
+        "D-02",
+        "D-03",
+        "D-04",
+        "D-05",
+        "C-07",
+        "C-08"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "C-06",
+          "C-01"
+        ],
+        "unsupportedFieldIds": [
+          "C-02",
+          "C-03",
+          "C-04",
+          "C-05",
+          "B-01",
+          "B-02",
+          "D-01",
+          "D-02",
+          "D-03",
+          "D-04",
+          "D-05",
+          "C-07",
+          "C-08"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      },
+      "contractMethodScope": {
+        "status": "manual-confirmation-required",
+        "displayLabel": "계약방법 확인 필요",
+        "reason": "Excel 계약절차 안내에 계약방법별 연결 근거가 없음",
+        "source": "scripts/build_excel_v1_vba.ps1 frmContractGuide.초기화 및 서식_매핑표.md 대조",
+        "filterBehavior": "계약방법 필터에서는 확인 필요로만 표시"
+      }
+    },
+    {
+      "formId": "F-050",
+      "manualNo": "[19-1]",
+      "title": "만족도 조사 설문지",
+      "titleInventory": "만족도 조사 설문지",
+      "manualPage": 79,
+      "stage": "사후평가",
+      "standardPhases": [
+        "9. 구매안내·사후평가"
+      ],
+      "docType": "설문지",
+      "layout": "표",
+      "author": "학교작성",
+      "authorNote": null,
+      "owner": "학교 업무담당",
+      "difficulty": "H",
+      "contractMethods": [],
+      "contractMethodsNote": "계약절차 팝업(frmContractGuide) 어느 단계에도 연결되지 않은 서식 — 계약방법별 사용 여부 매뉴얼 확인 필요",
+      "workflowSteps": [],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02"
+      ],
+      "requiredRaw": "C-01, C-02, D-02",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02"
+      ],
+      "computedFieldIds": [],
+      "fieldGroups": [
+        "공통",
+        "문서별"
+      ],
+      "boundary": "금지: 응답자 성명·연락처·개별 응답·자유서술(D-05 포함); 빈 설문지",
+      "boundaryNote": null,
+      "implementationStatus": "implemented",
+      "excelStatus": "Y",
+      "excelSheet": "F-050_만족도조사설문지",
+      "excelStatusNote": null,
+      "outputMethod": "both",
+      "hwpxTemplate": "artifacts/hwpx/P2-04/F-050_만족도조사설문지_템플릿.hwpx",
+      "hwpxTokens": [
+        "학교명"
+      ],
+      "privacyProtected": true,
+      "privacyAllowedFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02"
+      ],
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "D-02"
+      ],
+      "hwpxCoverage": {
+        "level": "common-token-only",
+        "supportedFieldIds": [
+          "C-01"
+        ],
+        "unsupportedFieldIds": [
+          "C-02",
+          "D-02"
+        ],
+        "displayLabel": "HWPX 공통 토큰만 반영",
+        "outputCompletion": "template-partial"
+      },
+      "contractMethodScope": {
+        "status": "manual-confirmation-required",
+        "displayLabel": "계약방법 확인 필요",
+        "reason": "Excel 계약절차 안내에 계약방법별 연결 근거가 없음",
+        "source": "scripts/build_excel_v1_vba.ps1 frmContractGuide.초기화 및 서식_매핑표.md 대조",
+        "filterBehavior": "계약방법 필터에서는 확인 필요로만 표시"
+      }
+    },
+    {
+      "formId": "F-051",
+      "manualNo": "[20]",
+      "title": "만족도 설문조사 결과",
+      "titleInventory": "만족도 설문조사 결과",
+      "manualPage": 80,
+      "stage": "사후평가",
+      "standardPhases": [
+        "9. 구매안내·사후평가"
+      ],
+      "docType": "기안문",
+      "layout": "표",
+      "author": "학교작성",
+      "authorNote": null,
+      "owner": "학교 업무담당",
+      "difficulty": "M",
+      "contractMethods": [],
+      "contractMethodsNote": "계약절차 팝업(frmContractGuide) 어느 단계에도 연결되지 않은 서식 — 계약방법별 사용 여부 매뉴얼 확인 필요",
+      "workflowSteps": [],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "C-03",
+        "C-04",
+        "C-05",
+        "C-06",
+        "B-01",
+        "B-02",
+        "D-01",
+        "D-02",
+        "D-03",
+        "D-04"
+      ],
+      "requiredRaw": "C-01, C-02, B-01, D-02",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "D-02"
+      ],
+      "computedFieldIds": [
+        "K-04"
+      ],
+      "fieldGroups": [
+        "계산",
+        "공통",
+        "문서별",
+        "사업"
+      ],
+      "boundary": "승인된 비식별 집계값만 사용",
+      "boundaryNote": null,
+      "implementationStatus": "notImplemented",
+      "excelStatus": "N",
+      "excelSheet": null,
+      "excelStatusNote": null,
+      "outputMethod": "none",
+      "hwpxTemplate": null,
+      "hwpxTokens": [],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "C-03",
+        "C-04",
+        "C-05",
+        "C-06",
+        "B-01",
+        "B-02",
+        "D-01",
+        "D-02",
+        "D-03",
+        "D-04",
+        "K-04"
+      ],
+      "hwpxCoverage": {
+        "level": "not-available",
+        "supportedFieldIds": [],
+        "unsupportedFieldIds": [
+          "C-01",
+          "C-02",
+          "C-03",
+          "C-04",
+          "C-05",
+          "C-06",
+          "B-01",
+          "B-02",
+          "D-01",
+          "D-02",
+          "D-03",
+          "D-04",
+          "K-04"
+        ],
+        "displayLabel": "HWPX 템플릿 미구현",
+        "outputCompletion": "not-available"
+      },
+      "contractMethodScope": {
+        "status": "manual-confirmation-required",
+        "displayLabel": "계약방법 확인 필요",
+        "reason": "Excel 계약절차 안내에 계약방법별 연결 근거가 없음",
+        "source": "scripts/build_excel_v1_vba.ps1 frmContractGuide.초기화 및 서식_매핑표.md 대조",
+        "filterBehavior": "계약방법 필터에서는 확인 필요로만 표시"
+      }
+    },
+    {
+      "formId": "F-052",
+      "manualNo": "[20-1]",
+      "title": "만족도 조사 설문 결과 서식",
+      "titleInventory": "만족도 조사 설문 결과 서식",
+      "manualPage": 81,
+      "stage": "사후평가",
+      "standardPhases": [
+        "9. 구매안내·사후평가"
+      ],
+      "docType": "결과표",
+      "layout": "표",
+      "author": "학교작성",
+      "authorNote": null,
+      "owner": "학교 업무담당",
+      "difficulty": "M",
+      "contractMethods": [],
+      "contractMethodsNote": "계약절차 팝업(frmContractGuide) 어느 단계에도 연결되지 않은 서식 — 계약방법별 사용 여부 매뉴얼 확인 필요",
+      "workflowSteps": [],
+      "inputFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "B-02",
+        "D-02"
+      ],
+      "requiredRaw": "C-01, C-02, B-01, D-02",
+      "requiredFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "D-02"
+      ],
+      "computedFieldIds": [
+        "K-04"
+      ],
+      "fieldGroups": [
+        "계산",
+        "공통",
+        "문서별",
+        "사업"
+      ],
+      "boundary": "개인 응답 원자료·역산 가능 집계 금지",
+      "boundaryNote": null,
+      "implementationStatus": "notImplemented",
+      "excelStatus": "N",
+      "excelSheet": null,
+      "excelStatusNote": null,
+      "outputMethod": "none",
+      "hwpxTemplate": null,
+      "hwpxTokens": [],
+      "privacyProtected": false,
+      "privacyAllowedFieldIds": null,
+      "referencedFieldIds": [
+        "C-01",
+        "C-02",
+        "B-01",
+        "B-02",
+        "D-02",
+        "K-04"
+      ],
+      "hwpxCoverage": {
+        "level": "not-available",
+        "supportedFieldIds": [],
+        "unsupportedFieldIds": [
+          "C-01",
+          "C-02",
+          "B-01",
+          "B-02",
+          "D-02",
+          "K-04"
+        ],
+        "displayLabel": "HWPX 템플릿 미구현",
+        "outputCompletion": "not-available"
+      },
+      "contractMethodScope": {
+        "status": "manual-confirmation-required",
+        "displayLabel": "계약방법 확인 필요",
+        "reason": "Excel 계약절차 안내에 계약방법별 연결 근거가 없음",
+        "source": "scripts/build_excel_v1_vba.ps1 frmContractGuide.초기화 및 서식_매핑표.md 대조",
+        "filterBehavior": "계약방법 필터에서는 확인 필요로만 표시"
+      }
+    }
+  ],
+  "referenceOnly": [
+    {
+      "formId": "F-053",
+      "manualNo": "[21]",
+      "title": "섬유의 종류",
+      "manualPage": 82,
+      "author": "참고자료"
+    },
+    {
+      "formId": "F-054",
+      "manualNo": "[22]",
+      "title": "섬유의 특징",
+      "manualPage": 83,
+      "author": "참고자료"
+    },
+    {
+      "formId": "F-055",
+      "manualNo": "[23]",
+      "title": "품질기준 참고 자료",
+      "manualPage": 84,
+      "author": "참고자료"
+    },
+    {
+      "formId": "F-056",
+      "manualNo": "[24]",
+      "title": "Q마크 학생복 품질기준",
+      "manualPage": 85,
+      "author": "참고자료"
+    },
+    {
+      "formId": "F-057",
+      "manualNo": "[25]",
+      "title": "계약 특수조건 고려 사항",
+      "manualPage": 87,
+      "author": "참고자료"
+    }
+  ]
+}

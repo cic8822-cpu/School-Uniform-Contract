@@ -1,0 +1,771 @@
+﻿Option Explicit
+
+' 2026-09-19 진단: 이 프로시저가 Form ID마다 개별 skippedInvalidFxxx 카운터 변수와
+' 반복되는 "wsSel.Cells(r,2).Value = "F-XXX"" 비교, 그리고 그 변수들을 전부 나열한
+' 초장문 skipDetail 연결식·OR 조건식을 갖고 있어, Form ID를 추가할 때마다 이 프로시저
+' 하나의 컴파일 크기가 커지다가 VBA "프로시저가 너무 큼" 한계를 실제로 넘어 저장(컴파일)
+' 자체가 실패하는 사고가 재현됨(이분 탐색으로 확정). 재발 방지를 위해 카운터를 Dictionary
+' 하나로, "단순 단일 출력" 그룹(업체 반복 없이 검증 함수 1개만 통과하면 서식선택_출력의
+' F열 시트를 그대로 출력하는 F-001~006·014·024·032~043)의 20개 ElseIf 문자열 비교를
+' Select Case 조회 함수(단일출력검증함수명)로 옮겨 이 프로시저 자체의 크기를 줄인다.
+' 업체 반복 출력 그룹(F-015~023·025)의 동작 로직은 전혀 바꾸지 않았다(캐시된 fid 변수
+' 사용과 IncSkip 호출로만 치환).
+Private Sub IncSkip(ByRef d As Object, ByVal key As String)
+    If d.Exists(key) Then
+        d(key) = d(key) + 1
+    Else
+        d.Add key, 1
+    End If
+End Sub
+
+Private Function 단일출력검증함수명(ByVal fid As String) As String
+    Select Case fid
+        Case "F-001": 단일출력검증함수명 = "검증_F001출력가능"
+        Case "F-002": 단일출력검증함수명 = "검증_F002출력가능"
+        Case "F-003": 단일출력검증함수명 = "검증_F003출력가능"
+        Case "F-004": 단일출력검증함수명 = "검증_F004출력가능"
+        Case "F-005": 단일출력검증함수명 = "검증_F005출력가능"
+        Case "F-006": 단일출력검증함수명 = "검증_F006출력가능"
+        Case "F-014": 단일출력검증함수명 = "검증_F014출력가능"
+        Case "F-009": 단일출력검증함수명 = "검증_F009출력가능"
+        Case "F-010": 단일출력검증함수명 = "검증_F010출력가능"
+        Case "F-011": 단일출력검증함수명 = "검증_F011출력가능"
+        Case "F-024": 단일출력검증함수명 = "검증_F024출력가능"
+        Case "F-032": 단일출력검증함수명 = "검증_F032출력가능"
+        Case "F-033": 단일출력검증함수명 = "검증_F033출력가능"
+        Case "F-034": 단일출력검증함수명 = "검증_F034출력가능"
+        Case "F-035": 단일출력검증함수명 = "검증_F035출력가능"
+        Case "F-036": 단일출력검증함수명 = "검증_F036출력가능"
+        Case "F-037": 단일출력검증함수명 = "검증_F037출력가능"
+        Case "F-038": 단일출력검증함수명 = "검증_F038출력가능"
+        Case "F-039": 단일출력검증함수명 = "검증_F039출력가능"
+        Case "F-040": 단일출력검증함수명 = "검증_F040출력가능"
+        Case "F-041": 단일출력검증함수명 = "검증_F041출력가능"
+        Case "F-042": 단일출력검증함수명 = "검증_F042출력가능"
+        Case "F-043": 단일출력검증함수명 = "검증_F043출력가능"
+        Case "F-044": 단일출력검증함수명 = "검증_F044출력가능"
+        Case "F-045": 단일출력검증함수명 = "검증_F045출력가능"
+        Case "F-046": 단일출력검증함수명 = "검증_F046출력가능"
+        Case "F-047": 단일출력검증함수명 = "검증_F047출력가능"
+        Case "F-048": 단일출력검증함수명 = "검증_F048출력가능"
+        Case "F-049": 단일출력검증함수명 = "검증_F049출력가능"
+        Case "F-050": 단일출력검증함수명 = "검증_F050출력가능"
+        Case Else: 단일출력검증함수명 = ""
+    End Select
+End Function
+
+Private Function 선택된시트목록(ByRef outNames() As String, ByVal showMessage As Boolean) As Long
+    Dim wsSel As Worksheet
+    Set wsSel = Sheets("서식선택_출력")
+    Dim lastRow As Long
+    lastRow = wsSel.Cells(wsSel.Rows.count, 2).End(xlUp).Row
+
+    Dim tmp() As String
+    ReDim tmp(1 To lastRow + 50)   ' 업체별 F-015~F-020 출력에 대비해 여유를 둠
+    Dim cnt As Long
+    cnt = 0
+    Dim skipCounts As Object
+    Set skipCounts = CreateObject("Scripting.Dictionary")
+
+    Dim r As Long
+    For r = 5 To lastRow
+        If wsSel.Cells(r, 1).value = True Then
+            Dim status As String, fid As String
+            status = wsSel.Cells(r, 5).value
+            fid = wsSel.Cells(r, 2).value
+
+            Dim simpleValidator As String
+            simpleValidator = 단일출력검증함수명(fid)
+
+            If fid = "F-050" Then
+                Dim f050Reason As String
+                If 검증_필수값검증() And F050원자료없음(f050Reason) Then
+                    cnt = cnt + 1
+                    tmp(cnt) = wsSel.Cells(r, 6).value
+                Else
+                    IncSkip skipCounts, fid
+                End If
+            ElseIf simpleValidator <> "" Then
+                If CBool(Application.Run(simpleValidator)) Then
+                    cnt = cnt + 1
+                    tmp(cnt) = wsSel.Cells(r, 6).value
+                Else
+                    IncSkip skipCounts, fid
+                End If
+            ElseIf fid = "F-015" Then
+                If Not 검증_F015출력가능() Then
+                    IncSkip skipCounts, fid
+                Else
+                    Dim vendorRow As Long, addedAny As Boolean
+                    addedAny = False
+                    For vendorRow = 44 To 53
+                        If F015업체행완전한가(vendorRow) Then
+                            cnt = cnt + 1
+                            tmp(cnt) = F015임시시트생성(vendorRow - 43)
+                            addedAny = True
+                        End If
+                    Next vendorRow
+                    If Not addedAny Then IncSkip skipCounts, fid
+                End If
+            ElseIf fid = "F-016" Then
+                If Not 검증_F016출력가능() Then
+                    IncSkip skipCounts, fid
+                Else
+                    Dim qualitativeVendorRow As Long, addedQualitative As Boolean
+                    addedQualitative = False
+                    For qualitativeVendorRow = 44 To 53
+                        If F016업체행완전한가(qualitativeVendorRow) Then
+                            cnt = cnt + 1
+                            tmp(cnt) = F016임시시트생성(qualitativeVendorRow - 43)
+                            addedQualitative = True
+                        End If
+                    Next qualitativeVendorRow
+                    If Not addedQualitative Then IncSkip skipCounts, fid
+                End If
+            ElseIf fid = "F-017" Then
+                If Not 검증_F017출력가능() Then
+                    IncSkip skipCounts, fid
+                Else
+                    Dim confirmationVendorRow As Long
+                    For confirmationVendorRow = 44 To 53
+                        If F017업체행완전한가(confirmationVendorRow) Then
+                            cnt = cnt + 1
+                            tmp(cnt) = F017임시시트생성(confirmationVendorRow - 43)
+                        End If
+                    Next confirmationVendorRow
+                End If
+            ElseIf fid = "F-018" Then
+                If Not 검증_F018출력가능() Then
+                    IncSkip skipCounts, fid
+                Else
+                    Dim selfVendorRow As Long
+                    For selfVendorRow = 44 To 53
+                        If F018업체행완전한가(selfVendorRow) Then
+                            cnt = cnt + 1
+                            tmp(cnt) = F018임시시트생성(selfVendorRow - 43)
+                        End If
+                    Next selfVendorRow
+                End If
+            ElseIf fid = "F-019" Then
+                If Not 검증_F019출력가능() Then
+                    IncSkip skipCounts, fid
+                Else
+                    Dim applicationVendorRow As Long
+                    For applicationVendorRow = 44 To 53
+                        If F019업체행완전한가(applicationVendorRow) Then
+                            cnt = cnt + 1
+                            tmp(cnt) = F019임시시트생성(applicationVendorRow - 43)
+                        End If
+                    Next applicationVendorRow
+                End If
+            ElseIf fid = "F-020" Then
+                If Not 검증_F020출력가능() Then
+                    IncSkip skipCounts, fid
+                Else
+                    Dim reportVendorRow As Long
+                    For reportVendorRow = 44 To 53
+                        If F020업체행완전한가(reportVendorRow) Then
+                            cnt = cnt + 1
+                            tmp(cnt) = F020임시시트생성(reportVendorRow - 43)
+                        End If
+                    Next reportVendorRow
+                End If
+            ElseIf fid = "F-021" Then
+                If Not 검증_F021출력가능() Then
+                    IncSkip skipCounts, fid
+                Else
+                    Dim proposalVendorRow As Long
+                    For proposalVendorRow = 44 To 53
+                        If F021업체행완전한가(proposalVendorRow) Then
+                            cnt = cnt + 1
+                            tmp(cnt) = F021임시시트생성(proposalVendorRow - 43)
+                        End If
+                    Next proposalVendorRow
+                End If
+            ElseIf fid = "F-022" Then
+                If Not 검증_F022출력가능() Then
+                    IncSkip skipCounts, fid
+                Else
+                    Dim performanceVendorRow As Long
+                    For performanceVendorRow = 44 To 53
+                        If F022업체행완전한가(performanceVendorRow) Then
+                            cnt = cnt + 1
+                            tmp(cnt) = F022임시시트생성(performanceVendorRow - 43)
+                        End If
+                    Next performanceVendorRow
+                End If
+            ElseIf fid = "F-023" Then
+                If Not 검증_F023출력가능() Then
+                    IncSkip skipCounts, fid
+                Else
+                    Dim specVendorRow As Long
+                    For specVendorRow = 44 To 53
+                        If F023업체행완전한가(specVendorRow) Then
+                            cnt = cnt + 1
+                            tmp(cnt) = F023임시시트생성(specVendorRow - 43)
+                        End If
+                    Next specVendorRow
+                End If
+            ElseIf fid = "F-025" Then
+                If Not 검증_F025출력가능() Then
+                    IncSkip skipCounts, fid
+                Else
+                    Dim asVendorRow As Long
+                    For asVendorRow = 44 To 53
+                        If F025업체행완전한가(asVendorRow) Then
+                            cnt = cnt + 1
+                            tmp(cnt) = F025임시시트생성(asVendorRow - 43)
+                        End If
+                    Next asVendorRow
+                End If
+            ElseIf status = "Y" Then
+                cnt = cnt + 1
+                tmp(cnt) = wsSel.Cells(r, 6).value
+            ElseIf status = "D" Then
+                IncSkip skipCounts, "HWPX 우선순위 위임"
+            Else
+                IncSkip skipCounts, "미구현"
+            End If
+        End If
+    Next r
+
+    Dim skipDetail As String
+    skipDetail = ""
+    Dim skipKey As Variant
+    For Each skipKey In skipCounts.Keys
+        skipDetail = skipDetail & skipKey & " 제외: " & skipCounts(skipKey) & "건, "
+    Next skipKey
+    If Len(skipDetail) >= 2 Then skipDetail = Left(skipDetail, Len(skipDetail) - 2)
+
+    If cnt = 0 Then
+        If showMessage Then MsgBox "구현된 서식이 선택되지 않았습니다." & vbCrLf & skipDetail, vbExclamation
+        선택된시트목록 = 0
+        Exit Function
+    End If
+
+    If skipCounts.count > 0 And showMessage Then
+        MsgBox "일부 선택 서식은 아직 준비되지 않아 제외합니다." & vbCrLf & skipDetail, vbInformation
+    End If
+
+    ReDim outNames(1 To cnt)
+    Dim i As Long
+    For i = 1 To cnt
+        outNames(i) = tmp(i)
+    Next i
+    선택된시트목록 = cnt
+End Function
+
+Public Function 검증_F024출력가능() As Boolean
+    Dim itemCount As Long
+    itemCount = Application.WorksheetFunction.CountA(Sheets("기초자료입력").Range("B29:B38"))
+    검증_F024출력가능 = 검증_품목행검증() And itemCount >= 1 And itemCount <= 6
+End Function
+
+Public Function 검증_F014출력가능() As Boolean
+    Dim scoreCount As Long
+    scoreCount = Application.WorksheetFunction.CountA(Sheets("기초자료입력").Range("B72:B81"))
+    검증_F014출력가능 = 검증_필수값검증() And 검증_평가행검증() And scoreCount >= 1 And scoreCount <= 10
+End Function
+
+Public Function 검증_F015출력가능() As Boolean
+    Dim vendorRow As Long, hasCompleteVendor As Boolean
+    If Not 검증_정량평가행검증() Then Exit Function
+    hasCompleteVendor = False
+    For vendorRow = 44 To 53
+        If F015업체행완전한가(vendorRow) Then
+            hasCompleteVendor = True
+            Exit For
+        End If
+    Next vendorRow
+    검증_F015출력가능 = 검증_필수값검증() And hasCompleteVendor
+End Function
+
+Public Function 검증_F016출력가능() As Boolean
+    Dim vendorRow As Long, hasCompleteVendor As Boolean
+    If Not 검증_정성평가행검증() Then Exit Function
+    For vendorRow = 44 To 53
+        If F016업체행완전한가(vendorRow) Then
+            hasCompleteVendor = True
+            Exit For
+        End If
+    Next vendorRow
+    검증_F016출력가능 = 검증_필수값검증() And hasCompleteVendor
+End Function
+
+Public Function 검증_F017출력가능() As Boolean
+    Dim vendorRow As Long
+    If Not 검증_필수값검증() Then Exit Function
+    For vendorRow = 44 To 53
+        If F017업체행완전한가(vendorRow) Then
+            검증_F017출력가능 = True
+            Exit Function
+        End If
+    Next vendorRow
+End Function
+
+Public Function 검증_F018출력가능() As Boolean
+    Dim vendorRow As Long
+    If Not 검증_필수값검증() Or Not 검증_자기평점행검증() Then Exit Function
+    For vendorRow = 44 To 53
+        If F018업체행완전한가(vendorRow) Then 검증_F018출력가능 = True: Exit Function
+    Next vendorRow
+End Function
+
+Public Function 검증_F019출력가능() As Boolean
+    Dim vendorRow As Long
+    If Not 검증_필수값검증() Then Exit Function
+    For vendorRow = 44 To 53
+        If F019업체행완전한가(vendorRow) Then 검증_F019출력가능 = True: Exit Function
+    Next vendorRow
+End Function
+
+Public Function 검증_F020출력가능() As Boolean
+    Dim vendorRow As Long
+    If Not 검증_필수값검증() Then Exit Function
+    For vendorRow = 44 To 53
+        If F020업체행완전한가(vendorRow) Then 검증_F020출력가능 = True: Exit Function
+    Next vendorRow
+End Function
+
+Public Function 검증_F021출력가능() As Boolean
+    Dim vendorRow As Long
+    If Not 검증_필수값검증() Then Exit Function
+    For vendorRow = 44 To 53
+        If F021업체행완전한가(vendorRow) Then 검증_F021출력가능 = True: Exit Function
+    Next vendorRow
+End Function
+
+Public Function 검증_F022출력가능() As Boolean
+    Dim vendorRow As Long
+    If Not 검증_필수값검증() Then Exit Function
+    For vendorRow = 44 To 53
+        If F022업체행완전한가(vendorRow) Then 검증_F022출력가능 = True: Exit Function
+    Next vendorRow
+End Function
+
+Public Function 검증_F023출력가능() As Boolean
+    Dim vendorRow As Long
+    If Not 검증_필수값검증() Then Exit Function
+    For vendorRow = 44 To 53
+        If F023업체행완전한가(vendorRow) Then 검증_F023출력가능 = True: Exit Function
+    Next vendorRow
+End Function
+
+Public Function 검증_F025출력가능() As Boolean
+    Dim vendorRow As Long
+    If Not 검증_필수값검증() Then Exit Function
+    For vendorRow = 44 To 53
+        If F025업체행완전한가(vendorRow) Then 검증_F025출력가능 = True: Exit Function
+    Next vendorRow
+End Function
+
+Public Function 검증_F001출력가능() As Boolean
+    Dim committeeCount As Long
+    committeeCount = Application.WorksheetFunction.CountA(Sheets("기초자료입력").Range("B58:B67"))
+    검증_F001출력가능 = 검증_필수값검증() And 검증_위원행검증() And committeeCount >= 1
+End Function
+
+Public Function 검증_F002출력가능() As Boolean
+    검증_F002출력가능 = 검증_필수값검증()
+End Function
+
+Public Function 검증_F003출력가능() As Boolean
+    검증_F003출력가능 = 검증_필수값검증()
+End Function
+
+Public Function 검증_F004출력가능() As Boolean
+    검증_F004출력가능 = 검증_필수값검증()
+End Function
+
+Public Function 검증_F005출력가능() As Boolean
+    검증_F005출력가능 = 검증_필수값검증()
+End Function
+
+Public Function 검증_F006출력가능() As Boolean
+    Dim committeeCount As Long
+    committeeCount = Application.WorksheetFunction.CountA(Sheets("기초자료입력").Range("B58:B67"))
+    검증_F006출력가능 = 검증_필수값검증() And 검증_위원행검증() And committeeCount >= 1
+End Function
+
+' F-041~F-043은 F-017~F-025처럼 업체마다 별도 문서를 만드는 것이 아니라, 낙찰자·계약상대자는
+' 언제나 1개 업체이므로 각 시트의 I3 선택 순번이 가리키는 업체행 1곳만 완전한지(상호명이 비어있지
+' 않은지) 확인한다. Module_출력에서 업체 반복 루프를 돌리지 않고 F-001/F-006과 같은 단일 출력으로
+' 취급하는 이유가 이 검증 함수에도 그대로 반영된다.
+Private Function 낙찰업체선택완전한가(ByVal sheetName As String) As Boolean
+    Dim wsForm As Worksheet, vendorRow As Long
+    Set wsForm = Sheets(sheetName)
+    vendorRow = 43 + CLng(Val(wsForm.Range("I3").value))
+    If vendorRow < 44 Or vendorRow > 53 Then Exit Function
+    낙찰업체선택완전한가 = Trim(Sheets("기초자료입력").Cells(vendorRow, 2).value & "") <> ""
+End Function
+
+Public Function 검증_F041출력가능() As Boolean
+    With Sheets("F-041_낙찰자결정")
+        검증_F041출력가능 = 검증_필수값검증() And 낙찰업체선택완전한가("F-041_낙찰자결정") And _
+            양수값(.Range("C17").value) And 양수값(.Range("E21").value) And 양수값(.Range("F21").value)
+    End With
+End Function
+
+Public Function 검증_F042출력가능() As Boolean
+    With Sheets("F-042_낙찰자결정통보")
+        검증_F042출력가능 = 검증_필수값검증() And 낙찰업체선택완전한가("F-042_낙찰자결정통보") And _
+            양수값(.Range("D17").value) And 양수값(.Range("E17").value) And 양수값(.Range("F17").value) And _
+            계약금액일치(.Range("D17").value, .Range("E17").value, .Range("F17").value) And _
+            Trim(Sheets("기초자료입력").Range("C18").value & "") <> ""
+    End With
+End Function
+
+Public Function 검증_F043출력가능() As Boolean
+    With Sheets("F-043_계약체결")
+        검증_F043출력가능 = 검증_필수값검증() And 낙찰업체선택완전한가("F-043_계약체결") And _
+            양수값(.Range("C16").value) And 양수값(Sheets("기초자료입력").Range("C16").value) And _
+            Trim(Sheets("기초자료입력").Range("C17").value & "") <> ""
+    End With
+End Function
+
+Public Function 검증_F044출력가능() As Boolean
+    검증_F044출력가능 = 검증_필수값검증()
+End Function
+
+Public Function 검증_F045출력가능() As Boolean
+    검증_F045출력가능 = 검증_필수값검증()
+End Function
+
+Public Function 검증_F046출력가능() As Boolean
+    검증_F046출력가능 = 검증_필수값검증()
+End Function
+
+Public Function 검증_F048출력가능() As Boolean
+    검증_F048출력가능 = 검증_필수값검증()
+End Function
+
+Public Function 검증_F047출력가능() As Boolean
+    검증_F047출력가능 = 검증_필수값검증()
+End Function
+
+Public Function 검증_F049출력가능() As Boolean
+    검증_F049출력가능 = 검증_필수값검증()
+End Function
+
+Public Function 검증_F050출력가능() As Boolean
+    검증_F050출력가능 = 검증_필수값검증()
+End Function
+
+Public Function 검증_F009출력가능() As Boolean
+    With Sheets("기초자료입력")
+        검증_F009출력가능 = 검증_필수값검증() And 양수값(.Range("C15").value) And _
+            Trim(.Range("C17").value & "") <> "" And Trim(.Range("C14").value & "") <> ""
+    End With
+End Function
+
+Public Function 검증_F010출력가능() As Boolean
+    With Sheets("기초자료입력")
+        검증_F010출력가능 = 검증_필수값검증() And 양수값(.Range("C15").value) And _
+            양수값(.Range("C16").value) And Trim(.Range("C18").value & "") <> ""
+    End With
+End Function
+
+Public Function 검증_F011출력가능() As Boolean
+    With Sheets("기초자료입력")
+        검증_F011출력가능 = 검증_필수값검증() And 양수값(.Range("C15").value) And _
+            양수값(.Range("C16").value) And Trim(.Range("C17").value & "") <> "" And _
+            Trim(.Range("C18").value & "") <> ""
+    End With
+End Function
+
+Private Function 양수값(ByVal value As Variant) As Boolean
+    양수값 = IsNumeric(value) And CDbl(value) > 0
+End Function
+
+Private Function 계약금액일치(ByVal unitPrice As Variant, ByVal quantity As Variant, ByVal contractAmount As Variant) As Boolean
+    If Not 양수값(unitPrice) Or Not 양수값(quantity) Or Not 양수값(contractAmount) Then Exit Function
+    계약금액일치 = Abs(CDbl(contractAmount) - WorksheetFunction.Round(CDbl(unitPrice) * CDbl(quantity), 0)) < 0.000001
+End Function
+
+Public Function 검증_F037출력가능() As Boolean
+    Dim committeeCount As Long
+    committeeCount = Application.WorksheetFunction.CountA(Sheets("기초자료입력").Range("B58:B67"))
+    검증_F037출력가능 = 검증_필수값검증() And 검증_위원행검증() And committeeCount >= 1
+End Function
+
+Public Function 검증_F038출력가능() As Boolean
+    Dim vendorCount As Long
+    vendorCount = Application.WorksheetFunction.CountA(Sheets("기초자료입력").Range("B44:B53"))
+    검증_F038출력가능 = 검증_필수값검증() And 검증_업체행검증() And vendorCount >= 1
+End Function
+
+' F-039는 F-041~F-043과 같은 I3 단일 업체 선택 패턴을 재사용한다(업체 반복 루프 없음).
+' 위원별 원점수(옷감·완성도·A/S·하자)는 이 문서 전용 입력칸(E8:H15)이며 다른 서식과
+' 공유하는 DB가 아니다. 위원 성명(D열)은 청탁방지·익명성 원칙에 따라 자동 반영하지 않고
+' 자필 공란으로 유지하므로 검증 대상에서 제외한다. 총계·평균은 원문의 "위원별 평가 점수
+' 중 최고점 및 최저점을 제외" 안내에 따라 8명 점수 중 최댓값·최솟값을 뺀 뒤 합산·평균한다.
+Public Function 검증_F039출력가능() As Boolean
+    With Sheets("F-039_업체별제안서평가표")
+        Dim ok As Boolean
+        ok = 검증_필수값검증() And 낙찰업체선택완전한가("F-039_업체별제안서평가표")
+        If ok Then
+            ok = Application.WorksheetFunction.count(.Range("E8:H15")) = 32 And _
+                Application.WorksheetFunction.Min(.Range("E8:E15")) >= 0 And Application.WorksheetFunction.Max(.Range("E8:E15")) <= 15 And _
+                Application.WorksheetFunction.Min(.Range("F8:F15")) >= 0 And Application.WorksheetFunction.Max(.Range("F8:F15")) <= 10 And _
+                Application.WorksheetFunction.Min(.Range("G8:G15")) >= 0 And Application.WorksheetFunction.Max(.Range("G8:G15")) <= 15 And _
+                Application.WorksheetFunction.Min(.Range("H8:H15")) >= 0 And Application.WorksheetFunction.Max(.Range("H8:H15")) <= 10
+        End If
+        검증_F039출력가능 = ok
+    End With
+End Function
+
+Public Function 검증_F040출력가능() As Boolean
+    검증_F040출력가능 = 검증_필수값검증()
+End Function
+
+Public Function 검증_F032출력가능() As Boolean
+    Dim vendorCount As Long
+    vendorCount = Application.WorksheetFunction.CountA(Sheets("기초자료입력").Range("B44:B53"))
+    검증_F032출력가능 = 검증_필수값검증() And 검증_업체행검증() And vendorCount >= 1
+End Function
+
+Public Function 검증_F033출력가능() As Boolean
+    Dim vendorCount As Long
+    vendorCount = Application.WorksheetFunction.CountA(Sheets("기초자료입력").Range("B44:B53"))
+    검증_F033출력가능 = 검증_필수값검증() And 검증_업체행검증() And vendorCount >= 1
+End Function
+
+Public Function 검증_F034출력가능() As Boolean
+    Dim committeeCount As Long
+    committeeCount = Application.WorksheetFunction.CountA(Sheets("기초자료입력").Range("B58:B67"))
+    검증_F034출력가능 = 검증_필수값검증() And 검증_위원행검증() And committeeCount >= 1
+End Function
+
+' F-035·F-036은 F-032·F-033과 같이 업체 반복행(기초자료입력!B44:B53) 전체를 한 표에
+' 보여주는 집계 보고서이며, 점수는 F-015/F-016이 이미 쓰는 학교 평가 점수 열(C:F 정량,
+' H:L 정성)을 그대로 재조회한다. 업체 존재만 확인하고 점수 입력 여부는 강제하지 않는다
+' (F-032/F-033과 동일 수준 ? 평가 진행 중에도 접수 현황·중간 보고서를 출력할 수 있어야 함).
+Public Function 검증_F035출력가능() As Boolean
+    Dim vendorCount As Long
+    vendorCount = Application.WorksheetFunction.CountA(Sheets("기초자료입력").Range("B44:B53"))
+    검증_F035출력가능 = 검증_필수값검증() And 검증_업체행검증() And vendorCount >= 1
+End Function
+
+Public Function 검증_F036출력가능() As Boolean
+    Dim vendorCount As Long
+    vendorCount = Application.WorksheetFunction.CountA(Sheets("기초자료입력").Range("B44:B53"))
+    검증_F036출력가능 = 검증_필수값검증() And 검증_업체행검증() And vendorCount >= 1
+End Function
+
+Private Function F015업체행완전한가(ByVal sourceRow As Long) As Boolean
+    Dim wsIn As Worksheet
+    Set wsIn = Sheets("기초자료입력")
+    F015업체행완전한가 = Trim(wsIn.Cells(sourceRow, 2).value & "") <> "" And _
+        Trim(wsIn.Cells(sourceRow, 3).value & "") <> "" And Trim(wsIn.Cells(sourceRow, 4).value & "") <> "" And _
+        Trim(wsIn.Cells(sourceRow, 5).value & "") <> "" And Trim(wsIn.Cells(sourceRow, 6).value & "") <> "" And _
+        정수범위(wsIn.Cells(sourceRow, 3).value, 0, 10) And 정수범위(wsIn.Cells(sourceRow, 4).value, 0, 10) And _
+        정수범위(wsIn.Cells(sourceRow, 5).value, 0, 15) And 정수범위(wsIn.Cells(sourceRow, 6).value, 0, 15)
+End Function
+
+Private Function F016업체행완전한가(ByVal sourceRow As Long) As Boolean
+    Dim wsIn As Worksheet
+    Set wsIn = Sheets("기초자료입력")
+    F016업체행완전한가 = Trim(wsIn.Cells(sourceRow, 2).value & "") <> "" And _
+        Trim(wsIn.Cells(sourceRow, 8).value & "") <> "" And Trim(wsIn.Cells(sourceRow, 9).value & "") <> "" And _
+        Trim(wsIn.Cells(sourceRow, 10).value & "") <> "" And Trim(wsIn.Cells(sourceRow, 11).value & "") <> "" And Trim(wsIn.Cells(sourceRow, 12).value & "") <> "" And _
+        정수범위(wsIn.Cells(sourceRow, 8).value, 0, 15) And 정수범위(wsIn.Cells(sourceRow, 9).value, 0, 10) And _
+        정수범위(wsIn.Cells(sourceRow, 10).value, 0, 15) And 정수범위(wsIn.Cells(sourceRow, 11).value, 0, 10) And _
+        정수범위(wsIn.Cells(sourceRow, 12).value, -15, 5)
+End Function
+
+Private Function F017업체행완전한가(ByVal sourceRow As Long) As Boolean
+    F017업체행완전한가 = Trim(Sheets("기초자료입력").Cells(sourceRow, 2).value & "") <> ""
+End Function
+
+Private Function F018업체행완전한가(ByVal sourceRow As Long) As Boolean
+    Dim wsIn As Worksheet
+    Set wsIn = Sheets("기초자료입력")
+    F018업체행완전한가 = Trim(wsIn.Cells(sourceRow, 2).value & "") <> "" And Trim(wsIn.Cells(sourceRow, 14).value & "") <> "" And Trim(wsIn.Cells(sourceRow, 15).value & "") <> "" And Trim(wsIn.Cells(sourceRow, 16).value & "") <> "" And Trim(wsIn.Cells(sourceRow, 17).value & "") <> "" And 정수범위(wsIn.Cells(sourceRow, 14).value, 0, 10) And 정수범위(wsIn.Cells(sourceRow, 15).value, 0, 10) And 정수범위(wsIn.Cells(sourceRow, 16).value, 0, 15) And 정수범위(wsIn.Cells(sourceRow, 17).value, 0, 15)
+End Function
+
+Private Function F019업체행완전한가(ByVal sourceRow As Long) As Boolean
+    F019업체행완전한가 = Trim(Sheets("기초자료입력").Cells(sourceRow, 2).value & "") <> ""
+End Function
+
+Private Function F020업체행완전한가(ByVal sourceRow As Long) As Boolean
+    F020업체행완전한가 = Trim(Sheets("기초자료입력").Cells(sourceRow, 2).value & "") <> ""
+End Function
+
+Private Function F021업체행완전한가(ByVal sourceRow As Long) As Boolean
+    F021업체행완전한가 = Trim(Sheets("기초자료입력").Cells(sourceRow, 2).value & "") <> ""
+End Function
+
+Private Function F022업체행완전한가(ByVal sourceRow As Long) As Boolean
+    F022업체행완전한가 = Trim(Sheets("기초자료입력").Cells(sourceRow, 2).value & "") <> ""
+End Function
+
+Private Function F023업체행완전한가(ByVal sourceRow As Long) As Boolean
+    F023업체행완전한가 = Trim(Sheets("기초자료입력").Cells(sourceRow, 2).value & "") <> ""
+End Function
+
+Private Function F025업체행완전한가(ByVal sourceRow As Long) As Boolean
+    F025업체행완전한가 = Trim(Sheets("기초자료입력").Cells(sourceRow, 2).value & "") <> ""
+End Function
+
+Private Function F015임시시트생성(ByVal vendorSlot As Long) As String
+    Dim wsF15 As Worksheet, wsTemp As Worksheet
+    Set wsF15 = Sheets("F-015_정량적평가")
+    wsF15.Copy After:=Sheets(Sheets.count)
+    Set wsTemp = Sheets(Sheets.count)
+    wsTemp.Name = "F015_임시_" & vendorSlot & "_" & Format(Now, "hhnnss")
+    wsTemp.Range("I3").value = vendorSlot
+    F015임시시트생성 = wsTemp.Name
+End Function
+
+Private Function F016임시시트생성(ByVal vendorSlot As Long) As String
+    Dim wsF16 As Worksheet, wsTemp As Worksheet
+    Set wsF16 = Sheets("F-016_정성적평가")
+    wsF16.Copy After:=Sheets(Sheets.count)
+    Set wsTemp = Sheets(Sheets.count)
+    wsTemp.Name = "F016_임시_" & vendorSlot & "_" & Format(Now, "hhnnss")
+    wsTemp.Range("I3").value = vendorSlot
+    F016임시시트생성 = wsTemp.Name
+End Function
+
+Private Function F017임시시트생성(ByVal vendorSlot As Long) As String
+    Dim wsF17 As Worksheet, wsTemp As Worksheet
+    Set wsF17 = Sheets("F-017_제출서류자기확인서")
+    wsF17.Copy After:=Sheets(Sheets.count)
+    Set wsTemp = Sheets(Sheets.count)
+    wsTemp.Name = "F017_임시_" & vendorSlot & "_" & Format(Now, "hhnnss")
+    wsTemp.Range("G3").value = vendorSlot
+    F017임시시트생성 = wsTemp.Name
+End Function
+
+Private Function F018임시시트생성(ByVal vendorSlot As Long) As String
+    Dim wsF18 As Worksheet, wsTemp As Worksheet
+    Set wsF18 = Sheets("F-018_정량적평가자기평점표")
+    wsF18.Copy After:=Sheets(Sheets.count)
+    Set wsTemp = Sheets(Sheets.count)
+    wsTemp.Name = "F018_임시_" & vendorSlot & "_" & Format(Now, "hhnnss")
+    wsTemp.Range("I3").value = vendorSlot
+    F018임시시트생성 = wsTemp.Name
+End Function
+
+Private Function F019임시시트생성(ByVal vendorSlot As Long) As String
+    Dim wsF19 As Worksheet, wsTemp As Worksheet
+    Set wsF19 = Sheets("F-019_입찰참가신청서")
+    wsF19.Copy After:=Sheets(Sheets.count)
+    Set wsTemp = Sheets(Sheets.count)
+    wsTemp.Name = "F019_임시_" & vendorSlot & "_" & Format(Now, "hhnnss")
+    wsTemp.Range("N3").value = vendorSlot
+    F019임시시트생성 = wsTemp.Name
+End Function
+
+Private Function F020임시시트생성(ByVal vendorSlot As Long) As String
+    Dim wsF20 As Worksheet, wsTemp As Worksheet
+    Set wsF20 = Sheets("F-020_입찰참가신고서")
+    wsF20.Copy After:=Sheets(Sheets.count)
+    Set wsTemp = Sheets(Sheets.count)
+    wsTemp.Name = "F020_임시_" & vendorSlot & "_" & Format(Now, "hhnnss")
+    wsTemp.Range("G3").value = vendorSlot
+    F020임시시트생성 = wsTemp.Name
+End Function
+
+Private Function F021임시시트생성(ByVal vendorSlot As Long) As String
+    Dim wsF21 As Worksheet, wsTemp As Worksheet
+    Set wsF21 = Sheets("F-021_교복납품제안서")
+    wsF21.Copy After:=Sheets(Sheets.count)
+    Set wsTemp = Sheets(Sheets.count)
+    wsTemp.Name = "F021_임시_" & vendorSlot & "_" & Format(Now, "hhnnss")
+    wsTemp.Range("G3").value = vendorSlot
+    F021임시시트생성 = wsTemp.Name
+End Function
+
+Private Function F022임시시트생성(ByVal vendorSlot As Long) As String
+    Dim wsF22 As Worksheet, wsTemp As Worksheet
+    Set wsF22 = Sheets("F-022_교복납품실적표")
+    wsF22.Copy After:=Sheets(Sheets.count)
+    Set wsTemp = Sheets(Sheets.count)
+    wsTemp.Name = "F022_임시_" & vendorSlot & "_" & Format(Now, "hhnnss")
+    wsTemp.Range("I3").value = vendorSlot
+    F022임시시트생성 = wsTemp.Name
+End Function
+
+Private Function F023임시시트생성(ByVal vendorSlot As Long) As String
+    Dim wsF23 As Worksheet, wsTemp As Worksheet
+    Set wsF23 = Sheets("F-023_교복제조사양서")
+    wsF23.Copy After:=Sheets(Sheets.count)
+    Set wsTemp = Sheets(Sheets.count)
+    wsTemp.Name = "F023_임시_" & vendorSlot & "_" & Format(Now, "hhnnss")
+    wsTemp.Range("G3").value = vendorSlot
+    F023임시시트생성 = wsTemp.Name
+End Function
+
+Private Function F025임시시트생성(ByVal vendorSlot As Long) As String
+    Dim wsF25 As Worksheet, wsTemp As Worksheet
+    Set wsF25 = Sheets("F-025_교복AS계획서")
+    wsF25.Copy After:=Sheets(Sheets.count)
+    Set wsTemp = Sheets(Sheets.count)
+    wsTemp.Name = "F025_임시_" & vendorSlot & "_" & Format(Now, "hhnnss")
+    wsTemp.Range("G3").value = vendorSlot
+    F025임시시트생성 = wsTemp.Name
+End Function
+
+Private Sub F015임시시트정리(ByRef names() As String)
+    Dim i As Long
+    On Error Resume Next
+    Application.DisplayAlerts = False
+    For i = LBound(names) To UBound(names)
+        If Left(names(i), 5) = "F015_" Or Left(names(i), 5) = "F016_" Or Left(names(i), 5) = "F017_" Or Left(names(i), 5) = "F018_" Or Left(names(i), 5) = "F019_" Or Left(names(i), 5) = "F020_" Or Left(names(i), 5) = "F021_" Or Left(names(i), 5) = "F022_" Or Left(names(i), 5) = "F023_" Or Left(names(i), 5) = "F025_" Then Sheets(names(i)).Delete
+    Next i
+    Application.DisplayAlerts = True
+    On Error GoTo 0
+End Sub
+
+Sub 선택서식_인쇄미리보기()
+    Dim names() As String
+    Dim n As Long
+    n = 선택된시트목록(names, True)
+    If n = 0 Then Exit Sub
+    ThisWorkbook.Sheets(names).Select
+    ActiveWindow.SelectedSheets.PrintPreview
+    Call F015임시시트정리(names)
+End Sub
+
+Sub 선택서식_PDF저장()
+    Call 선택서식_PDF저장_실행(True)
+End Sub
+
+Public Sub 검증_선택서식_PDF저장()
+    Call 선택서식_PDF저장_실행(False)
+End Sub
+
+Private Sub 선택서식_PDF저장_실행(ByVal showMessage As Boolean)
+    On Error GoTo ErrorHandler
+    Dim names() As String
+    Dim n As Long
+    n = 선택된시트목록(names, showMessage)
+    If n = 0 Then Exit Sub
+
+    Dim folderPath As String
+    folderPath = ThisWorkbook.Path & "\output\"
+    If Dir(folderPath, vbDirectory) = "" Then MkDir folderPath
+
+    Dim fileName As String
+    fileName = folderPath & "선택서식_" & Format(Now, "yyyymmdd_hhnnss") & ".pdf"
+
+    ThisWorkbook.Sheets(names).Select
+    ActiveSheet.ExportAsFixedFormat Type:=xlTypePDF, fileName:=fileName, Quality:=xlQualityStandard, IncludeDocProperties:=True, IgnorePrintAreas:=False, OpenAfterPublish:=False
+    Call F015임시시트정리(names)
+
+    If showMessage Then MsgBox "PDF로 저장되었습니다:" & vbCrLf & fileName, vbInformation
+    Exit Sub
+ErrorHandler:
+    Dim errNumber As Long, errDescription As String
+    errNumber = Err.Number
+    errDescription = Err.Description
+    On Error Resume Next
+    Call F015임시시트정리(names)
+    On Error GoTo 0
+    If showMessage Then
+        MsgBox "PDF 저장 중 오류가 발생했습니다: " & errDescription, vbCritical
+    Else
+        Err.Raise errNumber, "선택서식_PDF저장_실행", errDescription
+    End If
+End Sub

@@ -1,0 +1,11 @@
+{
+  "status": "RED",
+  "scenario": "F-005 actual template",
+  "templateSha256": "C5B359DF4680237120A4756B4915A7C748ACA4363A3D9BDC96C7D7A289EF2EB7",
+  "multiParagraphCells": 23,
+  "nestedTables": 1,
+  "oldCellShape": "text: string colSpan: number rowSpan: number",
+  "oldCellHasStructuredParagraphs": false,
+  "oldCellHasNestedTablePlacement": false,
+  "observable": "actual multi-paragraph/nested structure exists; old HwpxPreviewCell stores only flattened text and spans"
+}

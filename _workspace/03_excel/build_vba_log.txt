@@ -1,0 +1,62 @@
+기초자료입력!G1/H1 레코드 추적 셀 추가 완료
+제거할 빈 기본 시트 Sheet2 없음
+기존 모듈 Module_기초자료 없음
+기존 모듈 Module_출력 없음
+기존 모듈 Module_검색_절차 없음
+Module_기초자료 추가 완료 (줄 수: 1107)
+DIAG_CHECKPOINT1_SAVE_OK
+Module_출력 추가 완료 (줄 수: 1300)
+DIAG_CHECKPOINT2_SAVE_OK
+Module_검색_절차 추가 완료 (줄 수: 262)
+DIAG_CHECKPOINT3_SAVE_OK
+frmContractGuide UserForm 추가 완료 (컨트롤 13개, 계약유형별 테마색 재디자인 2026-09-24, 줄 수: 247)
+frmLoadPicker UserForm 추가 완료 (컨트롤 4개, 줄 수: 45)
+DIAG_CHECKPOINT3B_SAVE_OK
+ThisWorkbook 문서모듈 식별: 현재_통합_문서
+Workbook_Open 기존 프로시저 0 개 제거 후 재생성
+Workbook_BeforeSave 기존 프로시저 0 개 제거 후 재생성
+ThisWorkbook 이벤트(Workbook_Open, Workbook_BeforeSave) 각 1개 추가 완료
+DIAG_CHECKPOINT4_SAVE_OK
+기존 버튼 btn초기화 없음
+기존 버튼 btn저장하기 없음
+기존 버튼 btn수정하기 없음
+기존 버튼 btn불러오기 없음
+기초자료입력 버튼 4개 배치 완료
+기존 사용설명서 요소 btnGuideMethod 없음
+기존 사용설명서 요소 btnGuideInput 없음
+기존 사용설명서 요소 btnGuideOutput 없음
+기존 사용설명서 요소 imgGuideBanner 없음
+기존 사용설명서 요소 hotGuideMethod 없음
+기존 사용설명서 요소 hotGuideInput 없음
+기존 사용설명서 요소 hotGuideOutput 없음
+사용설명서 시안 이미지 및 3개 단계 클릭 영역 배치 완료 (가로 인쇄·한 페이지 맞춤 포함)
+기존 버튼 btn인쇄미리보기 없음
+기존 버튼 btnPDF저장 없음
+기존 버튼 btnHWPX작성 없음
+서식선택_출력의 중복 상단 일괄 출력 버튼 제거 완료
+서식선택_출력 행별 버튼 배치 완료 (대상 행: 47, 각 서식 시트 이동 버튼 포함)
+기존 버튼 btn빠른미리보기 없음
+기존 버튼 btn빠른PDF 없음
+기존 버튼 btn빠른HWPX 없음
+기존 버튼 btn이동_계약방법안내 없음
+기존 버튼 btn이동_DB열기 없음
+기초자료입력 빠른 출력 선택 패널 배치 완료 (체크박스 52 개, 보기 버튼은 구현된 서식만)
+기존 버튼 btn학교검색 없음
+기존 버튼 btn선택학교반영 없음
+학교검색 버튼 2개 배치 완료
+기존 버튼 btn관련FormID이동 없음
+절차안내 Form ID 이동 버튼 배치 완료
+기존 계약방법안내 배너 이미지 없음
+기존 카드 클릭 영역 btn계약절차_1인견적 없음
+기존 카드 클릭 영역 btn계약절차_2인견적 없음
+기존 카드 클릭 영역 btn계약절차_2단계입찰 없음
+기존 카드 클릭 영역 btn계약절차_일반입찰 없음
+계약방법안내 시안 이미지 삽입 및 카드 4개 투명 클릭 영역 배치 완료
+기존 버튼 btn계약방법반영 없음
+기존 버튼 btn이동_기초자료입력 없음
+기존 버튼 btn이동_서식선택출력 없음
+계약방법안내 헤더 버튼 2개(기초자료입력으로·서식선택_출력으로) 배치 완료 (상단 제목 옆, 계약방법 반영 버튼은 카드 즉시반영과 기능 중복이라 삭제)
+기존 버튼 btnDB닫기 없음
+DB 시트 닫기 버튼 배치 완료(재보호+Hidden 상태로 복원)
+VBA 매크로 및 버튼 추가 후 저장 완료(SaveAs): C:\Users\최익창\Downloads\나연수_26.9.10\artifacts\excel\build.xlsm
+PID 9032 Excel 프로세스가 Quit() 이후에도 남아 있어 강제 종료함

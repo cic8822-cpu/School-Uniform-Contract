@@ -1,0 +1,71 @@
+﻿{
+  "fields": [
+    {
+      "label": "?섏떊",
+      "value": "?대?寃곗옱",
+      "row": 0,
+      "col": 0
+    },
+    {
+      "label": "(寃쎌쑀)",
+      "value": "{{F007_VIA}}",
+      "row": 1,
+      "col": 0
+    },
+    {
+      "label": "?쒕ぉ",
+      "value": "{{F007_TITLE}}",
+      "row": 2,
+      "col": 0
+    },
+    {
+      "label": "?대떦??,
+      "value": "{{F007_DRAFTER}}",
+      "row": 0,
+      "col": 0
+    },
+    {
+      "label": "?묒“??,
+      "value": "{{F007_COOPERATOR}}",
+      "row": 0,
+      "col": 2
+    },
+    {
+      "label": "援먯옣",
+      "value": "{{F007_PRINCIPAL}}",
+      "row": 0,
+      "col": 4
+    },
+    {
+      "label": "愿??,
+      "value": "{{F007_REFERENCE_DOCUMENT}}",
+      "row": -1,
+      "col": -1
+    },
+    {
+      "label": "?섎웾",
+      "value": "{{F007_TARGET_AND_QUANTITY}}",
+      "row": -1,
+      "col": -1
+    },
+    {
+      "label": "?덉긽?④?",
+      "value": "{{F007_EXPECTED_UNIT_PRICE}}",
+      "row": -1,
+      "col": -1
+    },
+    {
+      "label": "?ъ뼇?댁뿭",
+      "value": "{{F007_SPECIFICATION}}",
+      "row": -1,
+      "col": -1
+    },
+    {
+      "label": "?⑺뭹湲고븳",
+      "value": "{{F007_DELIVERY_DUE_DATE}}",
+      "row": -1,
+      "col": -1
+    }
+  ],
+  "confidence": 0.6666666666666666
+}

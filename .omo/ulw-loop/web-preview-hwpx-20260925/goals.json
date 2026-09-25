@@ -1,0 +1,90 @@
+{
+  "version": 1,
+  "evidenceLayoutVersion": 2,
+  "createdAt": "2026-09-25T06:41:18.204Z",
+  "updatedAt": "2026-09-25T11:22:00.837Z",
+  "briefPath": ".omo/ulw-loop/web-preview-hwpx-20260925/brief.md",
+  "goalsPath": ".omo/ulw-loop/web-preview-hwpx-20260925/goals.json",
+  "ledgerPath": ".omo/ulw-loop/web-preview-hwpx-20260925/ledger.jsonl",
+  "codexGoalMode": "aggregate",
+  "goals": [
+    {
+      "id": "G001-heavy-delivery-goal-implement-and-pr",
+      "title": "HEAVY delivery goal: implement and prove the webapp form-preview requ...",
+      "objective": "HEAVY delivery goal: implement and prove the webapp form-preview requirement. Criteria: C1 browser at localhost:4173 select F-008 and see its complete original content without truncation plus an enabled HWPX 작성 button; capture screenshot and DOM text in artifacts/qa/wp03-preview-full. C2 browser select a protected F-050 and verify the preview retains allowed common content while prohibited personal fields remain absent; capture screenshot and DOM assertions in artifacts/qa/wp03-preview-protected. C3 click HWPX 작성 for a completed F-008 form with non-identifying values and verify downloaded HWPX ZIP has no unresolved allowed tokens and original entries remain intact; capture parsed ZIP report in artifacts/qa/wp03-hwpx-export. C4 regression: npm run lint, npm run build, and PowerShell verify-phase static show no code/build failure; capture logs in artifacts/qa/wp03-regression. C5 browser accessibility/responsive QA at 320px and 1280px with keyboard focus and zero console errors; capture screenshots and console log in artifacts/qa/wp03-accessibility. Stop right away when all criteria pass on the final tree, runtime resources are torn down, independent code review and QA/gate review approve, and the project quality hook passes.",
+      "status": "pending",
+      "successCriteria": [
+        {
+          "id": "C001",
+          "scenario": "Browser: run webapp on localhost:4173, select F-008 in 서식함, click 미리보기, then inspect modal text and screenshot. PASS iff all source sections are rendered without ellipsis/summary truncation and HWPX 작성 is enabled for valid non-identifying common data.",
+          "userModel": "happy",
+          "expectedEvidence": "artifacts/qa/wp03-preview-full/F008-full-preview.png",
+          "essential": true,
+          "capturedEvidence": null,
+          "status": "pending"
+        },
+        {
+          "id": "C002",
+          "scenario": "Browser: select protected F-050 and open preview with allowed common values. PASS iff all available original non-personal form content renders, the HWPX action follows the completion policy, and prohibited name/contact/signature/survey-response controls and text are absent.",
+          "userModel": "edge",
+          "expectedEvidence": "artifacts/qa/wp03-preview-protected/F050-protected-preview.png",
+          "essential": true,
+          "capturedEvidence": null,
+          "status": "pending"
+        },
+        {
+          "id": "C003",
+          "scenario": "Run npm run lint, npm run build, PowerShell verify-phase static; then browser QA at 320px and 1280px: keyboard focus reaches modal controls, no console errors, and an F-008 HWPX export ZIP has no unresolved allowed tokens with unchanged non-XML entries. PASS iff commands exit 0 and browser/ZIP assertions hold.",
+          "userModel": "regression",
+          "expectedEvidence": "artifacts/qa/wp03-regression/regression-and-browser-qa.txt",
+          "essential": false,
+          "capturedEvidence": null,
+          "status": "pending"
+        }
+      ],
+      "attempt": 0,
+      "createdAt": "2026-09-25T06:41:18.204Z",
+      "updatedAt": "2026-09-25T06:41:36.835Z"
+    },
+    {
+      "id": "G002",
+      "title": "웹앱 입력 UX·직접 인쇄·설치형·정적 배포",
+      "objective": "사업정보 구매학년 1~6, 계약방식 콤보(1인수의/2인견적/2단계계약/입찰계약), 제출·납품기한 날짜 선택, 각 서식의 즉시 인쇄를 구현한다. npm 없이 실행 가능한 Windows 설치형 패키지와 서버·DB 없는 정적 웹 배포 경로를 구현·문서화하고 실제 앱 QA·코드리뷰·품질 검증으로 입증한다.",
+      "status": "pending",
+      "successCriteria": [
+        {
+          "id": "C001",
+          "scenario": "Browser: 사업정보에서 구매학년 1~6 콤보, 계약방식 4개 콤보, 제출·납품기한 date picker를 선택하고 F-008 미리보기에서 바로 인쇄를 실행한다. PASS iff 저장값과 화면 상태가 일치하고 미리보기 원문 전체만 인쇄 대화상자로 전달된다.",
+          "userModel": "happy",
+          "expectedEvidence": "artifacts/qa/g002-input-print/browser-input-print.png",
+          "essential": true,
+          "capturedEvidence": null,
+          "status": "pending"
+        },
+        {
+          "id": "C002",
+          "scenario": "Browser: F-050 보호 서식과 HWPX loading/error 및 invalid input에서 출력 동작을 시도한다. PASS iff 개인정보는 빈 양식으로만 유지되고, 불완전/오류 문서는 PDF·바로인쇄가 차단된다.",
+          "userModel": "edge",
+          "expectedEvidence": "artifacts/qa/g002-privacy-edge/protected-and-blocked.txt",
+          "essential": true,
+          "capturedEvidence": null,
+          "status": "pending"
+        },
+        {
+          "id": "C003",
+          "scenario": "Build Electron NSIS installer and static site artifact. PASS iff installer launches offline without npm/Node, static build has no Functions/DB/API, and lint/build/quality checks pass; production static deploy is not performed without explicit user approval.",
+          "userModel": "regression",
+          "expectedEvidence": "artifacts/qa/g002-packaging/installer-and-static-build.txt",
+          "essential": false,
+          "capturedEvidence": null,
+          "status": "pending"
+        }
+      ],
+      "attempt": 0,
+      "createdAt": "2026-09-25T11:00:22.403Z",
+      "updatedAt": "2026-09-25T11:22:00.837Z",
+      "evidence": "2026-09-25 사용자 요청 1~7: 입력 UX, EXE 설치, 지속 실행, 정적 호스팅, 서식 인쇄."
+    }
+  ],
+  "codexObjective": "Complete the durable ulw-loop plan in .omo/ulw-loop/web-preview-hwpx-20260925/goals.json, including later accepted/appended stories, under the original brief constraints; use .omo/ulw-loop/web-preview-hwpx-20260925/ledger.jsonl as the audit trail."
+}

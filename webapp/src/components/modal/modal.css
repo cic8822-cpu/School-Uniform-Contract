@@ -1,0 +1,94 @@
+.modal-privacy-note {
+  background: #fdecec;
+  border: 1px solid #f3c6c4;
+  color: #b3261e;
+  border-radius: 12px;
+  padding: 14px;
+  margin: 14px 0;
+  font-weight: 700;
+}
+
+.paper-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 20px;
+  margin: 20px 0;
+}
+
+.paper-field {
+  display: contents;
+}
+
+.paper-field dt {
+  color: #6c7587;
+  font-weight: 700;
+}
+
+.paper-field dd {
+  margin: 0;
+  color: #1b2a5b;
+}
+
+.paper-repeat-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 18px 0;
+  font-size: 13px;
+}
+
+.paper-repeat-table caption {
+  text-align: left;
+  font-weight: 800;
+  color: #1b2a5b;
+  margin-bottom: 6px;
+}
+
+.paper-repeat-table th,
+.paper-repeat-table td {
+  border: 1px solid #e1e5ed;
+  padding: 6px 8px;
+}
+
+.paper-repeat-table th {
+  background: #f7f8fa;
+}
+
+.paper-source-paragraph {
+  min-height: 1.45em;
+  white-space: pre-wrap;
+}
+
+.paper-source-table {
+  table-layout: fixed;
+}
+
+.paper-source-table .paper-source-table {
+  margin: 6px 0;
+}
+
+.paper-source-table td > .paper-source-paragraph + .paper-source-paragraph {
+  margin-top: 0.35em;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 18px;
+  align-items: center;
+}
+
+.modal-not-implemented {
+  color: #9098a8;
+}
+
+.modal-status {
+  margin-top: 10px;
+  color: #1b2a5b;
+  font-weight: 700;
+}
+
+@media (max-width: 600px) {
+  .paper-fields {
+    grid-template-columns: 1fr;
+  }
+}

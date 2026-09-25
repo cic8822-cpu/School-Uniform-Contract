@@ -1,0 +1,9 @@
+Surface: Codex In-app Browser / http://127.0.0.1:4173/
+Invocation: 서식함 → F-050 만족도 조사 설문지 버튼 → 미리보기
+Observed:
+- dialog heading: F-050 만족도 조사 설문지
+- privacy banner visible: 개인정보 보호 서식입니다. 학생·학부모 등 개인 응답란은 빈 양식으로 유지되며, 이 화면에서 입력·저장·자동반영하지 않습니다.
+- rendered structure: satisfaction survey title, notice cell, 10-question satisfaction table, subtotal/total/average rows, 기타 의견 cell
+- response cells and 기타 의견 cell are empty in DOM; no student/parent name, phone, signature, or survey response data entered
+- non-identifying school label 테스트학교 appears only in the school-generated notice text
+

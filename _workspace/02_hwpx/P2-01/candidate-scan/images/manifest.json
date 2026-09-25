@@ -1,0 +1,56 @@
+[
+  {
+    "name": "image_001.bmp",
+    "mimeType": "image/bmp",
+    "bytes": 112502,
+    "source": "BinData/image1.bmp"
+  },
+  {
+    "name": "image_002.bmp",
+    "mimeType": "image/bmp",
+    "bytes": 209974,
+    "source": "BinData/image2.bmp"
+  },
+  {
+    "name": "image_003.jpg",
+    "mimeType": "image/jpeg",
+    "bytes": 39216,
+    "source": "BinData/image4.jpg"
+  },
+  {
+    "name": "image_004.jpg",
+    "mimeType": "image/jpeg",
+    "bytes": 68109,
+    "source": "BinData/image7.jpg"
+  },
+  {
+    "name": "image_005.jpg",
+    "mimeType": "image/jpeg",
+    "bytes": 49253,
+    "source": "BinData/image8.jpg"
+  },
+  {
+    "name": "image_006.jpg",
+    "mimeType": "image/jpeg",
+    "bytes": 41061,
+    "source": "BinData/image9.jpg"
+  },
+  {
+    "name": "image_007.png",
+    "mimeType": "image/png",
+    "bytes": 12467,
+    "source": "BinData/image3.png"
+  },
+  {
+    "name": "image_008.jpg",
+    "mimeType": "image/jpeg",
+    "bytes": 10945,
+    "source": "BinData/image5."
+  },
+  {
+    "name": "image_009.jpg",
+    "mimeType": "image/jpeg",
+    "bytes": 19575,
+    "source": "BinData/image6."
+  }
+]

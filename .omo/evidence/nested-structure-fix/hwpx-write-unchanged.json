@@ -1,0 +1,5 @@
+{
+  "status": "PASS",
+  "observable": "git diff --quiet -- webapp/public/templates",
+  "templateWrites": 0
+}

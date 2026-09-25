@@ -1,0 +1,3 @@
+Invocation: F-050 preview at 320x720 → PDF 출력; read PDF button enabled state immediately after click and after completion.
+Observed: beforePdf=true, duringPdf=false, after 1.2s=false, after 5s=true; completion text “PDF 파일을 내려받았습니다.”; console error/warn count 0.
+

@@ -1,0 +1,18 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: 실패한 HWPX 원문 요청은 캐시에서 제거되어 재시도해야 합니다.
+
+1 !== 2
+
+    at file:///C:/Users/%EC%B5%9C%EC%9D%B5%EC%B0%BD/Downloads/%EB%82%98%EC%97%B0%EC%88%98_26.9.10/webapp/scripts/verify-hwpx-preview-cache.mjs:24:10 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 1,
+  expected: 2,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.15.0

@@ -1,0 +1,58 @@
+.contract-guide-table {
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+  border: 1px solid #e1e5ed;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.contract-guide-row {
+  display: grid;
+  grid-template-columns: 200px repeat(4, 1fr);
+  border-bottom: 1px solid #eef0f4;
+}
+
+.contract-guide-row:last-child {
+  border-bottom: 0;
+}
+
+.contract-guide-head {
+  background: #f7f8fa;
+}
+
+.contract-guide-head .contract-guide-cell {
+  border-top: 4px solid var(--accent, #1b2a5b);
+}
+
+.contract-guide-cell {
+  padding: 18px 20px;
+  color: #34405b;
+  line-height: 1.6;
+}
+
+.contract-guide-label {
+  font-weight: 800;
+  color: #1b2a5b;
+  background: #fbfbfd;
+}
+
+.contract-guide-note {
+  margin-top: 18px;
+  color: #805d18;
+  background: #fff8e9;
+  border: 1px solid #f4d592;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+@media (max-width: 900px) {
+  .contract-guide-row {
+    grid-template-columns: 1fr;
+  }
+
+  .contract-guide-label {
+    border-bottom: 1px solid #eef0f4;
+  }
+}

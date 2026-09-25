@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "commit": "04bc0031d8142e80f6b5306e0c5fb60d87fb148b",
+  "scenarios": [
+    "48-template structural parity",
+    "lint",
+    "production build",
+    "diff check"
+  ],
+  "phaseGate": "BLOCKED_PREEXISTING_NOT_RUN_AND_WP03",
+  "evidenceDirectory": "C:\\Users\\최익창\\Downloads\\나연수_26.9.10\\.omo\\evidence\\nested-structure-fix"
+}

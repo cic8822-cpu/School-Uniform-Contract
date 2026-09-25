@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "surface": "Codex in-app browser / Vite http://127.0.0.1:5174/",
+  "scenarios": [
+    {
+      "formId": "F-005",
+      "observable": {
+        "paragraphNodes": 313,
+        "topLevelTables": 9,
+        "nestedTables": 1,
+        "cellsWithMultipleParagraphs": 23,
+        "colSpanGreaterThanOne": 2,
+        "rowSpanValuesPreserved": true
+      },
+      "result": "PASS: 중첩 표가 부모 셀 안에 남고 문단 경계와 병합 속성이 DOM에 보존됨"
+    },
+    {
+      "formId": "F-008",
+      "observable": "바지 혼용률 셀에서 '폴리에스터 65%, 레이온 30%'와 '우레탄 5%'가 별도 문단 노드로 표시됨",
+      "result": "PASS: 다중 문단 표 셀 브라우저 미리보기"
+    },
+    {
+      "formId": "F-050",
+      "observable": {
+        "paragraphNodes": 105,
+        "multiParagraphCells": 6,
+        "responseInputs": 0,
+        "privacyNote": "개인정보 보호 서식입니다. 학생·학부모 등 개인 응답란은 빈 양식으로 유지되며, 이 화면에서 입력·저장·자동반영하지 않습니다."
+      },
+      "result": "PASS: 개인정보 공란 정책 유지"
+    }
+  ],
+  "screenshots": "F-008 및 F-050 화면은 동일 브라우저 세션에서 cua_repl로 직접 캡처하여 실행 기록에 첨부함"
+}

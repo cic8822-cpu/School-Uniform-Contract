@@ -1,0 +1,10 @@
+Surface: Codex In-app Browser / http://127.0.0.1:4173/
+Invocation: 서식함 → F-008 교복 사양서 버튼 → 미리보기
+Observed:
+- dialog heading: F-008 교복 사양서
+- full source paragraphs rendered: 섬유혼용률, 제작 시 유의 사항, 전년도와 변동 여부, 규정 및 유의사항, 교복 디자인 및 규격서, 교복 사진
+- tables rendered: 섬유 혼용률 table (구분/섬유 혼용률/비고), 디자인·규격 table (품목/디자인 이미지/원단 및 색상/제작시 유의사항), 교복 사진 table
+- after non-identifying school value 테스트학교: title rendered as 테스트학교 교복 사양서(규격서)
+- action buttons visible: HWPX 작성, PDF 출력
+- after clicking HWPX 작성, visible status: HWPX 파일을 내려받았습니다.
+

@@ -1,0 +1,4 @@
+Invocation: Codex In-app Browser tab.dev.logs({levels:['error','warn']}) after F-008 and F-050 interactions
+Result: []
+Interpretation: no console error or warning entries observed at 1280x720.
+

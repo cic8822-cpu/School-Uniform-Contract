@@ -1,0 +1,4 @@
+Invocation: F-050 invoking button click → dialog.press('Escape') → read-only document.activeElement.
+Observed JSON: {"tag":"BUTTON","text":"F-050매뉴얼 [19-1]만족도 조사 설문지학교작성개인정보 보호 서식▲ 기초자료 필요","aria":null}
+Verdict: focus returned to the invoking F-050 button.
+

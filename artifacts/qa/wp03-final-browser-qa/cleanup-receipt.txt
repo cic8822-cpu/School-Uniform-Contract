@@ -1,0 +1,6 @@
+Cleanup time: 2026-09-25 Asia/Seoul
+Browser: Codex In-app Browser tab 1 closed; browser tab inventory after close: []
+Viewport: explicit 320x720 override reset to default before close.
+Server: QA-owned Vite process started on 127.0.0.1:4176 and stopped with Ctrl+C; Get-NetTCPConnection verification: port_4176_clear.
+Other listeners on 4173-4175 were pre-existing and were not terminated.
+Source/product files were not modified.

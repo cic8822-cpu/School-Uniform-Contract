@@ -1,0 +1,171 @@
+파일: C:\Users\최익창\Downloads\나연수\artifacts\excel\교복구매_길라잡이_Excel_v1.xlsm
+ReadOnly 오픈 상태: True
+외부 링크(xlExcelLinks): 0건
+외부 연결(Connections): 0 건
+전체 정의된 이름 개수: 3
+  이름정의: DB!_FilterDatabase => =DB!$A$1:$T$1
+  이름정의: 'F-007_구매요청기안문'!Print_Area => ='F-007_구매요청기안문'!$A$1:$H$33
+  이름정의: 'F-024_단가비율표'!Print_Area => ='F-024_단가비율표'!$A$1:$G$18
+#REF! 이름정의: 0 건 
+시트 목록(총 7개):
+  - 학교정보 (Visible=-1, UsedRange=$A$1:$G$121)
+  - F-024_단가비율표 (Visible=-1, UsedRange=$A$1:$G$18)
+  - F-007_구매요청기안문 (Visible=-1, UsedRange=$A$1:$H$33)
+  - 서식선택_출력 (Visible=-1, UsedRange=$A$1:$F$56)
+  - DB (Visible=-1, UsedRange=$A$1:$T$2)
+  - 기초자료입력 (Visible=-1, UsedRange=$A$1:$G$39)
+  - 사용설명서 (Visible=-1, UsedRange=$A$1:$A$10)
+=== F-007_구매요청기안문 PageSetup ===
+  PaperSize=9 (9=xlPaperA4)
+  Zoom=100, FitToPagesWide=1, FitToPagesTall=1
+  TopMargin(pt)=42.51975, BottomMargin(pt)=42.51975, LeftMargin(pt)=42.51975, RightMargin(pt)=42.51975
+  HeaderMargin(pt)=22.6772, FooterMargin(pt)=22.6772
+  Orientation=1 (1=Portrait,2=Landscape)
+  PrintArea=$A$1:$H$33
+  HPageBreaks=0, VPageBreaks=0
+  (참고) 활성시트 기준 GET.DOCUMENT(50) 호출은 컨텍스트 필요 - 생략
+=== F-024_단가비율표 PageSetup ===
+  PaperSize=9 (9=xlPaperA4)
+  Zoom=100, FitToPagesWide=1, FitToPagesTall=1
+  TopMargin(pt)=42.51975, BottomMargin(pt)=42.51975, LeftMargin(pt)=42.51975, RightMargin(pt)=42.51975
+  HeaderMargin(pt)=22.6772, FooterMargin(pt)=22.6772
+  Orientation=1 (1=Portrait,2=Landscape)
+  PrintArea=$A$1:$G$18
+  HPageBreaks=0, VPageBreaks=0
+  (참고) 활성시트 기준 GET.DOCUMENT(50) 호출은 컨텍스트 필요 - 생략
+VBA 컴포넌트 개수: 10
+  - 현재_통합_문서 (Type=100)
+  - Sheet1 (Type=100)
+  - Sheet2 (Type=100)
+  - Sheet3 (Type=100)
+  - Sheet4 (Type=100)
+  - Sheet5 (Type=100)
+  - Sheet6 (Type=100)
+  - Sheet7 (Type=100)
+  - Module_기초자료 (Type=1)
+  - Module_출력 (Type=1)
+DB 시트 UsedRange: $A$1:$T$2, 행수=2, 열수=20
+DB 헤더행(1행) 값:
+    col1 = 순번
+    col2 = 학교명
+    col3 = 학년도
+    col4 = 담당부서
+    col5 = 담당자직위
+    col6 = 문서발행일
+    col7 = 문서번호
+    col8 = 구매명
+    col9 = 구매학년
+    col10 = 계약방식
+    col11 = 기초금액
+    col12 = 예정수량
+    col13 = 납품기한
+    col14 = 제출기한
+    col15 = 수신
+    col16 = 제목
+    col17 = 관련문서
+    col18 = 붙임목록
+    col19 = 안내문본문
+    col20 = 저장시각
+DB 2행 이하 데이터 존재 여부(빈 배포본이어야 함):
+    비어있지 않은 데이터 행 수 = 0
+학교정보 시트 UsedRange: $A$1:$G$121, 행수=121, 열수=7
+학교정보 헤더행(1행) 값:
+    col1 = 번호
+    col2 = 지역
+    col3 = 급별
+    col4 = 설립
+    col5 = 학교명
+    col6 = 주소
+    col7 = 연락처
+학교정보 2~6행 샘플(공개기관정보 주장 검증용):
+    행2: 808 | 전주 | 고등 | 사립 | 상산고등학교 | 전주시 완산구 거마평로 130 | 239-5300
+    행3: 807 | 전주 | 중등 | 공립 | 서전주중학교 | 전주시 완산구 거마평로 205 | 221-1359
+    행4: 806 | 전주 | 고등 | 공립 | 양현고등학교 | 전주시 덕진구 틀못2길 9 | 249-6101
+    행5: 805 | 전주 | 고등 | 사립 | 완산고등학교 | 전주시 완산구 능안자구길 55 | 220-9202
+    행6: 804 | 전주 | 고등 | 사립 | 완산여자고등학교 | 전주시 완산구 덕적골1길 60 | 227-4452
+=== F-007_구매요청기안문 셀 내용(비어있지 않은 셀만, A1:N45) ===
+    A1 : [구조 초안 — HWPX 원본 문안 대조 검증 필요]
+    B3 : 교복 학교주관구매 구매 요청(안)
+    B5 : 문서번호
+    C5 : 0
+    E5 : 시행일자
+    F5 : 0
+    B7 : 수  신
+    C7 : 내부결재
+    B8 : 제  목
+    C8 :  구매 요청
+    B10 :  학년도 을(를) 다음과 같이 학교주관구매 방식으로 구매하고자 요청합니다.
+    B12 : 1. 구매명
+    C12 : 0
+    B13 : 2. 구매 학년
+    C13 : 0
+    B14 : 3. 기초금액
+    B15 : 4. 계약방식
+    C15 : 0
+    B16 : 5. 납품기한
+    C16 : 0
+    B18 : 붙임
+    C18 : 0
+    B26 : 관련문서: 
+    C26 : 0
+    F28 : 담당
+    G28 : 행정실장
+    H28 : 교장
+=== F-024_단가비율표 셀 내용(비어있지 않은 셀만, A1:N45) ===
+    A1 : [구조 초안 — HWPX 원본 문안 대조 검증 필요]
+    B3 : 품목별 단가 비율표
+    B5 : 학교명
+    C5 : 0
+    D5 : 학년도
+    E5 : 0
+    F5 : 구매명
+    G5 : 0
+    B7 : 연번
+    C7 : 품목명
+    D7 : 수량
+    E7 : 단가(원)
+    F7 : 금액(원)
+    G7 : 비율(%)
+    B8 : 1
+    C8 : 0
+    D8 : 0
+    E8 : 0
+    B9 : 2
+    C9 : 0
+    D9 : 0
+    E9 : 0
+    B10 : 3
+    C10 : 0
+    D10 : 0
+    E10 : 0
+    B11 : 4
+    C11 : 0
+    D11 : 0
+    E11 : 0
+    B12 : 5
+    C12 : 0
+    D12 : 0
+    E12 : 0
+    B13 : 6
+    C13 : 0
+    D13 : 0
+    E13 : 0
+    B14 : 7
+    C14 : 0
+    D14 : 0
+    E14 : 0
+    B15 : 8
+    C15 : 0
+    D15 : 0
+    E15 : 0
+    B16 : 9
+    C16 : 0
+    D16 : 0
+    E16 : 0
+    B17 : 10
+    C17 : 0
+    D17 : 0
+    E17 : 0
+    C18 : 합계
+    F18 : 0
+    G18 : 100

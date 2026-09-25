@@ -1,0 +1,61 @@
+.guide-section-title {
+  margin-top: 48px;
+}
+
+.guide-faq {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 900px;
+}
+
+.guide-faq-item {
+  background: #fff;
+  border: 1px solid #e1e5ed;
+  border-radius: 14px;
+  padding: 16px 20px;
+}
+
+.guide-faq-item summary {
+  font-weight: 800;
+  color: #1b2a5b;
+  cursor: pointer;
+}
+
+.guide-faq-item p {
+  margin: 12px 0 0;
+  color: #6c7587;
+  line-height: 1.6;
+}
+
+.guide-glossary {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 12px 20px;
+  max-width: 900px;
+}
+
+.guide-glossary-item {
+  display: contents;
+}
+
+.guide-glossary-item dt {
+  font-weight: 800;
+  color: #1b2a5b;
+}
+
+.guide-glossary-item dd {
+  margin: 0;
+  color: #6c7587;
+  line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+  .guide-glossary {
+    grid-template-columns: 1fr;
+  }
+
+  .guide-glossary-item dt {
+    margin-top: 10px;
+  }
+}

@@ -1,0 +1,84 @@
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+Excel v1 검증 실패: 계약방법안내가 빈 확인값으로 시작하며 반영 버튼이 존재함; F-036 정량(50)·정성(55) 합계·적부 판정(10
+5점 → 적격)·비고가 골든 데이터 기준으로 정확히 계산됨; DB 시트 5종(DB·DB_품목·DB_업체·DB_위원·DB_평가) 탭 순서가 학교정
+보 뒤·F-001 앞에 모여 있음; DB 시트 5종이 DB→DB_품목→DB_업체→DB_위원→DB_평가 순서 그대로 인접 배치됨
+위치 C:\Users\최익창\Downloads\나연수_26.9.10\scripts\verify_excel_v1.ps1:1180 문자:5
++     throw ('Excel v1 검증 실패: ' + ($failures -join '; '))
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Excel v1 검증 실패:...가 순서 그대로 인접 배치됨:String) [], RuntimeEx
+ception
+    + FullyQualifiedErrorId : Excel v1 검증 실패: 계약방법안내가 빈 확인값으로 시작하며 반영 버튼이 존재함; F-036 정량(
+50)·정성(55) 합계·적부 판정(105점 → 적격)    ·비고가 골든 데이터 기준으로 정확히 계산됨; DB 시트 5종(DB·DB_품목·DB_업체
+·DB_위원·DB_평가) 탭 순서가 학교정보 뒤·F-001 앞에 모여 있음; DB 시트 5종이 DB→DB_품목→DB_    업체→DB_위원→DB_평가 순서
+ 그대로 인접 배치됨
+ 

@@ -1,0 +1,28 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# @yao-pkg/pkg로 빌드한 단일 exe 산출물(약 295MB) — GitHub 파일당 100MB 제한 초과,
+# 리포지토리에 커밋하지 않고 별도 배포(학교 PC 직접 전달·GitHub Releases 첨부)로만 유통함
+deploy/dist-exe/
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

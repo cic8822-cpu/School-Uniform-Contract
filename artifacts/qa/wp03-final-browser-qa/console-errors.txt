@@ -1,0 +1,3 @@
+Invocation: tab.dev.logs({levels:['error','warn',limit:200}) after F-008, F-050, PDF generation, 320px and 1280px flows.
+Observed: [] (zero console errors and warnings).
+

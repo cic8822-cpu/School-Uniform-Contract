@@ -1,0 +1,1186 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-25",
+  "sources": [
+    "scripts/build_excel_v1_vba.ps1 frmContractGuide.초기화(stepNames/stepDescriptions/stepFormIDs/stepFormLabels)",
+    "scripts/build_excel_v1_structure.ps1 입찰계약절차안내 시트($flowRows, 보조 9단계)"
+  ],
+  "notes": [
+    "description·stepName은 Excel 원본 문자열을 그대로 이식함(요약·수정 금지).",
+    "formIds 순서는 Excel stepFormIDs 순서를 유지함(예: 입찰 1단계는 F-009,F-010,F-011,F-008,F-012 순).",
+    "formIds가 빈 배열인 단계는 Excel 원본에도 관련 서식이 없는 단계임.",
+    "assignee(학교/업체/공동)는 Excel 원본에 없는 값으로, 업무설명 문구의 주어에서 도출함 — 매뉴얼 확인 필요."
+  ],
+  "workflows": [
+    {
+      "workflowId": "WF-QUOTE1",
+      "popupContractType": "1인견적 수의계약",
+      "stepCount": 4,
+      "source": "scripts/build_excel_v1_vba.ps1 frmContractGuide.초기화 (Else 분기)",
+      "steps": [
+        {
+          "stepNo": 1,
+          "stepName": "견적 제출 요청",
+          "stepNameRaw": "1. 견적 제출 요청",
+          "description": "추정가격이 소액인 경우 1개 업체에 견적서 제출을 요청할 수 있습니다. 교복 사양서를 함께 제공합니다.",
+          "assignee": "학교",
+          "assigneeBasis": "업무설명 문구의 주어에서 도출(Excel 원본에 담당구분 필드 없음 — 매뉴얼 확인 필요)",
+          "formIds": [
+            "F-008",
+            "F-012"
+          ],
+          "formLabelsExcel": [
+            "교복사양서",
+            "계약특수조건"
+          ],
+          "checklistItems": [
+            {
+              "id": "WF-QUOTE1-01-01",
+              "text": "추정가격이 소액인 경우 1개 업체에 견적서 제출을 요청할 수 있습니다. 교복 사양서를 함께 제공합니다.",
+              "sourceRefs": [
+                {
+                  "document": "scripts/build_excel_v1_vba.ps1",
+                  "locator": "frmContractGuide.초기화 / WF-QUOTE1 / Step 1",
+                  "status": "source-preserving"
+                }
+              ],
+              "evidenceStatus": "source-preserving-extract"
+            }
+          ],
+          "cautions": [
+            {
+              "text": "계약방법별 적용 요건·기한·법령은 해당 매뉴얼과 현행 규정을 최종 확인합니다.",
+              "sourceRefs": [
+                {
+                  "document": "scripts/build_excel_v1_vba.ps1",
+                  "locator": "frmContractGuide.초기화 / WF-QUOTE1 / Step 1",
+                  "status": "source-preserving"
+                }
+              ],
+              "evidenceStatus": "manual-confirmation-required"
+            }
+          ],
+          "manualReferences": {
+            "document": "교복 매뉴얼 작성서식0908(안정구 추가)-1.hwpx",
+            "locator": "계약방법별 수의계약 전용 단계 미확인",
+            "status": "manual-confirmation-required",
+            "note": "Excel 안내문 이식 범위이며 법정 요건·기한은 담당자가 매뉴얼과 현행 규정을 확인"
+          }
+        },
+        {
+          "stepNo": 2,
+          "stepName": "계약 체결",
+          "stepNameRaw": "2. 계약 체결",
+          "description": "제출된 견적을 기준으로 계약을 체결합니다. 계약 특수조건(F-012)을 첨부합니다.",
+          "assignee": "학교",
+          "assigneeBasis": "업무설명 문구의 주어에서 도출(Excel 원본에 담당구분 필드 없음 — 매뉴얼 확인 필요)",
+          "formIds": [
+            "F-043",
+            "F-031"
+          ],
+          "formLabelsExcel": [
+            "계약체결",
+            "교복품목별금액표"
+          ],
+          "checklistItems": [
+            {
+              "id": "WF-QUOTE1-02-01",
+              "text": "제출된 견적을 기준으로 계약을 체결합니다. 계약 특수조건(F-012)을 첨부합니다.",
+              "sourceRefs": [
+                {
+                  "document": "scripts/build_excel_v1_vba.ps1",
+                  "locator": "frmContractGuide.초기화 / WF-QUOTE1 / Step 2",
+                  "status": "source-preserving"
+                }
+              ],
+              "evidenceStatus": "source-preserving-extract"
+            }
+          ],
+          "cautions": [
+            {
+              "text": "계약방법별 적용 요건·기한·법령은 해당 매뉴얼과 현행 규정을 최종 확인합니다.",
+              "sourceRefs": [
+                {
+                  "document": "scripts/build_excel_v1_vba.ps1",
+                  "locator": "frmContractGuide.초기화 / WF-QUOTE1 / Step 2",
+                  "status": "source-preserving"
+                }
+              ],
+              "evidenceStatus": "manual-confirmation-required"
+            }
+          ],
+          "manualReferences": {
+            "document": "교복 매뉴얼 작성서식0908(안정구 추가)-1.hwpx",
+            "locator": "계약방법별 수의계약 전용 단계 미확인",
+            "status": "manual-confirmation-required",
+            "note": "Excel 안내문 이식 범위이며 법정 요건·기한은 담당자가 매뉴얼과 현행 규정을 확인"
+          }
+        },
+        {
+          "stepNo": 3,
+          "stepName": "계약 이행·검사검수",
+          "stepNameRaw": "3. 계약 이행·검사검수",
+          "description": "공급자가 치수를 측정하고 교복을 제작·납품하면, 학교가 규격서 일치 여부를 검사·검수합니다.",
+          "assignee": "공동",
+          "assigneeBasis": "업무설명 문구의 주어에서 도출(Excel 원본에 담당구분 필드 없음 — 매뉴얼 확인 필요)",
+          "formIds": [],
+          "formLabelsExcel": [],
+          "checklistItems": [
+            {
+              "id": "WF-QUOTE1-03-01",
+              "text": "공급자가 치수를 측정하고 교복을 제작·납품하면, 학교가 규격서 일치 여부를 검사·검수합니다.",
+              "sourceRefs": [
+                {
+                  "document": "scripts/build_excel_v1_vba.ps1",
+                  "locator": "frmContractGuide.초기화 / WF-QUOTE1 / Step 3",
+                  "status": "source-preserving"
+                }
+              ],
+              "evidenceStatus": "source-preserving-extract"
+            }
+          ],
+          "cautions": [
+            {
+              "text": "계약방법별 적용 요건·기한·법령은 해당 매뉴얼과 현행 규정을 최종 확인합니다.",
+              "sourceRefs": [
+                {
+                  "document": "scripts/build_excel_v1_vba.ps1",
+                  "locator": "frmContractGuide.초기화 / WF-QUOTE1 / Step 3",
+                  "status": "source-preserving"
+                }
+              ],
+              "evidenceStatus": "manual-confirmation-required"
+            }
+          ],
+          "manualReferences": {
+            "document": "교복 매뉴얼 작성서식0908(안정구 추가)-1.hwpx",
+            "locator": "계약방법별 수의계약 전용 단계 미확인",
+            "status": "manual-confirmation-required",
+            "note": "Excel 안내문 이식 범위이며 법정 요건·기한은 담당자가 매뉴얼과 현행 규정을 확인"
+          }
+        },
+        {
+          "stepNo": 4,
+          "stepName": "대가 지급",
+          "stepNameRaw": "4. 대가 지급",
+          "description": "검사·검수 완료 후 대금을 지급합니다.",
+          "assignee": "학교",
+          "assigneeBasis": "업무설명 문구의 주어에서 도출(Excel 원본에 담당구분 필드 없음 — 매뉴얼 확인 필요)",
+          "formIds": [],
+          "formLabelsExcel": [],
+          "checklistItems": [
+            {
+              "id": "WF-QUOTE1-04-01",
+              "text": "검사·검수 완료 후 대금을 지급합니다.",
+              "sourceRefs": [
+                {
+                  "document": "scripts/build_excel_v1_vba.ps1",
+                  "locator": "frmContractGuide.초기화 / WF-QUOTE1 / Step 4",
+                  "status": "source-preserving"
+                }
+              ],
+              "evidenceStatus": "source-preserving-extract"
+            }
+          ],
+          "cautions": [
+            {
+              "text": "계약방법별 적용 요건·기한·법령은 해당 매뉴얼과 현행 규정을 최종 확인합니다.",
+              "sourceRefs": [
+                {
+                  "document": "scripts/build_excel_v1_vba.ps1",
+                  "locator": "frmContractGuide.초기화 / WF-QUOTE1 / Step 4",
+                  "status": "source-preserving"
+                }
+              ],
+              "evidenceStatus": "manual-confirmation-required"
+            }
+          ],
+          "manualReferences": {
+            "document": "교복 매뉴얼 작성서식0908(안정구 추가)-1.hwpx",
+            "locator": "계약방법별 수의계약 전용 단계 미확인",
+            "status": "manual-confirmation-required",
+            "note": "Excel 안내문 이식 범위이며 법정 요건·기한은 담당자가 매뉴얼과 현행 규정을 확인"
+          }
+        }
+      ],
+      "evidence": {
+        "evidenceStatus": "excel-guide-only",
+        "primarySource": "scripts/build_excel_v1_vba.ps1 frmContractGuide.초기화",
+        "manualReferences": {
+          "document": "교복 매뉴얼 작성서식0908(안정구 추가)-1.hwpx",
+          "locator": "계약방법별 수의계약 전용 단계 미확인",
+          "status": "manual-confirmation-required",
+          "note": "Excel 안내문 이식 범위이며 법정 요건·기한은 담당자가 매뉴얼과 현행 규정을 확인"
+        },
+        "displayPolicy": "Excel 안내 절차로 표시하고 매뉴얼 확인 필요 배지 표시"
+      },
+      "contractMethodScope": {
+        "confirmedContractMethodIds": "CM-01",
+        "referenceOnlyContractMethodIds": [],
+        "referenceOnlyBehavior": ""
+      }
+    },
+    {
+      "workflowId": "WF-QUOTE2",
+      "popupContractType": "2인견적 수의계약",
+      "stepCount": 5,
+      "source": "scripts/build_excel_v1_vba.ps1 frmContractGuide.초기화 (contractType = \"2인견적 수의계약\" 분기)",
+      "steps": [
+        {
+          "stepNo": 1,
+          "stepName": "견적 제출 요청",
+          "stepNameRaw": "1. 견적 제출 요청",
+          "description": "추정가격 기준에 맞는 2개 이상 업체에 견적서 제출을 요청합니다. 교복 사양서를 함께 제공해 동일한 조건으로 견적을 받습니다.",
+          "assignee": "학교",
+          "assigneeBasis": "업무설명 문구의 주어에서 도출(Excel 원본에 담당구분 필드 없음 — 매뉴얼 확인 필요)",
+          "formIds": [
+            "F-008",
+            "F-012"
+          ],
+          "formLabelsExcel": [
+            "교복사양서",
+            "계약특수조건"
+          ],
+          "checklistItems": [
+            {
+              "id": "WF-QUOTE2-01-01",
+              "text": "추정가격 기준에 맞는 2개 이상 업체에 견적서 제출을 요청합니다. 교복 사양서를 함께 제공해 동일한 조건으로 견적을 받습니다.",
+              "sourceRefs": [
+                {
+                  "document": "scripts/build_excel_v1_vba.ps1",
+                  "locator": "frmContractGuide.초기화 / WF-QUOTE2 / Step 1",
+                  "status": "source-preserving"
+                }
+              ],
+              "evidenceStatus": "source-preserving-extract"
+            }
+          ],
+          "cautions": [
+            {
+              "text": "계약방법별 적용 요건·기한·법령은 해당 매뉴얼과 현행 규정을 최종 확인합니다.",
+              "sourceRefs": [
+                {
+                  "document": "scripts/build_excel_v1_vba.ps1",
+                  "locator": "frmContractGuide.초기화 / WF-QUOTE2 / Step 1",
+                  "status": "source-preserving"
+                }
+              ],
+              "evidenceStatus": "manual-confirmation-required"
+            }
+          ],
+          "manualReferences": {
+            "document": "교복 매뉴얼 작성서식0908(안정구 추가)-1.hwpx",
+            "locator": "계약방법별 수의계약 전용 단계 미확인",
+            "status": "manual-confirmation-required",
+            "note": "Excel 안내문 이식 범위이며 법정 요건·기한은 담당자가 매뉴얼과 현행 규정을 확인"
+          }
+        },
+        {
+          "stepNo": 2,
+          "stepName": "견적서 접수·비교",
+          "stepNameRaw": "2. 견적서 접수·비교",
+          "description": "제출된 견적서를 비교해 가장 유리한 조건의 업체를 선정합니다. 견적 비교 근거는 관련 서류로 남겨 둡니다.",
+          "assignee": "학교",
+          "assigneeBasis": "업무설명 문구의 주어에서 도출(Excel 원본에 담당구분 필드 없음 — 매뉴얼 확인 필요)",
+          "formIds": [],
+          "formLabelsExcel": [],
+          "checklistItems": [
+            {
+              "id": "WF-QUOTE2-02-01",
+              "text": "제출된 견적서를 비교해 가장 유리한 조건의 업체를 선정합니다. 견적 비교 근거는 관련 서류로 남겨 둡니다.",
+              "sourceRefs": [
+                {
+                  "document": "scripts/build_excel_v1_vba.ps1",
+                  "locator": "frmContractGuide.초기화 / WF-QUOTE2 / Step 2",
+                  "status": "source-preserving"
+                }
+              ],
+              "evidenceStatus": "source-preserving-extract"
+            }
+          ],
+          "cautions": [
+            {
+              "text": "계약방법별 적용 요건·기한·법령은 해당 매뉴얼과 현행 규정을 최종 확인합니다.",
+              "sourceRefs": [
+                {
+                  "document": "scripts/build_excel_v1_vba.ps1",
+                  "locator": "frmContractGuide.초기화 / WF-QUOTE2 / Step 2",
+                  "status": "source-preserving"
+                }
+              ],
+              "evidenceStatus": "manual-confirmation-required"
+            }
+          ],
+          "manualReferences": {
+            "document": "교복 매뉴얼 작성서식0908(안정구 추가)-1.hwpx",
+            "locator": "계약방법별 수의계약 전용 단계 미확인",
+            "status": "manual-confirmation-required",
+            "note": "Excel 안내문 이식 범위이며 법정 요건·기한은 담당자가 매뉴얼과 현행 규정을 확인"
+          }
+        },
+        {
+          "stepNo": 3,
+          "stepName": "계약 체결",
+          "stepNameRaw": "3. 계약 체결",
+          "description": "선정된 업체와 계약을 체결합니다. 계약 특수조건(F-012)을 첨부하고 계약금액은 견적가x예정수량으로 산정합니다.",
+          "assignee": "학교",
+          "assigneeBasis": "업무설명 문구의 주어에서 도출(Excel 원본에 담당구분 필드 없음 — 매뉴얼 확인 필요)",
+          "formIds": [
+            "F-043",
+            "F-031"
+          ],
+          "formLabelsExcel": [
+            "계약체결",
+            "교복품목별금액표"
+          ],
+          "checklistItems": [
+            {
+              "id": "WF-QUOTE2-03-01",
+              "text": "선정된 업체와 계약을 체결합니다. 계약 특수조건(F-012)을 첨부하고 계약금액은 견적가x예정수량으로 산정합니다.",
+              "sourceRefs": [
+                {
+                  "document": "scripts/build_excel_v1_vba.ps1",
+                  "locator": "frmContractGuide.초기화 / WF-QUOTE2 / Step 3",
+                  "status": "source-preserving"
+                }
+              ],
+              "evidenceStatus": "source-preserving-extract"
+            }
+          ],
+          "cautions": [
+            {
+              "text": "계약방법별 적용 요건·기한·법령은 해당 매뉴얼과 현행 규정을 최종 확인합니다.",
+              "sourceRefs": [
+                {
+                  "document": "scripts/build_excel_v1_vba.ps1",
+                  "locator": "frmContractGuide.초기화 / WF-QUOTE2 / Step 3",
+                  "status": "source-preserving"
+                }
+              ],
+              "evidenceStatus": "manual-confirmation-required"
+            }
+          ],
+          "manualReferences": {
+            "document": "교복 매뉴얼 작성서식0908(안정구 추가)-1.hwpx",
+            "locator": "계약방법별 수의계약 전용 단계 미확인",
+            "status": "manual-confirmation-required",
+            "note": "Excel 안내문 이식 범위이며 법정 요건·기한은 담당자가 매뉴얼과 현행 규정을 확인"
+          }
+        },
+        {
+          "stepNo": 4,
+          "stepName": "계약 이행·검사검수",
+          "stepNameRaw": "4. 계약 이행·검사검수",
+          "description": "공급자가 치수를 측정하고 교복을 제작·납품하면, 학교가 규격서 일치 여부를 검사·검수합니다.",
+          "assignee": "공동",
+          "assigneeBasis": "업무설명 문구의 주어에서 도출(Excel 원본에 담당구분 필드 없음 — 매뉴얼 확인 필요)",
+          "formIds": [],
+          "formLabelsExcel": [],
+          "checklistItems": [
+            {
+              "id": "WF-QUOTE2-04-01",
+              "text": "공급자가 치수를 측정하고 교복을 제작·납품하면, 학교가 규격서 일치 여부를 검사·검수합니다.",
+              "sourceRefs": [
+                {
+                  "document": "scripts/build_excel_v1_vba.ps1",
+                  "locator": "frmContractGuide.초기화 / WF-QUOTE2 / Step 4",
+                  "status": "source-preserving"
+                }
+              ],
+              "evidenceStatus": "source-preserving-extract"
+            }
+          ],
+          "cautions": [
+            {
+              "text": "계약방법별 적용 요건·기한·법령은 해당 매뉴얼과 현행 규정을 최종 확인합니다.",
+              "sourceRefs": [
+                {
+                  "document": "scripts/build_excel_v1_vba.ps1",
+                  "locator": "frmContractGuide.초기화 / WF-QUOTE2 / Step 4",
+                  "status": "source-preserving"
+                }
+              ],
+              "evidenceStatus": "manual-confirmation-required"
+            }
+          ],
+          "manualReferences": {
+            "document": "교복 매뉴얼 작성서식0908(안정구 추가)-1.hwpx",
+            "locator": "계약방법별 수의계약 전용 단계 미확인",
+            "status": "manual-confirmation-required",
+            "note": "Excel 안내문 이식 범위이며 법정 요건·기한은 담당자가 매뉴얼과 현행 규정을 확인"
+          }
+        },
+        {
+          "stepNo": 5,
+          "stepName": "대가 지급",
+          "stepNameRaw": "5. 대가 지급",
+          "description": "검사·검수 완료 후 대금을 지급합니다.",
+          "assignee": "학교",
+          "assigneeBasis": "업무설명 문구의 주어에서 도출(Excel 원본에 담당구분 필드 없음 — 매뉴얼 확인 필요)",
+          "formIds": [],
+          "formLabelsExcel": [],
+          "checklistItems": [
+            {
+              "id": "WF-QUOTE2-05-01",
+              "text": "검사·검수 완료 후 대금을 지급합니다.",
+              "sourceRefs": [
+                {
+                  "document": "scripts/build_excel_v1_vba.ps1",
+                  "locator": "frmContractGuide.초기화 / WF-QUOTE2 / Step 5",
+                  "status": "source-preserving"
+                }
+              ],
+              "evidenceStatus": "source-preserving-extract"
+            }
+          ],
+          "cautions": [
+            {
+              "text": "계약방법별 적용 요건·기한·법령은 해당 매뉴얼과 현행 규정을 최종 확인합니다.",
+              "sourceRefs": [
+                {
+                  "document": "scripts/build_excel_v1_vba.ps1",
+                  "locator": "frmContractGuide.초기화 / WF-QUOTE2 / Step 5",
+                  "status": "source-preserving"
+                }
+              ],
+              "evidenceStatus": "manual-confirmation-required"
+            }
+          ],
+          "manualReferences": {
+            "document": "교복 매뉴얼 작성서식0908(안정구 추가)-1.hwpx",
+            "locator": "계약방법별 수의계약 전용 단계 미확인",
+            "status": "manual-confirmation-required",
+            "note": "Excel 안내문 이식 범위이며 법정 요건·기한은 담당자가 매뉴얼과 현행 규정을 확인"
+          }
+        }
+      ],
+      "evidence": {
+        "evidenceStatus": "excel-guide-only",
+        "primarySource": "scripts/build_excel_v1_vba.ps1 frmContractGuide.초기화",
+        "manualReferences": {
+          "document": "교복 매뉴얼 작성서식0908(안정구 추가)-1.hwpx",
+          "locator": "계약방법별 수의계약 전용 단계 미확인",
+          "status": "manual-confirmation-required",
+          "note": "Excel 안내문 이식 범위이며 법정 요건·기한은 담당자가 매뉴얼과 현행 규정을 확인"
+        },
+        "displayPolicy": "Excel 안내 절차로 표시하고 매뉴얼 확인 필요 배지 표시"
+      },
+      "contractMethodScope": {
+        "confirmedContractMethodIds": "CM-02",
+        "referenceOnlyContractMethodIds": [],
+        "referenceOnlyBehavior": ""
+      }
+    },
+    {
+      "workflowId": "WF-BID",
+      "popupContractType": "입찰계약",
+      "stepCount": 11,
+      "source": "scripts/build_excel_v1_vba.ps1 frmContractGuide.초기화 (contractType = \"입찰계약\" 분기)",
+      "steps": [
+        {
+          "stepNo": 1,
+          "stepName": "입찰공고문 작성",
+          "stepNameRaw": "1. 입찰공고문 작성",
+          "description": "교복 사양서와 함께 입찰공고문을 작성해 학교 누리집 및 국가종합전자조달시스템(나라장터, G2B)에 게재합니다. 2단계 입찰(규격·가격 동시)이 원칙이며, 규격제안서는 학교에 직접 제출, 가격입찰서는 G2B로 제출합니다.",
+          "assignee": "학교",
+          "assigneeBasis": "업무설명 문구의 주어에서 도출(Excel 원본에 담당구분 필드 없음 — 매뉴얼 확인 필요)",
+          "formIds": [
+            "F-009",
+            "F-010",
+            "F-011",
+            "F-008",
+            "F-012"
+          ],
+          "formLabelsExcel": [
+            "기초금액계약방법결정",
+            "사전규격공개기안문",
+            "입찰공고",
+            "교복사양서",
+            "계약특수조건"
+          ],
+          "checklistItems": [
+            {
+              "id": "WF-BID-01-01",
+              "text": "교복 사양서와 함께 입찰공고문을 작성해 학교 누리집 및 국가종합전자조달시스템(나라장터, G2B)에 게재합니다. 2단계 입찰(규격·가격 동시)이 원칙이며, 규격제안서는 학교에 직접 제출, 가격입찰서는 G2B로 제출합니다.",
+              "sourceRefs": [
+                {
+                  "document": "scripts/build_excel_v1_vba.ps1",
+                  "locator": "frmContractGuide.초기화 / WF-BID / Step 1",
+                  "status": "source-preserving"
+                }
+              ],
+              "evidenceStatus": "source-preserving-extract"
+            }
+          ],
+          "cautions": [
+            {
+              "text": "계약방법별 적용 요건·기한·법령은 해당 매뉴얼과 현행 규정을 최종 확인합니다.",
+              "sourceRefs": [
+                {
+                  "document": "scripts/build_excel_v1_vba.ps1",
+                  "locator": "frmContractGuide.초기화 / WF-BID / Step 1",
+                  "status": "source-preserving"
+                }
+              ],
+              "evidenceStatus": "manual-section-confirmed"
+            }
+          ],
+          "manualReferences": {
+            "document": "교복 매뉴얼 작성서식0908(안정구 추가)-1.hwpx",
+            "locator": "3 추진 절차 개요 및 교복 납품 사업자 선정",
+            "status": "source-confirmed",
+            "note": "2단계 입찰(품질→가격) 절차 근거"
+          }
+        },
+        {
+          "stepNo": 2,
+          "stepName": "지정정보처리장치 공고",
+          "stepNameRaw": "2. 지정정보처리장치 공고",
+          "description": "국가종합전자조달시스템(나라장터, G2B)에 입찰공고를 게재합니다. 이용자 등록을 마친 업체만 참여할 수 있으며, 전자입찰특별유의서 제7조에 따른 신원확인 입찰이 적용됩니다.",
+          "assignee": "학교",
+          "assigneeBasis": "업무설명 문구의 주어에서 도출(Excel 원본에 담당구분 필드 없음 — 매뉴얼 확인 필요)",
+          "formIds": [
+            "F-011"
+          ],
+          "formLabelsExcel": [
+            "입찰공고"
+          ],
+          "checklistItems": [
+            {
+              "id": "WF-BID-02-01",
+              "text": "국가종합전자조달시스템(나라장터, G2B)에 입찰공고를 게재합니다. 이용자 등록을 마친 업체만 참여할 수 있으며, 전자입찰특별유의서 제7조에 따른 신원확인 입찰이 적용됩니다.",
+              "sourceRefs": [
+                {
+                  "document": "scripts/build_excel_v1_vba.ps1",
+                  "locator": "frmContractGuide.초기화 / WF-BID / Step 2",
+                  "status": "source-preserving"
+                }
+              ],
+              "evidenceStatus": "source-preserving-extract"
+            }
+          ],
+          "cautions": [
+            {
+              "text": "계약방법별 적용 요건·기한·법령은 해당 매뉴얼과 현행 규정을 최종 확인합니다.",
+              "sourceRefs": [
+                {
+                  "document": "scripts/build_excel_v1_vba.ps1",
+                  "locator": "frmContractGuide.초기화 / WF-BID / Step 2",
+                  "status": "source-preserving"
+                }
+              ],
+              "evidenceStatus": "manual-section-confirmed"
+            }
+          ],
+          "manualReferences": {
+            "document": "교복 매뉴얼 작성서식0908(안정구 추가)-1.hwpx",
+            "locator": "3 추진 절차 개요 및 교복 납품 사업자 선정",
+            "status": "source-confirmed",
+            "note": "2단계 입찰(품질→가격) 절차 근거"
+          }
+        },
+        {
+          "stepNo": 3,
+          "stepName": "입찰(제안서 제출)",
+          "stepNameRaw": "3. 입찰(제안서 제출)",
+          "description": "업체가 제출서류 자기확인서, 입찰참가신청서, 납품 제안서, 실적표, 제조 사양서, 단가 비율표, A/S 계획서 등을 제출합니다. 규격제안서는 블라인드 심사를 위해 업체명·표시를 제거합니다.",
+          "assignee": "업체",
+          "assigneeBasis": "업무설명 문구의 주어에서 도출(Excel 원본에 담당구분 필드 없음 — 매뉴얼 확인 필요)",
+          "formIds": [
+            "F-017",
+            "F-018",
+            "F-019",
+            "F-020",
+            "F-021",
+            "F-022",
+            "F-023",
+            "F-024",
+            "F-025",
+            "F-027",
+            "F-029",
+            "F-030"
+          ],
+          "formLabelsExcel": [
+            "제출서류자기확인서",
+            "정량적평가자기평점표",
+            "입찰참가신청서",
+            "입찰참가신고서",
+            "교복납품제안서",
+            "교복납품실적표",
+            "교복제조사양서",
+            "단가비율표",
+            "교복AS계획서",
+            "위임장",
+            "개인정보제공동의서",
+            "청렴계약이행서약서"
+          ],
+          "checklistItems": [
+            {
+              "id": "WF-BID-03-01",
+              "text": "업체가 제출서류 자기확인서, 입찰참가신청서, 납품 제안서, 실적표, 제조 사양서, 단가 비율표, A/S 계획서 등을 제출합니다. 규격제안서는 블라인드 심사를 위해 업체명·표시를 제거합니다.",
+              "sourceRefs": [
+                {
+                  "document": "scripts/build_excel_v1_vba.ps1",
+                  "locator": "frmContractGuide.초기화 / WF-BID / Step 3",
+                  "status": "source-preserving"
+                }
+              ],
+              "evidenceStatus": "source-preserving-extract"
+            }
+          ],
+          "cautions": [
+            {
+              "text": "계약방법별 적용 요건·기한·법령은 해당 매뉴얼과 현행 규정을 최종 확인합니다.",
+              "sourceRefs": [
+                {
+                  "document": "scripts/build_excel_v1_vba.ps1",
+                  "locator": "frmContractGuide.초기화 / WF-BID / Step 3",
+                  "status": "source-preserving"
+                }
+              ],
+              "evidenceStatus": "manual-section-confirmed"
+            }
+          ],
+          "manualReferences": {
+            "document": "교복 매뉴얼 작성서식0908(안정구 추가)-1.hwpx",
+            "locator": "3 추진 절차 개요 및 교복 납품 사업자 선정",
+            "status": "source-confirmed",
+            "note": "2단계 입찰(품질→가격) 절차 근거"
+          }
+        },
+        {
+          "stepNo": 4,
+          "stepName": "규격(적격)심사",
+          "stepNameRaw": "4. 규격(적격)심사",
+          "description": "교복선정위원회가 제안서 평가항목·배점기준에 따라 정량·정성 평가를 실시합니다(2단계 입찰의 1단계: 규격제안서만 먼저 평가). 종합평점이 기준(적격) 이상인 업체만 다음 단계(가격 개찰) 대상이 됩니다.",
+          "assignee": "학교",
+          "assigneeBasis": "업무설명 문구의 주어에서 도출(Excel 원본에 담당구분 필드 없음 — 매뉴얼 확인 필요)",
+          "formIds": [
+            "F-014",
+            "F-015",
+            "F-016",
+            "F-032",
+            "F-033",
+            "F-034",
+            "F-035",
+            "F-036",
+            "F-037",
+            "F-038",
+            "F-039",
+            "F-040"
+          ],
+          "formLabelsExcel": [
+            "평가항목배점기준",
+            "정량적평가",
+            "정성적평가",
+            "제안서접수결과",
+            "제안서접수대장",
+            "평가위원회개최",
+            "정량평가결과",
+            "제안서평가결과",
+            "평가위원회참석등록부",
+            "업체참가등록부",
+            "업체별제안서평가표",
+            "위원청렴보안서약서"
+          ],
+          "checklistItems": [
+            {
+              "id": "WF-BID-04-01",
+              "text": "교복선정위원회가 제안서 평가항목·배점기준에 따라 정량·정성 평가를 실시합니다(2단계 입찰의 1단계: 규격제안서만 먼저 평가). 종합평점이 기준(적격) 이상인 업체만 다음 단계(가격 개찰) 대상이 됩니다.",
+              "sourceRefs": [
+                {
+                  "document": "scripts/build_excel_v1_vba.ps1",
+                  "locator": "frmContractGuide.초기화 / WF-BID / Step 4",
+                  "status": "source-preserving"
+                }
+              ],
+              "evidenceStatus": "source-preserving-extract"
+            }
+          ],
+          "cautions": [
+            {
+              "text": "계약방법별 적용 요건·기한·법령은 해당 매뉴얼과 현행 규정을 최종 확인합니다.",
+              "sourceRefs": [
+                {
+                  "document": "scripts/build_excel_v1_vba.ps1",
+                  "locator": "frmContractGuide.초기화 / WF-BID / Step 4",
+                  "status": "source-preserving"
+                }
+              ],
+              "evidenceStatus": "manual-section-confirmed"
+            }
+          ],
+          "manualReferences": {
+            "document": "교복 매뉴얼 작성서식0908(안정구 추가)-1.hwpx",
+            "locator": "3 추진 절차 개요 및 교복 납품 사업자 선정",
+            "status": "source-confirmed",
+            "note": "2단계 입찰(품질→가격) 절차 근거"
+          }
+        },
+        {
+          "stepNo": 5,
+          "stepName": "가격 개찰",
+          "stepNameRaw": "5. 가격 개찰",
+          "description": "규격(적격)심사를 통과한 업체에 한해서만 G2B에 제출된 가격입찰서를 개찰합니다(2단계 입찰의 2단계: 가격은 규격 통과 업체만 개봉). 예정가격 이하 최저가 입찰자를 낙찰자로 선정합니다.",
+          "assignee": "학교",
+          "assigneeBasis": "업무설명 문구의 주어에서 도출(Excel 원본에 담당구분 필드 없음 — 매뉴얼 확인 필요)",
+          "formIds": [],
+          "formLabelsExcel": [],
+          "checklistItems": [
+            {
+              "id": "WF-BID-05-01",
+              "text": "규격(적격)심사를 통과한 업체에 한해서만 G2B에 제출된 가격입찰서를 개찰합니다(2단계 입찰의 2단계: 가격은 규격 통과 업체만 개봉). 예정가격 이하 최저가 입찰자를 낙찰자로 선정합니다.",
+              "sourceRefs": [
+                {
+                  "document": "scripts/build_excel_v1_vba.ps1",
+                  "locator": "frmContractGuide.초기화 / WF-BID / Step 5",
+                  "status": "source-preserving"
+                }
+              ],
+              "evidenceStatus": "source-preserving-extract"
+            }
+          ],
+          "cautions": [
+            {
+              "text": "계약방법별 적용 요건·기한·법령은 해당 매뉴얼과 현행 규정을 최종 확인합니다.",
+              "sourceRefs": [
+                {
+                  "document": "scripts/build_excel_v1_vba.ps1",
+                  "locator": "frmContractGuide.초기화 / WF-BID / Step 5",
+                  "status": "source-preserving"
+                }
+              ],
+              "evidenceStatus": "manual-section-confirmed"
+            }
+          ],
+          "manualReferences": {
+            "document": "교복 매뉴얼 작성서식0908(안정구 추가)-1.hwpx",
+            "locator": "3 추진 절차 개요 및 교복 납품 사업자 선정",
+            "status": "source-confirmed",
+            "note": "2단계 입찰(품질→가격) 절차 근거"
+          }
+        },
+        {
+          "stepNo": 6,
+          "stepName": "낙찰자 결정",
+          "stepNameRaw": "6. 낙찰자 결정",
+          "description": "적격심사를 통과한 최저가 입찰자를 낙찰자로 결정합니다. 상호·법인 명칭, 대표자 등록 사항 등 업체정보를 확인해 결격 여부를 판단합니다.",
+          "assignee": "학교",
+          "assigneeBasis": "업무설명 문구의 주어에서 도출(Excel 원본에 담당구분 필드 없음 — 매뉴얼 확인 필요)",
+          "formIds": [
+            "F-041"
+          ],
+          "formLabelsExcel": [
+            "낙찰자결정"
+          ],
+          "checklistItems": [
+            {
+              "id": "WF-BID-06-01",
+              "text": "적격심사를 통과한 최저가 입찰자를 낙찰자로 결정합니다. 상호·법인 명칭, 대표자 등록 사항 등 업체정보를 확인해 결격 여부를 판단합니다.",
+              "sourceRefs": [
+                {
+                  "document": "scripts/build_excel_v1_vba.ps1",
+                  "locator": "frmContractGuide.초기화 / WF-BID / Step 6",
+                  "status": "source-preserving"
+                }
+              ],
+              "evidenceStatus": "source-preserving-extract"
+            }
+          ],
+          "cautions": [
+            {
+              "text": "계약방법별 적용 요건·기한·법령은 해당 매뉴얼과 현행 규정을 최종 확인합니다.",
+              "sourceRefs": [
+                {
+                  "document": "scripts/build_excel_v1_vba.ps1",
+                  "locator": "frmContractGuide.초기화 / WF-BID / Step 6",
+                  "status": "source-preserving"
+                }
+              ],
+              "evidenceStatus": "manual-section-confirmed"
+            }
+          ],
+          "manualReferences": {
+            "document": "교복 매뉴얼 작성서식0908(안정구 추가)-1.hwpx",
+            "locator": "3 추진 절차 개요 및 교복 납품 사업자 선정",
+            "status": "source-confirmed",
+            "note": "2단계 입찰(품질→가격) 절차 근거"
+          }
+        },
+        {
+          "stepNo": 7,
+          "stepName": "계약 체결",
+          "stepNameRaw": "7. 계약 체결",
+          "description": "낙찰자에게 결과를 통보하고 계약을 체결합니다. 계약금액은 낙찰단가x예정수량으로 계산하며, 계약 특수조건(F-012)을 첨부합니다.",
+          "assignee": "학교",
+          "assigneeBasis": "업무설명 문구의 주어에서 도출(Excel 원본에 담당구분 필드 없음 — 매뉴얼 확인 필요)",
+          "formIds": [
+            "F-042",
+            "F-043",
+            "F-031"
+          ],
+          "formLabelsExcel": [
+            "낙찰자결정통보",
+            "계약체결",
+            "교복품목별금액표"
+          ],
+          "checklistItems": [
+            {
+              "id": "WF-BID-07-01",
+              "text": "낙찰자에게 결과를 통보하고 계약을 체결합니다. 계약금액은 낙찰단가x예정수량으로 계산하며, 계약 특수조건(F-012)을 첨부합니다.",
+              "sourceRefs": [
+                {
+                  "document": "scripts/build_excel_v1_vba.ps1",
+                  "locator": "frmContractGuide.초기화 / WF-BID / Step 7",
+                  "status": "source-preserving"
+                }
+              ],
+              "evidenceStatus": "source-preserving-extract"
+            }
+          ],
+          "cautions": [
+            {
+              "text": "계약방법별 적용 요건·기한·법령은 해당 매뉴얼과 현행 규정을 최종 확인합니다.",
+              "sourceRefs": [
+                {
+                  "document": "scripts/build_excel_v1_vba.ps1",
+                  "locator": "frmContractGuide.초기화 / WF-BID / Step 7",
+                  "status": "source-preserving"
+                }
+              ],
+              "evidenceStatus": "manual-section-confirmed"
+            }
+          ],
+          "manualReferences": {
+            "document": "교복 매뉴얼 작성서식0908(안정구 추가)-1.hwpx",
+            "locator": "3 추진 절차 개요 및 교복 납품 사업자 선정",
+            "status": "source-confirmed",
+            "note": "2단계 입찰(품질→가격) 절차 근거"
+          }
+        },
+        {
+          "stepNo": 8,
+          "stepName": "계약 이행",
+          "stepNameRaw": "8. 계약 이행",
+          "description": "공급자가 학생 신체 치수를 측정하고 교복을 제작·납품합니다(계약특수조건 제1~2조). 신입생·재학생·전입생의 추가 구매 요청에도 계약 단가로 대응해야 합니다.",
+          "assignee": "업체",
+          "assigneeBasis": "업무설명 문구의 주어에서 도출(Excel 원본에 담당구분 필드 없음 — 매뉴얼 확인 필요)",
+          "formIds": [],
+          "formLabelsExcel": [],
+          "checklistItems": [
+            {
+              "id": "WF-BID-08-01",
+              "text": "공급자가 학생 신체 치수를 측정하고 교복을 제작·납품합니다(계약특수조건 제1~2조). 신입생·재학생·전입생의 추가 구매 요청에도 계약 단가로 대응해야 합니다.",
+              "sourceRefs": [
+                {
+                  "document": "scripts/build_excel_v1_vba.ps1",
+                  "locator": "frmContractGuide.초기화 / WF-BID / Step 8",
+                  "status": "source-preserving"
+                }
+              ],
+              "evidenceStatus": "source-preserving-extract"
+            }
+          ],
+          "cautions": [
+            {
+              "text": "계약방법별 적용 요건·기한·법령은 해당 매뉴얼과 현행 규정을 최종 확인합니다.",
+              "sourceRefs": [
+                {
+                  "document": "scripts/build_excel_v1_vba.ps1",
+                  "locator": "frmContractGuide.초기화 / WF-BID / Step 8",
+                  "status": "source-preserving"
+                }
+              ],
+              "evidenceStatus": "manual-section-confirmed"
+            }
+          ],
+          "manualReferences": {
+            "document": "교복 매뉴얼 작성서식0908(안정구 추가)-1.hwpx",
+            "locator": "3 추진 절차 개요 및 교복 납품 사업자 선정",
+            "status": "source-confirmed",
+            "note": "2단계 입찰(품질→가격) 절차 근거"
+          }
+        },
+        {
+          "stepNo": 9,
+          "stepName": "검사·검수",
+          "stepNameRaw": "9. 검사·검수",
+          "description": "학교가 납품된 교복이 규격서와 일치하는지 검사·검수합니다(계약특수조건 제6조). 최종납품확인서 제출과 학교의 검사·검수 합격이 있어야 납품이 완료됩니다.",
+          "assignee": "학교",
+          "assigneeBasis": "업무설명 문구의 주어에서 도출(Excel 원본에 담당구분 필드 없음 — 매뉴얼 확인 필요)",
+          "formIds": [],
+          "formLabelsExcel": [],
+          "checklistItems": [
+            {
+              "id": "WF-BID-09-01",
+              "text": "학교가 납품된 교복이 규격서와 일치하는지 검사·검수합니다(계약특수조건 제6조). 최종납품확인서 제출과 학교의 검사·검수 합격이 있어야 납품이 완료됩니다.",
+              "sourceRefs": [
+                {
+                  "document": "scripts/build_excel_v1_vba.ps1",
+                  "locator": "frmContractGuide.초기화 / WF-BID / Step 9",
+                  "status": "source-preserving"
+                }
+              ],
+              "evidenceStatus": "source-preserving-extract"
+            }
+          ],
+          "cautions": [
+            {
+              "text": "계약방법별 적용 요건·기한·법령은 해당 매뉴얼과 현행 규정을 최종 확인합니다.",
+              "sourceRefs": [
+                {
+                  "document": "scripts/build_excel_v1_vba.ps1",
+                  "locator": "frmContractGuide.초기화 / WF-BID / Step 9",
+                  "status": "source-preserving"
+                }
+              ],
+              "evidenceStatus": "manual-section-confirmed"
+            }
+          ],
+          "manualReferences": {
+            "document": "교복 매뉴얼 작성서식0908(안정구 추가)-1.hwpx",
+            "locator": "3 추진 절차 개요 및 교복 납품 사업자 선정",
+            "status": "source-confirmed",
+            "note": "2단계 입찰(품질→가격) 절차 근거"
+          }
+        },
+        {
+          "stepNo": 10,
+          "stepName": "대가 지급",
+          "stepNameRaw": "10. 대가 지급",
+          "description": "검사·검수 완료 후 공급자의 청구에 따라 5일 이내(토·공휴일 제외) 대금을 지급합니다(계약특수조건 제12조).",
+          "assignee": "학교",
+          "assigneeBasis": "업무설명 문구의 주어에서 도출(Excel 원본에 담당구분 필드 없음 — 매뉴얼 확인 필요)",
+          "formIds": [],
+          "formLabelsExcel": [],
+          "checklistItems": [
+            {
+              "id": "WF-BID-10-01",
+              "text": "검사·검수 완료 후 공급자의 청구에 따라 5일 이내(토·공휴일 제외) 대금을 지급합니다(계약특수조건 제12조).",
+              "sourceRefs": [
+                {
+                  "document": "scripts/build_excel_v1_vba.ps1",
+                  "locator": "frmContractGuide.초기화 / WF-BID / Step 10",
+                  "status": "source-preserving"
+                }
+              ],
+              "evidenceStatus": "source-preserving-extract"
+            }
+          ],
+          "cautions": [
+            {
+              "text": "계약방법별 적용 요건·기한·법령은 해당 매뉴얼과 현행 규정을 최종 확인합니다.",
+              "sourceRefs": [
+                {
+                  "document": "scripts/build_excel_v1_vba.ps1",
+                  "locator": "frmContractGuide.초기화 / WF-BID / Step 10",
+                  "status": "source-preserving"
+                }
+              ],
+              "evidenceStatus": "manual-section-confirmed"
+            }
+          ],
+          "manualReferences": {
+            "document": "교복 매뉴얼 작성서식0908(안정구 추가)-1.hwpx",
+            "locator": "3 추진 절차 개요 및 교복 납품 사업자 선정",
+            "status": "source-confirmed",
+            "note": "2단계 입찰(품질→가격) 절차 근거"
+          }
+        },
+        {
+          "stepNo": 11,
+          "stepName": "변경계약",
+          "stepNameRaw": "11. 변경계약",
+          "description": "원단 시장가격 변동 등을 사유로 계약금액이나 단가를 임의로 변경할 수 없습니다(계약특수조건 제13조). 부득이한 변경이 필요하면 학교와 공급자가 협의해 별도 절차를 거칩니다.",
+          "assignee": "공동",
+          "assigneeBasis": "업무설명 문구의 주어에서 도출(Excel 원본에 담당구분 필드 없음 — 매뉴얼 확인 필요)",
+          "formIds": [],
+          "formLabelsExcel": [],
+          "checklistItems": [
+            {
+              "id": "WF-BID-11-01",
+              "text": "원단 시장가격 변동 등을 사유로 계약금액이나 단가를 임의로 변경할 수 없습니다(계약특수조건 제13조). 부득이한 변경이 필요하면 학교와 공급자가 협의해 별도 절차를 거칩니다.",
+              "sourceRefs": [
+                {
+                  "document": "scripts/build_excel_v1_vba.ps1",
+                  "locator": "frmContractGuide.초기화 / WF-BID / Step 11",
+                  "status": "source-preserving"
+                }
+              ],
+              "evidenceStatus": "source-preserving-extract"
+            }
+          ],
+          "cautions": [
+            {
+              "text": "계약방법별 적용 요건·기한·법령은 해당 매뉴얼과 현행 규정을 최종 확인합니다.",
+              "sourceRefs": [
+                {
+                  "document": "scripts/build_excel_v1_vba.ps1",
+                  "locator": "frmContractGuide.초기화 / WF-BID / Step 11",
+                  "status": "source-preserving"
+                }
+              ],
+              "evidenceStatus": "manual-section-confirmed"
+            }
+          ],
+          "manualReferences": {
+            "document": "교복 매뉴얼 작성서식0908(안정구 추가)-1.hwpx",
+            "locator": "3 추진 절차 개요 및 교복 납품 사업자 선정",
+            "status": "source-confirmed",
+            "note": "2단계 입찰(품질→가격) 절차 근거"
+          }
+        }
+      ],
+      "evidence": {
+        "evidenceStatus": "manual-section-confirmed",
+        "primarySource": "scripts/build_excel_v1_vba.ps1 frmContractGuide.초기화",
+        "manualReferences": {
+          "document": "교복 매뉴얼 작성서식0908(안정구 추가)-1.hwpx",
+          "locator": "3 추진 절차 개요 및 교복 납품 사업자 선정",
+          "status": "source-confirmed",
+          "note": "2단계 입찰(품질→가격) 절차 근거"
+        },
+        "displayPolicy": "절차 안내와 함께 매뉴얼 근거 표시"
+      },
+      "contractMethodScope": {
+        "confirmedContractMethodIds": [
+          "CM-03"
+        ],
+        "referenceOnlyContractMethodIds": [
+          "CM-04"
+        ],
+        "referenceOnlyBehavior": "CM-04는 확정 Stepper 진행을 막고 매뉴얼 확인 안내 및 관련 서식 탐색만 제공"
+      }
+    }
+  ],
+  "standardPhases": {
+    "source": "입찰계약절차안내 시트(Excel) — 계약방법 공통 9단계 참고 흐름. 계약절차 Stepper의 원천이 아니라 서식함 업무단계 필터·미연결 서식 안내용 보조 데이터임",
+    "phases": [
+      {
+        "phase": "1. 준비",
+        "todo": "교복선정위원회 구성 및 구매 추진계획 수립",
+        "formRangeRaw": "F-001~F-006",
+        "formIds": [
+          "F-001",
+          "F-002",
+          "F-003",
+          "F-004",
+          "F-005",
+          "F-006"
+        ],
+        "representativeFormId": "F-001"
+      },
+      {
+        "phase": "2. 심의",
+        "todo": "학교운영위원회 심의안 상정 및 심의",
+        "formRangeRaw": "F-006",
+        "formIds": [
+          "F-006"
+        ],
+        "representativeFormId": "F-006"
+      },
+      {
+        "phase": "3. 구매요청·기초조사",
+        "todo": "구매 요청, 사양·기초금액·계약방법을 확정",
+        "formRangeRaw": "F-007~F-010",
+        "formIds": [
+          "F-007",
+          "F-008",
+          "F-009",
+          "F-010"
+        ],
+        "representativeFormId": "F-007"
+      },
+      {
+        "phase": "4. 입찰공고",
+        "todo": "사전규격공개, 입찰공고, 특수조건 및 규격서를 확인",
+        "formRangeRaw": "F-011~F-013",
+        "formIds": [
+          "F-011",
+          "F-012",
+          "F-013"
+        ],
+        "representativeFormId": "F-011"
+      },
+      {
+        "phase": "5. 제안·접수",
+        "todo": "입찰참가 및 제안서 제출·접수 서류를 관리",
+        "formRangeRaw": "F-017~F-033",
+        "formIds": [
+          "F-017",
+          "F-018",
+          "F-019",
+          "F-020",
+          "F-021",
+          "F-022",
+          "F-023",
+          "F-024",
+          "F-025",
+          "F-026",
+          "F-027",
+          "F-028",
+          "F-029",
+          "F-030",
+          "F-031",
+          "F-032",
+          "F-033"
+        ],
+        "representativeFormId": "F-017"
+      },
+      {
+        "phase": "6. 평가",
+        "todo": "평가위원회 운영 및 정량·정성 평가를 수행",
+        "formRangeRaw": "F-014~F-016, F-034~F-040",
+        "formIds": [
+          "F-014",
+          "F-015",
+          "F-016",
+          "F-034",
+          "F-035",
+          "F-036",
+          "F-037",
+          "F-038",
+          "F-039",
+          "F-040"
+        ],
+        "representativeFormId": "F-014"
+      },
+      {
+        "phase": "7. 낙찰",
+        "todo": "낙찰자 결정 및 통보",
+        "formRangeRaw": "F-041~F-042",
+        "formIds": [
+          "F-041",
+          "F-042"
+        ],
+        "representativeFormId": "F-041"
+      },
+      {
+        "phase": "8. 계약·납품",
+        "todo": "계약 체결 및 납품 조건을 확인",
+        "formRangeRaw": "F-043",
+        "formIds": [
+          "F-043"
+        ],
+        "representativeFormId": "F-043"
+      },
+      {
+        "phase": "9. 구매안내·사후평가",
+        "todo": "가정통신문, 수요·만족도 조사 및 결과 정리",
+        "formRangeRaw": "F-044~F-052",
+        "formIds": [
+          "F-044",
+          "F-045",
+          "F-046",
+          "F-047",
+          "F-048",
+          "F-049",
+          "F-050",
+          "F-051",
+          "F-052"
+        ],
+        "representativeFormId": "F-044"
+      }
+    ]
+  }
+}

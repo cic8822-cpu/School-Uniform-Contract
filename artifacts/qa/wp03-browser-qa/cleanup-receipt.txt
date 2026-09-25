@@ -1,0 +1,6 @@
+Cleanup receipt
+- Started static server: npm run dev -- --host 127.0.0.1 --port 4173
+- Server process PID: 29916
+- Stopped process tree: npm parent PID 29916 and child PIDs 27528, 30628, 24680 with Stop-Process -Force
+- Verification: those PIDs no longer exist; unrelated pre-existing Vite process trees were left untouched.
+- QA evidence retained under artifacts/qa/wp03-browser-qa/

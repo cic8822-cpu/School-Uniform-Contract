@@ -1,0 +1,80 @@
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+Excel v1 검증 실패: F-036 정량(50)·정성(55) 합계·적부 판정(105점 → 적격)·비고가 골든 데이터 기준으로 정확히 계산됨
+위치 C:\Users\최익창\Downloads\나연수_26.9.10\scripts\verify_excel_v1.ps1:1187 문자:5
++     throw ('Excel v1 검증 실패: ' + ($failures -join '; '))
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Excel v1 검증 실패:...이터 기준으로 정확히 계산됨:String) [], RuntimeE
+xception
+    + FullyQualifiedErrorId : Excel v1 검증 실패: F-036 정량(50)·정성(55) 합계·적부 판정(105점 → 적격)·비고가 골든 데이
+터 기준으로 정확히 계산됨
+ 

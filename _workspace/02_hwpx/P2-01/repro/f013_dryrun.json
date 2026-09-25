@@ -1,0 +1,450 @@
+[kordoc] F013_디자인규격서_템플릿.hwpx 파싱 중...
+{
+  "fields": [
+    {
+      "label": "구분",
+      "value": "",
+      "row": 0,
+      "col": 0
+    },
+    {
+      "label": "섬유 혼용률",
+      "value": "비고",
+      "row": 0,
+      "col": 2
+    },
+    {
+      "label": "동복",
+      "value": "재킷",
+      "row": 1,
+      "col": 0
+    },
+    {
+      "label": "재킷",
+      "value": "모 80%, 나일론 20%",
+      "row": 1,
+      "col": 1
+    },
+    {
+      "label": "바지",
+      "value": "폴리에스터 65%, 레이온 30%\n우레탄 5%",
+      "row": 3,
+      "col": 1
+    },
+    {
+      "label": "치마",
+      "value": "모 60%, 폴리에스터 40%",
+      "row": 4,
+      "col": 1
+    },
+    {
+      "label": "조끼",
+      "value": "모 50%, 아크릴 50%",
+      "row": 5,
+      "col": 1
+    },
+    {
+      "label": "넥타이",
+      "value": "폴리에스터 100%",
+      "row": 6,
+      "col": 1
+    },
+    {
+      "label": "하복",
+      "value": "셔츠/블라우스",
+      "row": 7,
+      "col": 0
+    },
+    {
+      "label": "생활티",
+      "value": "폴리에스터 100%",
+      "row": 8,
+      "col": 1
+    },
+    {
+      "label": "바지/반바지",
+      "value": "폴리에스터 93%,\n폴리우레탄 7%",
+      "row": 9,
+      "col": 1
+    },
+    {
+      "label": "스커트",
+      "value": "모 60%, 폴리에스터 40%",
+      "row": 10,
+      "col": 1
+    },
+    {
+      "label": "생활형",
+      "value": "야구점퍼",
+      "row": 11,
+      "col": 0
+    },
+    {
+      "label": "야구점퍼",
+      "value": "모 80%, 나일로 20%",
+      "row": 11,
+      "col": 1
+    },
+    {
+      "label": "후드집업",
+      "value": "면 30%, 폴리에스터 65%\n폴리우레탄 5%",
+      "row": 12,
+      "col": 1
+    },
+    {
+      "label": "바람막이 점퍼",
+      "value": "폴리에스터 100%",
+      "row": 13,
+      "col": 1
+    },
+    {
+      "label": "맨투맨",
+      "value": "면 80%, 폴리에스터 20%",
+      "row": 14,
+      "col": 1
+    },
+    {
+      "label": "집업",
+      "value": "면 50%, 폴리에스터 50%",
+      "row": 15,
+      "col": 1
+    },
+    {
+      "label": "동복 생활바지",
+      "value": "면 50%, 폴리에스터 50%",
+      "row": 16,
+      "col": 1
+    },
+    {
+      "label": "생활 반바지",
+      "value": "폴리에스터 100%",
+      "row": 18,
+      "col": 1
+    },
+    {
+      "label": "안감",
+      "value": "",
+      "row": 19,
+      "col": 0
+    },
+    {
+      "label": "품목",
+      "value": "디자인 이미지(전,후면)",
+      "row": 0,
+      "col": 0
+    },
+    {
+      "label": "원단 및 색상",
+      "value": "제작시 유의사항",
+      "row": 0,
+      "col": 2
+    },
+    {
+      "label": "상의(재킷)",
+      "value": "![image](image_001.png)",
+      "row": 1,
+      "col": 0
+    },
+    {
+      "label": "셔츠",
+      "value": "![image](image_003.png)",
+      "row": 2,
+      "col": 0
+    },
+    {
+      "label": "니트조끼",
+      "value": "![image](image_004.png)",
+      "row": 3,
+      "col": 0
+    },
+    {
+      "label": "바지",
+      "value": "![image](image_006.png)",
+      "row": 4,
+      "col": 0
+    },
+    {
+      "label": "넥타이",
+      "value": "![image](image_007.png)",
+      "row": 5,
+      "col": 0
+    },
+    {
+      "label": "품목",
+      "value": "디자인 이미지(전,후면)",
+      "row": 0,
+      "col": 0
+    },
+    {
+      "label": "원단 및 색상",
+      "value": "제작시 유의사항",
+      "row": 0,
+      "col": 2
+    },
+    {
+      "label": "상의(재킷)",
+      "value": "![image](image_008.png)",
+      "row": 1,
+      "col": 0
+    },
+    {
+      "label": "블라우스",
+      "value": "![image](image_009.png)",
+      "row": 2,
+      "col": 0
+    },
+    {
+      "label": "니트조끼",
+      "value": "![image](image_004.png)",
+      "row": 3,
+      "col": 0
+    },
+    {
+      "label": "스커트",
+      "value": "![image](image_010.png)",
+      "row": 4,
+      "col": 0
+    },
+    {
+      "label": "넥타이",
+      "value": "![image](image_007.png)",
+      "row": 5,
+      "col": 0
+    },
+    {
+      "label": "품목",
+      "value": "디자인 이미지(전,후면)",
+      "row": 0,
+      "col": 0
+    },
+    {
+      "label": "원단 및 색상",
+      "value": "제작시 유의사항",
+      "row": 0,
+      "col": 2
+    },
+    {
+      "label": "상의(셔츠)",
+      "value": "![image](image_011.png)",
+      "row": 1,
+      "col": 0
+    },
+    {
+      "label": "생활복",
+      "value": "![image](image_012.png)",
+      "row": 2,
+      "col": 0
+    },
+    {
+      "label": "바지",
+      "value": "![image](image_013.png)",
+      "row": 3,
+      "col": 0
+    },
+    {
+      "label": "반바지",
+      "value": "![image](image_014.png)",
+      "row": 4,
+      "col": 0
+    },
+    {
+      "label": "품목",
+      "value": "디자인 이미지(전,후면)",
+      "row": 0,
+      "col": 0
+    },
+    {
+      "label": "원단 및 색상",
+      "value": "제작시 유의사항",
+      "row": 0,
+      "col": 2
+    },
+    {
+      "label": "상의(셔츠)",
+      "value": "![image](image_015.png)",
+      "row": 1,
+      "col": 0
+    },
+    {
+      "label": "생활복",
+      "value": "![image](image_012.png)",
+      "row": 2,
+      "col": 0
+    },
+    {
+      "label": "스커트",
+      "value": "![image](image_010.png)",
+      "row": 3,
+      "col": 0
+    },
+    {
+      "label": "반바지",
+      "value": "![image](image_014.png)",
+      "row": 4,
+      "col": 0
+    },
+    {
+      "label": "품목",
+      "value": "디자인 이미지(전,후면)",
+      "row": 0,
+      "col": 0
+    },
+    {
+      "label": "원단 및 색상",
+      "value": "제작시 유의사항",
+      "row": 0,
+      "col": 2
+    },
+    {
+      "label": "야구점퍼",
+      "value": "![image](image_016.png)\n![image](image_017.png)",
+      "row": 1,
+      "col": 0
+    },
+    {
+      "label": "후드집업",
+      "value": "![image](image_018.png)",
+      "row": 2,
+      "col": 0
+    },
+    {
+      "label": "바람막이점퍼",
+      "value": "![image](image_019.png)",
+      "row": 3,
+      "col": 0
+    },
+    {
+      "label": "품목",
+      "value": "디자인 이미지(전,후면)",
+      "row": 0,
+      "col": 0
+    },
+    {
+      "label": "원단 및 색상",
+      "value": "제작시 유의사항",
+      "row": 0,
+      "col": 2
+    },
+    {
+      "label": "맨투맨",
+      "value": "![image](image_021.png)",
+      "row": 1,
+      "col": 0
+    },
+    {
+      "label": "집업",
+      "value": "![image](image_022.png)",
+      "row": 2,
+      "col": 0
+    },
+    {
+      "label": "생활바지",
+      "value": "![image](image_023.png)",
+      "row": 3,
+      "col": 0
+    },
+    {
+      "label": "품목",
+      "value": "디자인 이미지(전,후면)",
+      "row": 0,
+      "col": 0
+    },
+    {
+      "label": "원단 및 색상",
+      "value": "제작시 유의사항",
+      "row": 0,
+      "col": 2
+    },
+    {
+      "label": "라운드형 생활티",
+      "value": "![image](image_024.png)",
+      "row": 1,
+      "col": 0
+    },
+    {
+      "label": "생활반바지",
+      "value": "![image](image_025.png)",
+      "row": 2,
+      "col": 0
+    },
+    {
+      "label": "남학생(동복)",
+      "value": "여학생(동복)",
+      "row": 0,
+      "col": 0
+    },
+    {
+      "label": "여학생(동복)",
+      "value": "",
+      "row": 0,
+      "col": 1
+    },
+    {
+      "label": "남학생(춘추복)",
+      "value": "",
+      "row": 0,
+      "col": 3
+    },
+    {
+      "label": "남학생(하복)",
+      "value": "",
+      "row": 2,
+      "col": 0
+    },
+    {
+      "label": "여학생(하복)",
+      "value": "",
+      "row": 2,
+      "col": 2
+    },
+    {
+      "label": "남녀학생(생활티)",
+      "value": "",
+      "row": 2,
+      "col": 4
+    },
+    {
+      "label": "생활형(야구점퍼)",
+      "value": "",
+      "row": 4,
+      "col": 0
+    },
+    {
+      "label": "후드집업",
+      "value": "",
+      "row": 0,
+      "col": 0
+    },
+    {
+      "label": "바람막이 점퍼",
+      "value": "",
+      "row": 0,
+      "col": 2
+    },
+    {
+      "label": "맨투맨",
+      "value": "",
+      "row": 0,
+      "col": 4
+    },
+    {
+      "label": "하복 라운드티/생활 반바지",
+      "value": "",
+      "row": 2,
+      "col": 3
+    },
+    {
+      "label": "학교명",
+      "value": "○○○○학교",
+      "row": -1,
+      "col": -1
+    },
+    {
+      "label": "소매",
+      "value": "성장을 감안하여 소매통을 넉넉히 하고",
+      "row": -1,
+      "col": -1
+    }
+  ],
+  "confidence": 1
+}

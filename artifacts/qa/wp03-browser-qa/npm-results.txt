@@ -1,0 +1,5 @@
+Invocation: npm run lint
+Exit: 0
+Invocation: npm run build
+Exit: 0
+

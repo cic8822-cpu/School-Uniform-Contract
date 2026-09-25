@@ -1,0 +1,151 @@
+.input-toolbar {
+  display: flex;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.input-file-hidden {
+  display: none;
+}
+
+.input-tabs {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #e1e5ed;
+}
+
+.input-tab-button {
+  border: 0;
+  background: none;
+  padding: 12px 18px;
+  font-weight: 700;
+  color: #7c8494;
+  border-bottom: 3px solid transparent;
+}
+
+.input-tab-button.active {
+  color: #1b2a5b;
+  border-bottom-color: #1b2a5b;
+}
+
+.input-tab {
+  background: #fff;
+  border: 1px solid #e1e5ed;
+  border-radius: 18px;
+  padding: 28px;
+  max-width: 1100px;
+}
+
+.input-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  margin-top: 18px;
+}
+
+.field-input {
+  display: grid;
+  gap: 6px;
+  font-weight: 700;
+}
+
+.field-input-compact {
+  gap: 4px;
+}
+
+.field-input-label {
+  display: flex;
+  gap: 4px;
+}
+
+.field-input-required {
+  color: #d0393e;
+}
+
+.field-input input,
+.field-input select,
+.field-input textarea {
+  border: 1px solid #dbe0e9;
+  border-radius: 10px;
+  padding: 13px;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: inherit;
+}
+
+.field-input-hint {
+  font-size: 12px;
+  font-weight: 400;
+  color: #9098a8;
+}
+
+.field-input-error {
+  font-size: 13px;
+  font-weight: 700;
+  color: #d0393e;
+}
+
+.repeat-tab-note {
+  color: #6c7587;
+  font-size: 14px;
+  margin: 8px 0 18px;
+}
+
+.repeat-table-scroll {
+  overflow-x: auto;
+  margin-top: 12px;
+}
+
+.repeat-table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 640px;
+}
+
+.repeat-table th,
+.repeat-table td {
+  border: 1px solid #e1e5ed;
+  padding: 8px;
+  text-align: left;
+}
+
+.repeat-table th {
+  background: #f7f8fa;
+  color: #1b2a5b;
+  font-size: 13px;
+}
+
+.repeat-table input,
+.repeat-table select {
+  width: 100%;
+  border: 1px solid #dbe0e9;
+  border-radius: 8px;
+  padding: 8px;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.repeat-table-row-no {
+  color: #9098a8;
+  text-align: center;
+  width: 40px;
+}
+
+.repeat-table-computed {
+  text-align: right;
+  font-weight: 700;
+  color: #1b2a5b;
+  background: #fbfbfd;
+}
+
+.repeat-table tfoot td {
+  font-weight: 800;
+}
+
+@media (max-width: 600px) {
+  .input-grid {
+    grid-template-columns: 1fr;
+  }
+}

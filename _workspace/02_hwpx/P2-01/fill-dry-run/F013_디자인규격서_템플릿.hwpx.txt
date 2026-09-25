@@ -1,0 +1,479 @@
+﻿{
+  "fields": [
+    {
+      "label": "援щ텇",
+      "value": "",
+      "row": 0,
+      "col": 0
+    },
+    {
+      "label": "?ъ쑀 ?쇱슜瑜?,
+      "value": "鍮꾧퀬",
+      "row": 0,
+      "col": 2
+    },
+    {
+      "label": "?숇났",
+      "value": "?ы궥",
+      "row": 1,
+      "col": 0
+    },
+    {
+      "label": "?ы궥",
+      "value": "紐?80%, ?섏씪濡?20%",
+      "row": 1,
+      "col": 1
+    },
+    {
+      "label": "諛붿?",
+      "value": "?대━?먯뒪??65%, ?덉씠??30%\n?곕젅??5%",
+      "row": 3,
+      "col": 1
+    },
+    {
+      "label": "移섎쭏",
+      "value": "紐?60%, ?대━?먯뒪??40%",
+      "row": 4,
+      "col": 1
+    },
+    {
+      "label": "議곕겮",
+      "value": "紐?50%, ?꾪겕由?50%",
+      "row": 5,
+      "col": 1
+    },
+    {
+      "label": "?ν???,
+      "value": "?대━?먯뒪??100%",
+      "row": 6,
+      "col": 1
+    },
+    {
+      "label": "?섎났",
+      "value": "?붿툩/釉붾씪?곗뒪",
+      "row": 7,
+      "col": 0
+    },
+    {
+      "label": "?앺솢??,
+      "value": "?대━?먯뒪??100%",
+      "row": 8,
+      "col": 1
+    },
+    {
+      "label": "諛붿?/諛섎컮吏",
+      "value": "?대━?먯뒪??93%,\n?대━?곕젅??7%",
+      "row": 9,
+      "col": 1
+    },
+    {
+      "label": "?ㅼ빱??,
+      "value": "紐?60%, ?대━?먯뒪??40%",
+      "row": 10,
+      "col": 1
+    },
+    {
+      "label": "??n??n??,
+      "value": "?쇨뎄?먰띁",
+      "row": 11,
+      "col": 0
+    },
+    {
+      "label": "?쇨뎄?먰띁",
+      "value": "紐?80%, ?섏씪濡?20%",
+      "row": 11,
+      "col": 1
+    },
+    {
+      "label": "?꾨뱶吏묒뾽",
+      "value": "硫?30%, ?대━?먯뒪??65%\n?대━?곕젅??5%",
+      "row": 12,
+      "col": 1
+    },
+    {
+      "label": "諛붾엺留됱씠 ?먰띁",
+      "value": "?대━?먯뒪??100%",
+      "row": 13,
+      "col": 1
+    },
+    {
+      "label": "留⑦닾留?,
+      "value": "硫?80%, ?대━?먯뒪??20%",
+      "row": 14,
+      "col": 1
+    },
+    {
+      "label": "吏묒뾽",
+      "value": "硫?50%, ?대━?먯뒪??50%",
+      "row": 15,
+      "col": 1
+    },
+    {
+      "label": "?숇났 ?앺솢諛붿?",
+      "value": "硫?50%, ?대━?먯뒪??50%",
+      "row": 16,
+      "col": 1
+    },
+    {
+      "label": "?앺솢 諛섎컮吏",
+      "value": "?대━?먯뒪??100%",
+      "row": 18,
+      "col": 1
+    },
+    {
+      "label": "?덇컧",
+      "value": "",
+      "row": 19,
+      "col": 0
+    },
+    {
+      "label": "?덈ぉ",
+      "value": "?붿옄???대?吏(???꾨㈃)",
+      "row": 0,
+      "col": 0
+    },
+    {
+      "label": "?먮떒 諛??됱긽",
+      "value": "?쒖옉???좎쓽?ы빆",
+      "row": 0,
+      "col": 2
+    },
+    {
+      "label": "?곸쓽\n(?ы궥)",
+      "value": "![image](image_001.png)",
+      "row": 1,
+      "col": 0
+    },
+    {
+      "label": "?붿툩",
+      "value": "![image](image_003.png)",
+      "row": 2,
+      "col": 0
+    },
+    {
+      "label": "?덊듃\n議곕겮",
+      "value": "![image](image_004.png)",
+      "row": 3,
+      "col": 0
+    },
+    {
+      "label": "諛붿?",
+      "value": "![image](image_006.png)",
+      "row": 4,
+      "col": 0
+    },
+    {
+      "label": "?ν???,
+      "value": "![image](image_007.png)",
+      "row": 5,
+      "col": 0
+    },
+    {
+      "label": "?덈ぉ",
+      "value": "?붿옄???대?吏(???꾨㈃)",
+      "row": 0,
+      "col": 0
+    },
+    {
+      "label": "?먮떒 諛??됱긽",
+      "value": "?쒖옉???좎쓽?ы빆",
+      "row": 0,
+      "col": 2
+    },
+    {
+      "label": "?곸쓽\n(?ы궥)",
+      "value": "![image](image_008.png)",
+      "row": 1,
+      "col": 0
+    },
+    {
+      "label": "釉붾씪\n?곗뒪",
+      "value": "![image](image_009.png)",
+      "row": 2,
+      "col": 0
+    },
+    {
+      "label": "?덊듃\n議곕겮",
+      "value": "![image](image_004.png)",
+      "row": 3,
+      "col": 0
+    },
+    {
+      "label": "?ㅼ빱??,
+      "value": "![image](image_010.png)",
+      "row": 4,
+      "col": 0
+    },
+    {
+      "label": "?ν???,
+      "value": "![image](image_007.png)",
+      "row": 5,
+      "col": 0
+    },
+    {
+      "label": "?덈ぉ",
+      "value": "?붿옄???대?吏(???꾨㈃)",
+      "row": 0,
+      "col": 0
+    },
+    {
+      "label": "?먮떒 諛??됱긽",
+      "value": "?쒖옉???좎쓽?ы빆",
+      "row": 0,
+      "col": 2
+    },
+    {
+      "label": "?곸쓽\n(?붿툩)",
+      "value": "![image](image_011.png)",
+      "row": 1,
+      "col": 0
+    },
+    {
+      "label": "?앺솢蹂?,
+      "value": "![image](image_012.png)",
+      "row": 2,
+      "col": 0
+    },
+    {
+      "label": "諛붿?",
+      "value": "![image](image_013.png)",
+      "row": 3,
+      "col": 0
+    },
+    {
+      "label": "諛섎컮吏",
+      "value": "![image](image_014.png)",
+      "row": 4,
+      "col": 0
+    },
+    {
+      "label": "?덈ぉ",
+      "value": "?붿옄???대?吏(???꾨㈃)",
+      "row": 0,
+      "col": 0
+    },
+    {
+      "label": "?먮떒 諛??됱긽",
+      "value": "?쒖옉???좎쓽?ы빆",
+      "row": 0,
+      "col": 2
+    },
+    {
+      "label": "?곸쓽\n(?붿툩)",
+      "value": "![image](image_015.png)",
+      "row": 1,
+      "col": 0
+    },
+    {
+      "label": "?앺솢蹂?,
+      "value": "![image](image_012.png)",
+      "row": 2,
+      "col": 0
+    },
+    {
+      "label": "?ㅼ빱??,
+      "value": "![image](image_010.png)",
+      "row": 3,
+      "col": 0
+    },
+    {
+      "label": "諛섎컮吏",
+      "value": "![image](image_014.png)",
+      "row": 4,
+      "col": 0
+    },
+    {
+      "label": "?덈ぉ",
+      "value": "?붿옄???대?吏(???꾨㈃)",
+      "row": 0,
+      "col": 0
+    },
+    {
+      "label": "?먮떒 諛??됱긽",
+      "value": "?쒖옉???좎쓽?ы빆",
+      "row": 0,
+      "col": 2
+    },
+    {
+      "label": "?쇨뎄\n?먰띁",
+      "value": "![image](image_016.png)\n![image](image_017.png)",
+      "row": 1,
+      "col": 0
+    },
+    {
+      "label": "?꾨뱶\n吏묒뾽",
+      "value": "![image](image_018.png)",
+      "row": 0,
+      "col": 0
+    },
+    {
+      "label": "諛붾엺\n留됱씠\n?먰띁",
+      "value": "![image](image_019.png)",
+      "row": 1,
+      "col": 0
+    },
+    {
+      "label": "?덈ぉ",
+      "value": "?붿옄???대?吏(???꾨㈃)",
+      "row": 0,
+      "col": 0
+    },
+    {
+      "label": "?먮떒 諛??됱긽",
+      "value": "?쒖옉???좎쓽?ы빆",
+      "row": 0,
+      "col": 2
+    },
+    {
+      "label": "留⑦닾留?,
+      "value": "![image](image_021.png)",
+      "row": 1,
+      "col": 0
+    },
+    {
+      "label": "吏묒뾽",
+      "value": "![image](image_022.png)",
+      "row": 2,
+      "col": 0
+    },
+    {
+      "label": "?앺솢\n諛붿?",
+      "value": "![image](image_023.png)",
+      "row": 3,
+      "col": 0
+    },
+    {
+      "label": "?덈ぉ",
+      "value": "?붿옄???대?吏(???꾨㈃)",
+      "row": 0,
+      "col": 0
+    },
+    {
+      "label": "?먮떒 諛??됱긽",
+      "value": "?쒖옉???좎쓽?ы빆",
+      "row": 0,
+      "col": 2
+    },
+    {
+      "label": "?쇱슫?쒗삎\n?앺솢??,
+      "value": "![image](image_024.png)",
+      "row": 1,
+      "col": 0
+    },
+    {
+      "label": "?앺솢\n諛섎컮吏",
+      "value": "![image](image_025.png)",
+      "row": 2,
+      "col": 0
+    },
+    {
+      "label": "?⑦븰???숇났)",
+      "value": "?ы븰???숇났)",
+      "row": 0,
+      "col": 0
+    },
+    {
+      "label": "?ы븰???숇났)",
+      "value": "",
+      "row": 0,
+      "col": 1
+    },
+    {
+      "label": "?⑦븰??異섏텛蹂?",
+      "value": "",
+      "row": 0,
+      "col": 3
+    },
+    {
+      "label": "?⑦븰???섎났)",
+      "value": "",
+      "row": 2,
+      "col": 0
+    },
+    {
+      "label": "?ы븰???섎났)",
+      "value": "",
+      "row": 2,
+      "col": 2
+    },
+    {
+      "label": "?⑤??숈깮(?앺솢??",
+      "value": "",
+      "row": 2,
+      "col": 4
+    },
+    {
+      "label": "?앺솢???쇨뎄?먰띁)",
+      "value": "",
+      "row": 4,
+      "col": 0
+    },
+    {
+      "label": "?꾨뱶吏묒뾽",
+      "value": "",
+      "row": 0,
+      "col": 0
+    },
+    {
+      "label": "諛붾엺諛뺤씠 ?먰띁",
+      "value": "",
+      "row": 0,
+      "col": 2
+    },
+    {
+      "label": "留⑦닾留?,
+      "value": "",
+      "row": 0,
+      "col": 4
+    },
+    {
+      "label": "?섎났 ?쇱슫?쒗떚/?앺솢 諛섎컮吏",
+      "value": "",
+      "row": 2,
+      "col": 3
+    },
+    {
+      "label": "?뚮ℓ",
+      "value": "?깆옣??媛먯븞?섏뿬 ?뚮ℓ?듭쓣 ?됰꼮???섍퀬",
+      "row": -1,
+      "col": -1
+    },
+    {
+      "label": "媛濡?,
+      "value": "?몃줈=4.5",
+      "row": -1,
+      "col": -1
+    },
+    {
+      "label": "cm",
+      "value": "10cm)<br>-?깊뙋?쁉EONBUK?숉씛???댄뵆由ъ? ?먯닔<br>:?ш린(",
+      "row": -1,
+      "col": -1
+    },
+    {
+      "label": "媛濡?,
+      "value": "?몃줈=35",
+      "row": -1,
+      "col": -1
+    },
+    {
+      "label": "cm",
+      "value": "10cm)<br>-?깊뙋?쁄DU.?숉씛???댄뵆由ъ? ?먯닔<br>:?ш린(",
+      "row": -1,
+      "col": -1
+    },
+    {
+      "label": "媛濡?,
+      "value": "?몃줈=16",
+      "row": -1,
+      "col": -1
+    },
+    {
+      "label": "cm",
+      "value": "8cm) |",
+      "row": -1,
+      "col": -1
+    }
+  ],
+  "confidence": 1
+}
