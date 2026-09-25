@@ -4,6 +4,12 @@
 
 **사용 중 어떤 값도 인터넷으로 전송되거나 외부 서버에 저장되지 않습니다.** 입력한 정보, 업로드한 엑셀 내용은 전부 그 컴퓨터의 브라우저(또는 Excel) 안에서만 처리됩니다.
 
+### 📌 그림으로 한눈에 보기
+
+글보다 그림이 편하시면, 세 가지 방법을 카드뉴스 12장으로 정리해뒀습니다.
+
+**👉 [카드뉴스 보러 가기](https://claude.ai/code/artifact/e8c75799-f3a3-4e4b-9497-681bbe07234b)**
+
 ---
 
 ## 어떤 방법을 쓰면 될까요?
@@ -82,3 +88,7 @@
 - **exe 실행이 안 돼요** → 다른 프로그램이 같은 포트를 쓰고 있을 수 있습니다. 검은 창에 뜬 안내 문구를 확인해 주시고, 그래도 안 되면 PC를 재시작한 뒤 다시 시도해 주세요.
 - **엑셀에서 "HWPX 작성 도구가 있는 프로젝트 폴더를 찾지 못했습니다"라고 나와요** → zip을 통째로 받지 않고 엑셀 파일만 따로 옮기신 경우입니다. 폴더 전체를 다시 받아 그 안에서 엑셀을 열어주세요.
 - **그 외 문의** → 이 저장소의 [Issues](https://github.com/cic8822-cpu/School-Uniform-Contract/issues) 탭에 남겨주시면 확인하겠습니다.
+
+---
+
+**관련 링크**: [카드뉴스](https://claude.ai/code/artifact/e8c75799-f3a3-4e4b-9497-681bbe07234b) · [웹앱 바로가기](https://cic8822-cpu.github.io/School-Uniform-Contract/) · [exe 다운로드](https://github.com/cic8822-cpu/School-Uniform-Contract/releases/tag/v1.0.0)
