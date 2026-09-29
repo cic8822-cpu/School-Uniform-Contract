@@ -16,9 +16,9 @@ export function HomePage({ methods, onSelectMethod }: HomePageProps) {
       <p className="lede">계약방법 안내부터 서식 작성·출력까지 한 곳에서</p>
 
       <section className="banner">
-        <b>한눈에 보는 계약 업무 길잡이</b>
+        <b>한눈에 보는 교복계약업무 길라잡이</b>
         <button onClick={() => onSelectMethod(DEFAULT_HIGHLIGHT_METHOD_ID)}>
-          GO <ArrowRight size={17} />
+          시작 <ArrowRight size={17} />
         </button>
       </section>
 

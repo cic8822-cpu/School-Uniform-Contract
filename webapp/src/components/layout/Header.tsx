@@ -1,6 +1,7 @@
 import type { RouteName } from '../../types'
 
 interface HeaderProps {
+  current: RouteName
   onNavigate: (route: RouteName) => void
 }
 
@@ -13,18 +14,30 @@ const NAV_ITEMS: { route: RouteName; label: string }[] = [
   { route: 'guide', label: '사용안내' },
 ]
 
-export function Header({ onNavigate }: HeaderProps) {
+export function Header({ current, onNavigate }: HeaderProps) {
   return (
     <header>
-      <button className="brand" onClick={() => onNavigate('home')}>
+      <button
+        className="brand"
+        aria-current={current === 'home' ? 'page' : undefined}
+        onClick={() => onNavigate('home')}
+      >
         전북 <b>전북특별자치도교육청</b>
       </button>
       <nav aria-label="주 메뉴">
-        {NAV_ITEMS.map((item) => (
-          <button key={item.route} onClick={() => onNavigate(item.route)}>
-            {item.label}
-          </button>
-        ))}
+        {NAV_ITEMS.map((item) => {
+          const isCurrent = item.route === current
+          return (
+            <button
+              key={item.route}
+              className={isCurrent ? 'nav-item active' : 'nav-item'}
+              aria-current={isCurrent ? 'page' : undefined}
+              onClick={() => onNavigate(item.route)}
+            >
+              {item.label}
+            </button>
+          )
+        })}
       </nav>
     </header>
   )

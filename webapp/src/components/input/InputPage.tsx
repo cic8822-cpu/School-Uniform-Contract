@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react'
-import type { FieldDef, FieldValues, RepeatGroupDef, RepeatValues } from '../../types'
+import type { FieldDef, FieldValues, InputTabId, RepeatGroupDef, RepeatValues } from '../../types'
 import { CommonFieldsTab } from './CommonFieldsTab'
 import { RepeatGroupTab } from './RepeatGroupTab'
 import { computeEvaluationTotal, computeItemAmount, computeItemAmountTotal } from '../../lib/fieldCompute'
@@ -8,6 +8,8 @@ import { downloadWorkbook, readWorkbook } from '../../lib/workbook'
 import './input.css'
 
 interface InputPageProps {
+  activeTab: InputTabId
+  onChangeTab: (tab: InputTabId) => void
   fields: FieldDef[]
   repeatGroups: RepeatGroupDef[]
   values: FieldValues
@@ -17,10 +19,11 @@ interface InputPageProps {
   onImport: (result: { values: FieldValues; repeats: RepeatValues }) => void
 }
 
-type TabId = '공통' | '사업' | '문서별' | '품목' | '업체' | '위원' | '평가'
-const TAB_ORDER: TabId[] = ['공통', '사업', '문서별', '품목', '업체', '위원', '평가']
+const TAB_ORDER: InputTabId[] = ['공통', '사업', '문서별', '품목', '업체', '위원', '평가']
 
 export function InputPage({
+  activeTab,
+  onChangeTab,
   fields,
   repeatGroups,
   values,
@@ -29,7 +32,6 @@ export function InputPage({
   onChangeRepeatCell,
   onImport,
 }: InputPageProps) {
-  const [activeTab, setActiveTab] = useState<TabId>('공통')
   const [importError, setImportError] = useState<string | null>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
@@ -69,7 +71,9 @@ export function InputPage({
         <button className="primary" onClick={() => void handleDownloadWorkbook()}>
           엑셀로 내려받기
         </button>
-        <button onClick={() => fileInputRef.current?.click()}>엑셀에서 불러오기</button>
+        <button className="btn-secondary" onClick={() => fileInputRef.current?.click()}>
+          엑셀에서 불러오기
+        </button>
         <input
           ref={fileInputRef}
           type="file"
@@ -87,7 +91,7 @@ export function InputPage({
             role="tab"
             aria-selected={activeTab === tab}
             className={activeTab === tab ? 'input-tab-button active' : 'input-tab-button'}
-            onClick={() => setActiveTab(tab)}
+            onClick={() => onChangeTab(tab)}
           >
             {tab}
           </button>

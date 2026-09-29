@@ -1,7 +1,9 @@
 import { useState } from 'react'
-import type { FieldDef, FieldValues, FormRecord, RepeatValues } from '../../types'
+import type { FieldDef, FieldValues, FormRecord, InputTabId, RepeatValues } from '../../types'
 import { downloadWorkbook } from '../../lib/workbook'
 import { exportAllHwpxAsZip } from '../../lib/hwpxBulkExport'
+import { findMissingFields } from '../../lib/formReadiness'
+import { ExportConfirm } from './ExportConfirm'
 import './exportPage.css'
 
 interface ExportPageProps {
@@ -9,6 +11,7 @@ interface ExportPageProps {
   repeats: RepeatValues
   forms: FormRecord[]
   fields: FieldDef[]
+  onGoInput: (tab: InputTabId) => void
 }
 
 function countReadyForms(forms: FormRecord[], missingFieldCount: (form: FormRecord) => number): number {
@@ -41,13 +44,19 @@ function ExportSummary({ forms, missingFieldCount }: ExportSummaryProps) {
   )
 }
 
-export function ExportPage({ values, repeats, forms, fields }: ExportPageProps) {
+export function ExportPage({ values, repeats, forms, fields, onGoInput }: ExportPageProps) {
   const [workbookError, setWorkbookError] = useState<string | null>(null)
   const [bulkBusy, setBulkBusy] = useState(false)
   const [bulkMessage, setBulkMessage] = useState<string | null>(null)
+  const [isConfirming, setIsConfirming] = useState(false)
 
   function missingFieldCount(form: FormRecord): number {
-    return form.requiredFieldIds.filter((fieldId) => !values[fieldId]).length
+    return findMissingFields(form, fields, values, repeats).length
+  }
+
+  function handleOpenConfirm(): void {
+    setBulkMessage(null)
+    setIsConfirming(true)
   }
 
   async function handleDownloadWorkbook(): Promise<void> {
@@ -77,6 +86,7 @@ export function ExportPage({ values, repeats, forms, fields }: ExportPageProps) 
       setBulkMessage(caught instanceof Error ? caught.message : '일괄 ZIP 생성 중 오류가 발생했습니다.')
     } finally {
       setBulkBusy(false)
+      setIsConfirming(false)
     }
   }
 
@@ -107,9 +117,21 @@ export function ExportPage({ values, repeats, forms, fields }: ExportPageProps) 
           HWPX 템플릿이 있는 서식 중 필수 토큰 값이 채워진 서식만 모아 ZIP 하나로 내려받습니다. 값이
           비어 있는 서식은 건너뛰고 목록으로 안내합니다.
         </p>
-        <button disabled={bulkBusy} onClick={() => void handleBulkHwpxExport()}>
-          {bulkBusy ? 'ZIP 생성 중…' : '완성된 서식 전체 ZIP으로 내려받기'}
+        <button className="primary" disabled={bulkBusy || isConfirming} onClick={handleOpenConfirm}>
+          완성된 서식 전체 ZIP으로 내려받기
         </button>
+        {isConfirming && (
+          <ExportConfirm
+            forms={forms}
+            fields={fields}
+            values={values}
+            repeats={repeats}
+            busy={bulkBusy}
+            onCancel={() => setIsConfirming(false)}
+            onConfirm={() => void handleBulkHwpxExport()}
+            onGoInput={onGoInput}
+          />
+        )}
         {bulkMessage && <p className="export-bulk-message">{bulkMessage}</p>}
       </section>
 

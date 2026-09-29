@@ -12,7 +12,8 @@ import { FormsPage } from './components/forms/FormsPage'
 import { DocumentPreviewModal } from './components/modal/DocumentPreviewModal'
 import { GuidePage } from './components/guide/GuidePage'
 import { ExportPage } from './components/exportPage/ExportPage'
-import type { FieldValues, FormRecord, RepeatValues, RouteName } from './types'
+import { findMissingFields } from './lib/formReadiness'
+import type { FieldDef, FieldValues, FormRecord, InputTabId, RepeatValues, RouteName } from './types'
 
 const DEFAULT_METHOD_ID = 'CM-03'
 const SCHOOL_YEAR_FIELD_ID = 'C-02'
@@ -47,6 +48,7 @@ export default function App() {
   const [stepNo, setStepNo] = useState(1)
   const [searchQuery, setSearchQuery] = useState('')
   const [activeForm, setActiveForm] = useState<FormRecord | null>(null)
+  const [inputTab, setInputTab] = useState<InputTabId>('공통')
 
   const nonRepeatFieldIds = useMemo(
     () => (data ? data.fields.filter((field) => !field.repeatGroup && field.group !== '계산').map((f) => f.fieldId) : []),
@@ -68,12 +70,15 @@ export default function App() {
   const selectedMethod = data.methods.find((method) => method.id === selectedMethodId) ?? data.methods[0]
   const selectedWorkflow = data.workflows.find((workflow) => workflow.workflowId === selectedMethod.workflowId)
 
-  function missingFieldCount(form: FormRecord): number {
-    return form.requiredFieldIds.filter((fieldId) => !values[fieldId]).length
+  const allFields = data.fields
+
+  function missingFieldsOf(form: FormRecord): FieldDef[] {
+    return findMissingFields(form, allFields, values, repeats)
   }
 
-  function missingFieldIds(form: FormRecord): string[] {
-    return form.requiredFieldIds.filter((fieldId) => !values[fieldId])
+  function goToInput(tab: InputTabId): void {
+    setInputTab(tab)
+    setRoute('input')
   }
 
   function openProcedure(methodId: string): void {
@@ -104,13 +109,18 @@ export default function App() {
       <a className="skip-link" href="#main-content">
         본문으로 바로가기
       </a>
-      <Header onNavigate={setRoute} />
+      <Header current={route} onNavigate={setRoute} />
 
       <div id="main-content" tabIndex={-1}>
       {route === 'home' && <HomePage methods={data.methods} onSelectMethod={openProcedure} />}
 
       {route === 'contractGuide' && (
-        <ContractGuidePage methods={data.methods} onOpenProcedure={openProcedure} />
+        <ContractGuidePage
+          methods={data.methods}
+          workflows={data.workflows}
+          forms={data.forms}
+          onOpenProcedure={openProcedure}
+        />
       )}
 
       {route === 'procedure' && selectedWorkflow && (
@@ -120,13 +130,16 @@ export default function App() {
           stepNo={stepNo}
           onSelectStep={setStepNo}
           forms={data.forms}
-          missingFieldCount={missingFieldCount}
+          missingFieldsOf={missingFieldsOf}
           onOpenForm={setActiveForm}
+          onGoInput={goToInput}
         />
       )}
 
       {route === 'input' && (
         <InputPage
+          activeTab={inputTab}
+          onChangeTab={setInputTab}
           fields={data.fields}
           repeatGroups={data.repeatGroups}
           values={values}
@@ -142,13 +155,19 @@ export default function App() {
           forms={data.forms}
           query={searchQuery}
           onQueryChange={setSearchQuery}
-          missingFieldCount={missingFieldCount}
+          missingFieldsOf={missingFieldsOf}
           onOpenForm={setActiveForm}
         />
       )}
 
       {route === 'export' && (
-        <ExportPage values={values} repeats={repeats} forms={data.forms} fields={data.fields} />
+        <ExportPage
+          values={values}
+          repeats={repeats}
+          forms={data.forms}
+          fields={data.fields}
+          onGoInput={goToInput}
+        />
       )}
 
       {route === 'guide' && <GuidePage />}
@@ -159,7 +178,7 @@ export default function App() {
           fields={data.fields}
           values={values}
           repeats={repeats}
-          missingFieldIds={missingFieldIds(activeForm)}
+          missingFieldIds={missingFieldsOf(activeForm).map((field) => field.fieldId)}
           onClose={() => setActiveForm(null)}
         />
       )}

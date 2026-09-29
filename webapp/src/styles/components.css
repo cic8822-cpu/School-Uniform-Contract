@@ -1,0 +1,298 @@
+/* 화면 개선(레퍼런스 보고서 반영) 전용 스타일.
+   App.css는 한 줄로 압축돼 있어 직접 고치지 않고, 더 구체적인 선택자로 덮어쓴다. */
+
+/* ── 상단 메뉴: 현재 위치를 진한 알약 + 아래 강조선으로 표시 ── */
+header nav {
+  gap: 6px;
+}
+
+header nav .nav-item {
+  padding: 10px 16px;
+  border-radius: 999px;
+  color: #34405b;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+header nav .nav-item:hover {
+  background: #eef1fb;
+  color: #1b2a5b;
+}
+
+header nav .nav-item.active {
+  background: #1b2a5b;
+  color: #fff;
+  box-shadow: inset 0 -3px 0 #f5a623;
+}
+
+header .brand[aria-current='page'] {
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 6px;
+  text-decoration-color: #f5a623;
+}
+
+/* ── 홈: 카드 4장의 내용 시작 높이·"절차 확인" 위치를 맞춘다 ── */
+.cards .card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
+.cards .card small {
+  display: block;
+}
+
+.cards .card h2 {
+  min-height: 2.7em;
+  margin: 0.35em 0 0.5em;
+  line-height: 1.35;
+}
+
+.cards .card p {
+  flex: 1;
+  margin: 0 0 18px;
+}
+
+.cards .card > b {
+  margin-top: auto;
+}
+
+/* ── 버튼: 주 버튼과 같은 급의 보조 버튼, 링크형 버튼 ── */
+.btn-secondary {
+  display: inline-flex;
+  gap: 7px;
+  align-items: center;
+  background: #fff;
+  color: #1b2a5b;
+  border: 2px solid #1b2a5b;
+  border-radius: 10px;
+  padding: 12px 21px;
+  font-weight: 800;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: #eef1fb;
+}
+
+button.primary:hover:not(:disabled) {
+  background: #26397a;
+}
+
+button.primary:disabled,
+.btn-secondary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.link-button {
+  border: 0;
+  background: none;
+  padding: 4px 0;
+  color: #2e5aac;
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ── 기초자료입력: 현재 탭을 진하게 채워 표시 ── */
+.input-tabs .input-tab-button {
+  border-radius: 10px 10px 0 0;
+}
+
+.input-tabs .input-tab-button:hover:not(.active) {
+  background: #eef1fb;
+  color: #1b2a5b;
+}
+
+.input-tabs .input-tab-button.active {
+  background: #1b2a5b;
+  color: #fff;
+  border-bottom-color: #f5a623;
+}
+
+/* ── 서식 상태 문구(작성가능 / 자료필요 / 미구현) ── */
+.row em.status-ready,
+.form em.status-ready {
+  color: #1f7a55;
+  font-weight: 800;
+}
+
+.row em.status-missing,
+.form em.status-missing {
+  color: #c76a00;
+  font-weight: 800;
+}
+
+.row em.status-unavailable,
+.form em.status-unavailable {
+  color: #8a91a1;
+}
+
+/* ── 계약절차: 관련 서식 아래에 필요한 자료와 입력 위치 ── */
+.row-wrap {
+  border-top: 1px solid #eee;
+}
+
+.row-wrap .row {
+  border-top: 0;
+}
+
+.procedure .row-missing {
+  list-style: none;
+  margin: 0;
+  padding: 0 16px 14px 16px;
+}
+
+.procedure .row-missing li {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4px 16px;
+  margin: 6px 0 0;
+  padding: 8px 12px;
+  background: #fff8e9;
+  border-radius: 8px;
+  color: #805d18;
+  font-size: 14px;
+}
+
+/* ── 서식함: 카드 머리·제목·상태 줄의 위치를 통일 ── */
+.forms .form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.forms .form .form-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.forms .form .form-head small {
+  float: none;
+}
+
+.forms .form h2 {
+  min-height: 2.7em;
+  margin: 0.6em 0 0.3em;
+  font-size: 20px;
+  line-height: 1.35;
+}
+
+.forms .form .form-status {
+  margin-top: auto;
+  padding-top: 14px;
+  min-height: 82px;
+  display: grid;
+  align-content: start;
+  gap: 4px;
+}
+
+.forms .form .form-missing {
+  font-size: 13px;
+  line-height: 1.4;
+  color: #805d18;
+}
+
+/* ── 내보내기: 내려받기 전 확인 화면 ── */
+.export-confirm {
+  margin-top: 22px;
+  padding: 24px;
+  border: 2px solid #1b2a5b;
+  border-radius: 14px;
+  background: #f7f9ff;
+}
+
+.export-confirm h3 {
+  margin: 0 0 8px;
+  color: #1b2a5b;
+}
+
+.export-confirm h3:focus {
+  outline: none;
+}
+
+.export-confirm-group {
+  margin-top: 16px;
+  padding: 14px 18px;
+  background: #fff;
+  border: 1px solid #e1e5ed;
+  border-radius: 12px;
+}
+
+.export-confirm-group-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.export-confirm-group h4 {
+  margin: 0;
+  color: #1d2948;
+}
+
+.export-confirm dl {
+  margin: 10px 0 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px 24px;
+}
+
+.export-confirm dt {
+  font-size: 13px;
+  color: #6c7587;
+}
+
+.export-confirm dd {
+  margin: 2px 0 0;
+  font-weight: 700;
+  color: #1b2a5b;
+  word-break: break-all;
+}
+
+.export-confirm dd.is-empty {
+  color: #d0393e;
+}
+
+.export-confirm-repeats {
+  font-size: 14px;
+}
+
+.export-confirm-skipped {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #6c7587;
+}
+
+.export-confirm-skipped summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.export-confirm-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+@media (max-width: 900px) {
+  header nav {
+    gap: 4px;
+  }
+
+  header nav .nav-item {
+    padding: 8px 11px;
+  }
+}
+
+@media (max-width: 600px) {
+  .cards .card h2 {
+    min-height: 0;
+  }
+}

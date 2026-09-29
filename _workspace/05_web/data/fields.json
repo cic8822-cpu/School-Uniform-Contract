@@ -146,7 +146,7 @@
       "type": "year",
       "typeRaw": "4자리 연도",
       "required": "required",
-      "validation": "$2000 \\leq 연도 \\leq 2100$",
+      "validation": "2000~2100 사이의 4자리 연도",
       "allowedTargetRaw": "F-001~F-052",
       "excelCell": "기초자료입력!C5",
       "usedByForms": [
@@ -1220,7 +1220,7 @@
       "type": "number",
       "typeRaw": "숫자",
       "required": "conditional",
-      "validation": "$0 \\leq 점수 \\leq 배점$",
+      "validation": "0점 이상, 배점 이하",
       "allowedTargetRaw": "평가 문서",
       "excelCell": "기초자료입력!B72:D81(평가항목/배점/점수)",
       "usedByForms": [
@@ -1312,7 +1312,7 @@
       "type": "currency",
       "typeRaw": "통화",
       "required": "computed",
-      "validation": "$수량 \\times 단가$",
+      "validation": "수량 × 단가 (자동 계산)",
       "allowedTargetRaw": "F-004~F-006, F-008~F-009, F-011, F-013, F-021, F-023~F-024, F-031, F-043",
       "excelCell": "기초자료입력!E29:E38",
       "usedByForms": [
@@ -1343,7 +1343,7 @@
       "type": "currency",
       "typeRaw": "통화",
       "required": "computed",
-      "validation": "$\\sum 품목별\\ 금액$",
+      "validation": "품목별 금액의 합계 (자동 계산)",
       "allowedTargetRaw": "F-004~F-006, F-009, F-011, F-021, F-024, F-031, F-041, F-043",
       "excelCell": "기초자료입력!E39",
       "usedByForms": [
@@ -1374,7 +1374,7 @@
       "type": "number",
       "typeRaw": "숫자",
       "required": "computed",
-      "validation": "$\\sum 평가항목\\ 점수$",
+      "validation": "평가항목 점수의 합계 (자동 계산)",
       "allowedTargetRaw": "F-014~F-016, F-018, F-035~F-036, F-039",
       "excelCell": "기초자료입력!D82",
       "usedByForms": [

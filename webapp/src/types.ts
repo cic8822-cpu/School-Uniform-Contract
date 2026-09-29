@@ -225,6 +225,9 @@ export type RepeatRow = Record<string, string>
 /** 반복그룹 이름 -> 행 배열. */
 export type RepeatValues = Record<string, RepeatRow[]>
 
+/** 기초자료입력 화면의 탭 이름. 공통·사업·문서별은 Field 그룹, 나머지는 반복그룹과 같다. */
+export type InputTabId = '공통' | '사업' | '문서별' | '품목' | '업체' | '위원' | '평가'
+
 export type RouteName =
   | 'home'
   | 'contractGuide'
