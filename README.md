@@ -43,10 +43,10 @@
 
 1. 아래 페이지로 들어갑니다.
 
-   **https://github.com/cic8822-cpu/School-Uniform-Contract/releases/tag/v1.1.0**
+   **https://github.com/cic8822-cpu/School-Uniform-Contract/releases/tag/v1.2.0**
 
-2. **Assets** 목록에서 `UniformContractGuide_20260930_v1.1.zip`을 클릭해 다운로드합니다.
-   (파일 이름은 `이름_날짜_버전` 형식입니다. 날짜와 버전이 바뀌면 새로 업데이트된 파일입니다.)
+2. **Assets** 목록에서 `UniformContractGuide_20260930_v1.2.zip`을 클릭해 다운로드합니다.
+   (파일 이름은 `이름_날짜_버전` 형식입니다. 날짜와 버전이 바뀌면 새로 업데이트된 파일입니다. 프로그램을 켜면 나오는 검은 창의 첫 줄과 화면 맨 아래에서도 버전을 확인할 수 있습니다.)
 3. 다운로드한 zip 파일을 원하는 위치(예: 바탕화면, 문서 폴더)에 압축 해제합니다.
 4. 압축을 푼 폴더 안의 exe 파일을 더블클릭해서 실행합니다.
    - 검은 창(서버)이 잠깐 뜨고, 잠시 후 기본 브라우저가 자동으로 열리며 프로그램 화면이 나타납니다.
@@ -94,4 +94,4 @@
 
 ---
 
-**관련 링크**: [웹앱 바로가기](https://cic8822-cpu.github.io/School-Uniform-Contract/) · [exe 다운로드](https://github.com/cic8822-cpu/School-Uniform-Contract/releases/tag/v1.1.0)
+**관련 링크**: [웹앱 바로가기](https://cic8822-cpu.github.io/School-Uniform-Contract/) · [exe 다운로드](https://github.com/cic8822-cpu/School-Uniform-Contract/releases/tag/v1.2.0)

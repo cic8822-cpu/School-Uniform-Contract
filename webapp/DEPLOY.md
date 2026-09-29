@@ -21,8 +21,10 @@
 
 | 대상 | 형식 | 예 |
 |---|---|---|
-| 릴리스 zip (GitHub Assets) | `UniformContractGuide_날짜_v버전.zip` | `UniformContractGuide_20260930_v1.1.zip` |
-| zip 안의 exe | `교복계약길라잡이_날짜_v버전.exe` | `교복계약길라잡이_20260930_v1.1.exe` |
+| 릴리스 zip (GitHub Assets) | `UniformContractGuide_날짜_v버전.zip` | `UniformContractGuide_20260930_v1.2.zip` |
+| zip 안의 exe | `교복계약길라잡이_날짜_v버전.exe` | `교복계약길라잡이_20260930_v1.2.exe` |
+
+**버전 정보의 기준은 `webapp/version.json` 한 곳**이다(`version`, `date`). 화면 푸터와 exe 실행 창 첫 줄·창 제목이 같은 값을 쓰므로, 릴리스를 만들 때는 **먼저 이 파일을 고친 뒤** 빌드한다. 파일 이름의 날짜·버전도 이 값과 맞춘다.
 
 - GitHub는 한글 파일명을 `.`으로 바꿔 저장하는 경우가 있어 zip은 영문, 그 안의 exe는 한글로 짓는다.
 - 릴리스를 올릴 때마다 날짜·버전을 올리고 태그(`v1.1.0`)도 함께 새로 만든다. 이전 태그의 파일은 그대로 둔다.
@@ -34,7 +36,7 @@
 ```bash
 cd webapp
 npm run build
-npx -y @yao-pkg/pkg deploy/server.cjs --config package.json --targets node24-win-x64 --output deploy/dist-exe/교복계약길라잡이_20260930_v1.1.exe
+npx -y @yao-pkg/pkg deploy/server.cjs --config package.json --targets node24-win-x64 --output deploy/dist-exe/교복계약길라잡이_20260930_v1.2.exe
 ```
 
 - **`--config package.json`을 빼면 웹앱 파일(`dist`)이 exe에 들어가지 않아** 실행하자마자 "dist 폴더를 찾을 수 없습니다"라며 종료된다(2026-09-30 실측).
