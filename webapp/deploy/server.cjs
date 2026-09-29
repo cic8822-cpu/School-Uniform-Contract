@@ -25,6 +25,12 @@ const port = Number(process.env.PORT) || DEFAULT_PORT
 
 const distPath = path.join(__dirname, '..', 'dist')
 
+// 버전 정보의 기준은 webapp/version.json 하나이며 화면 푸터도 같은 값을 쓴다.
+// 정적 경로로 require해야 pkg가 exe에 자동으로 포함한다.
+const versionInfo = require('../version.json')
+const versionLabel = `v${versionInfo.version} (${versionInfo.date})`
+process.title = `${versionInfo.name} ${versionLabel}`
+
 const MIME_TYPES = {
   '.html': 'text/html; charset=utf-8',
   '.js': 'text/javascript; charset=utf-8',
@@ -139,7 +145,7 @@ function startServer(requestedPort, { isFallback }) {
   server.listen(requestedPort, () => {
     const actualPort = server.address().port
     const url = `http://localhost:${actualPort}/`
-    console.log('교복 학교주관구매 길라잡이 서버를 시작합니다.')
+    console.log(`교복 학교주관구매 길라잡이 ${versionLabel} 서버를 시작합니다.`)
     console.log(`주소: ${url}`)
     console.log(`서빙 폴더: ${distPath}`)
     console.log('이 창을 닫으면 서버가 종료됩니다.')
