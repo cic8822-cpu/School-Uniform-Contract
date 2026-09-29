@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>교복 길라잡이 웹앱 개선 레퍼런스 보고서</title>
+<style>
+  :root {
+    --paper: #f6f2ea;
+    --card: #fffdf8;
+    --ink: #1b2340;
+    --muted: #5d6479;
+    --line: #ddd5c4;
+    --mark: #d9411e;
+    --ok: #1f7a55;
+    --ok-bg: #e4f2ea;
+    --chk: #9a5b00;
+    --chk-bg: #fbeed3;
+    --obs: #2b4f9e;
+    --obs-bg: #e5ebf8;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font: 16px/1.7 "Pretendard", "Noto Sans KR", "Malgun Gothic", system-ui, sans-serif;
+    padding-inline: max(16px, 4vw);
+    padding-block: 0 96px;
+  }
+  .wrap { max-width: 1180px; margin: 0 auto; }
+  header.hero { padding-block: 72px 40px; border-bottom: 3px solid var(--ink); }
+  .eyebrow { font: 700 12px/1 system-ui, sans-serif; letter-spacing: .16em; color: var(--mark); text-transform: uppercase; }
+  h1 { font-size: clamp(30px, 5vw, 54px); line-height: 1.2; margin: 14px 0 18px; letter-spacing: -.02em; }
+  .lede { max-width: 46em; color: var(--muted); font-size: 18px; margin: 0; }
+  .meta { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 14px; color: var(--muted); }
+  h2 { font-size: clamp(22px, 3vw, 30px); margin: 64px 0 8px; letter-spacing: -.01em; }
+  h2 small { display: block; font: 700 12px/1 system-ui; letter-spacing: .14em; color: var(--mark); margin-bottom: 10px; }
+  h3 { font-size: 20px; margin: 0 0 4px; }
+  p { margin: 0 0 12px; }
+
+  .notice {
+    background: var(--chk-bg); border-left: 5px solid var(--chk);
+    padding: 16px 20px; border-radius: 4px; margin: 24px 0;
+  }
+  .notice strong { color: var(--chk); }
+
+  .summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 24px; }
+  .summary div { background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 18px 20px; }
+  .summary b { display: block; font-size: 15px; margin-bottom: 6px; }
+  .summary .n { font: 800 34px/1 system-ui; color: var(--mark); display: block; margin-bottom: 8px; }
+
+  .tablewrap { overflow-x: auto; margin-top: 16px; }
+  table { border-collapse: collapse; width: 100%; min-width: 720px; background: var(--card); font-size: 14.5px; }
+  th, td { border: 1px solid var(--line); padding: 10px 12px; text-align: left; vertical-align: top; }
+  th { background: #efe8d8; font-size: 13px; }
+
+  .fig { background: var(--card); border: 1px solid var(--line); border-radius: 8px; margin-top: 28px; overflow: hidden; }
+  .fig-head { padding: 20px 24px 8px; }
+  .fig-head .src { font-size: 13.5px; color: var(--muted); }
+  .fig-head .src a { color: var(--obs); word-break: break-all; }
+  .badge { display: inline-block; font: 700 11px/1 system-ui; letter-spacing: .08em; padding: 4px 8px; border-radius: 3px; margin-right: 8px; vertical-align: 2px; }
+  .badge.own { background: var(--ink); color: #fff; }
+  .badge.ref { background: var(--mark); color: #fff; }
+  .fig-body { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 0; }
+  @media (max-width: 900px) { .fig-body { grid-template-columns: 1fr; } }
+  .shot-inner { position: relative; }
+  .shot { margin: 0; border-top: 1px solid var(--line); border-right: 1px solid var(--line); background: #fff; }
+  .shot img { display: block; width: 100%; height: auto; }
+  .mk {
+    position: absolute;
+    left: calc(var(--x) * 100% / 1709);
+    top: calc(var(--y) * 100% / 1065);
+    width: 30px; height: 30px; margin: -15px 0 0 -15px;
+    border-radius: 50%; background: var(--mark); color: #fff;
+    font: 800 15px/30px system-ui, sans-serif; text-align: center;
+    box-shadow: 0 0 0 3px #fff, 0 2px 8px rgba(0,0,0,.35);
+  }
+  .notes { list-style: none; margin: 0; padding: 18px 22px 22px; border-top: 1px solid var(--line); }
+  .notes li { display: grid; grid-template-columns: 30px 1fr; gap: 12px; padding: 12px 0; border-bottom: 1px dashed var(--line); }
+  .notes li:last-child { border-bottom: 0; }
+  .num { width: 26px; height: 26px; border-radius: 50%; background: var(--mark); color: #fff; font: 800 13px/26px system-ui; text-align: center; }
+  .num.next { background: var(--ink); }
+  .notes p { margin: 0 0 6px; font-size: 15px; line-height: 1.6; }
+  .tag { display: inline-block; font: 700 11.5px/1 system-ui; padding: 4px 7px; border-radius: 3px; margin-right: 6px; }
+  .tag.obs { background: var(--obs-bg); color: var(--obs); }
+  .tag.ok { background: var(--ok-bg); color: var(--ok); }
+  .tag.chk { background: var(--chk-bg); color: var(--chk); }
+
+  .two { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px; }
+  .col { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 20px 24px; }
+  .col.ok { border-top: 5px solid var(--ok); }
+  .col.chk { border-top: 5px solid var(--chk); }
+  .col ol { margin: 10px 0 0; padding-left: 22px; }
+  .col li { margin-bottom: 12px; font-size: 15px; }
+  .col li span.ref { color: var(--muted); font-size: 13px; display: block; }
+  footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 13.5px; color: var(--muted); }
+  code { background: #efe8d8; padding: 1px 5px; border-radius: 3px; font-size: .92em; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <div class="eyebrow">Reference Report · 2026-09-29</div>
+  <h1>교복 길라잡이 웹앱,<br>어떻게 더 쓰기 쉽게 만들까</h1>
+  <p class="lede">현재 웹앱 화면 5장을 직접 캡처해 진단하고, 공개된 실제 공공 서비스·디자인 시스템 화면(GOV.UK, KRDS) 5장과 나란히 비교해 <b>적용할 점</b>과 <b>더 확인할 점</b>을 나눴습니다. 화면 위 빨간 번호는 오른쪽 분석 문장의 번호와 같은 위치를 가리킵니다.</p>
+  <div class="meta">
+    <span>대상: School-Uniform-Contract 웹앱(<code>webapp/</code>, 빌드본 dist)</span>
+    <span>캡처일: 2026-09-29</span>
+    <span>캡처 해상도: 1709×1065</span>
+  </div>
+</header>
+
+<div class="notice">
+  <strong>먼저 밝혀 둘 한계 — Mobbin 스크린샷은 이 보고서에 없습니다.</strong>
+  요청하신 Mobbin MCP는 검색할 때마다 “유료 플랜 필요” 오류를 반환해 화면을 하나도 받지 못했습니다. 잠긴 콘텐츠를 크롤링으로 우회하지 않았고, 대신 로그인 없이 누구나 볼 수 있는 공개 페이지를 직접 열어 캡처했습니다. 아래 “레퍼런스” 화면은 모두 <b>Mobbin이 아닌 GOV.UK 디자인 시스템·GOV.UK 서비스 페이지·KRDS(대한민국 정부 디자인 시스템)</b>이며, 각 캡션에 URL을 적었습니다. Mobbin 유료 플랜 전환 시 같은 형식으로 화면을 추가할 수 있습니다.
+</div>
+
+<section>
+  <h2><small>SUMMARY</small>핵심 결론</h2>
+  <div class="summary">
+    <div><span class="n">1</span><b>진행 상황이 보이지 않는다</b>계약절차는 단계 목록만 있고 “어디까지 했는지”가 없습니다. 입력 탭·서식함도 완료 여부를 보여주지 않습니다.</div>
+    <div><span class="n">2</span><b>내보내기 전 “확인” 단계가 없다</b>입력값을 한 번에 훑고 고치는 화면이 없어, 잘못 입력한 채 ZIP을 받을 수 있습니다.</div>
+    <div><span class="n">3</span><b>다듬기만 하면 되는 결함이 있다</b>입력 힌트에 수식 원문이 노출되고, 버튼 일부는 브라우저 기본 모양이며, 서식함 카드 정렬이 어긋납니다.</div>
+  </div>
+</section>
+
+<section>
+  <h2><small>SOURCES</small>참고한 앱과 화면</h2>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>구분</th><th>앱 / 서비스</th><th>화면</th><th>URL</th><th>성격</th></tr></thead>
+    <tbody>
+      <tr><td>현재 A~E</td><td>교복 학교주관구매 길라잡이 (웹앱)</td><td>홈 · 계약절차 · 기초자료입력 · 서식함 · 내보내기</td><td>localhost:4173 (dist 미리보기)</td><td>내 앱</td></tr>
+      <tr><td>레퍼런스 R1</td><td>GOV.UK Design System</td><td>Task list 컴포넌트 예시</td><td><a href="https://design-system.service.gov.uk/components/task-list/">design-system.service.gov.uk/components/task-list/</a></td><td>디자인 시스템 예시</td></tr>
+      <tr><td>레퍼런스 R2</td><td>GOV.UK Design System</td><td>Check answers 패턴 예시</td><td><a href="https://design-system.service.gov.uk/patterns/check-answers/">design-system.service.gov.uk/patterns/check-answers/</a></td><td>디자인 시스템 예시</td></tr>
+      <tr><td>레퍼런스 R3</td><td>GOV.UK (실제 서비스 페이지)</td><td>Learn to drive a car: step by step</td><td><a href="https://www.gov.uk/learn-to-drive-a-car">gov.uk/learn-to-drive-a-car</a></td><td>실제 운영 페이지</td></tr>
+      <tr><td>레퍼런스 R4</td><td>KRDS (Korea Design System)</td><td>단계 표시기 컴포넌트</td><td><a href="https://www.krds.go.kr/html/site/component/component_07_01.html">krds.go.kr … component_07_01</a></td><td>디자인 시스템 가이드</td></tr>
+      <tr><td>레퍼런스 R5</td><td>KRDS (Korea Design System)</td><td>입력 폼 기본 패턴 (전입신고 예시)</td><td><a href="https://www.krds.go.kr/html/site/global/global_08.html">krds.go.kr … global_08</a></td><td>디자인 시스템 가이드</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="margin-top:12px;font-size:14px;color:var(--muted)">표시 기호: <span class="tag obs">관찰</span> 화면에서 직접 확인한 사실 · <span class="tag ok">적용 가능</span> 지금 앱에 바로 옮길 수 있는 점 · <span class="tag chk">검증 필요</span> 적용 전에 더 확인해야 할 점</p>
+</section>
+
+<section>
+  <h2><small>PART 1</small>현재 웹앱 진단</h2>
+  <p>직접 캡처한 화면입니다. 번호 위치는 문제 또는 특징이 있는 부분입니다.</p>
+  <div id="own"></div>
+</section>
+
+<section>
+  <h2><small>PART 2</small>레퍼런스 화면 분석</h2>
+  <p>같은 과업(단계 안내 · 정보 입력 · 확인)을 다루는 공개 화면입니다. 번호가 가리키는 부분과 분석 문장을 함께 보세요. “→” 항목은 번호가 아니라 위 관찰들에서 끌어낸 시사점입니다.</p>
+  <div id="ref"></div>
+</section>
+
+<section>
+  <h2><small>PART 3</small>무엇을 고려해서 만들어야 하나</h2>
+  <div class="two">
+    <div class="col ok">
+      <h3><span class="tag ok">적용 가능</span>바로 옮길 수 있는 점</h3>
+      <ol>
+        <li><b>계약절차에 진행 표시기를 붙인다.</b> 완료·현재·남은 단계를 구분하고 연결선으로 순서를 보여준다.<span class="ref">근거: 화면 R3-②, R4-②③④ · 앱 화면 B-①</span></li>
+        <li><b>기초자료입력 탭마다 상태 태그를 둔다.</b> 공통·사업·문서별·품목·업체·위원·평가 각각 “완료 / 미완료”.<span class="ref">근거: R1-①②④ · 앱 화면 C-③</span></li>
+        <li><b>내보내기 앞에 “입력 내용 확인” 화면을 넣는다.</b> 항목·값·[수정] 링크를 묶음별로 나열하고, 마지막에 동작 이름이 분명한 버튼을 둔다.<span class="ref">근거: R2-①~④ · 앱 화면 E-③</span></li>
+        <li><b>입력 힌트의 수식 원문을 사람이 읽는 문장으로 바꾼다.</b> <code>public/data/fields.json</code> 149행·1223행의 <code>validation</code> 값을 “2000~2100” 형태로.<span class="ref">근거: 앱 화면 C-④ (파일에서 직접 확인) · KRDS 입력 폼 가이드(입력 단위·도움말 근접 배치)</span></li>
+        <li><b>버튼 위계를 통일한다.</b> 주 버튼 1개는 진하게, 나머지는 같은 스타일의 보조 버튼으로. “엑셀에서 불러오기”, “ZIP으로 내려받기”가 브라우저 기본 모양이다.<span class="ref">근거: 앱 화면 C-②, E-③ · KRDS 입력 폼 가이드(액션 버튼 일관성)</span></li>
+        <li><b>“해야 할 일”이 위 설명문과 똑같은 문장을 반복하지 않게 한다.</b> 행동 단위 목록으로 쪼갠다.<span class="ref">근거: 앱 화면 B-②</span></li>
+        <li><b>서식함 카드는 위쪽 기준으로 정렬한다.</b> 제목 줄 수가 달라도 유형·상태 줄이 같은 높이에 오게.<span class="ref">근거: 앱 화면 D-②</span></li>
+      </ol>
+    </div>
+    <div class="col chk">
+      <h3><span class="tag chk">검증 필요</span>적용 전에 더 확인할 점</h3>
+      <ol>
+        <li><b>11단계를 7단계 이하로 묶어도 되는가.</b> KRDS는 단계 표시기를 3~7개로 권장하는데, 2단계 계약·일반입찰은 11단계다. 매뉴얼 근거로 묶음이 타당한지 확인해야 한다.<span class="ref">출처: KRDS 단계 표시기 사용성 가이드라인 · 앱 홈 카드(11단계)</span></li>
+        <li><b>임시 저장을 어떻게 할 것인가.</b> 이 앱은 “서버에 저장하지 않는다”는 원칙이다. 소스(<code>webapp/src</code>) 검색에서 <code>localStorage</code>·<code>sessionStorage</code> 사용 흔적을 찾지 못해, 새로고침 시 입력이 유지되는지 실측이 필요하다. 브라우저 저장을 넣는다면 공용 PC의 개인정보 노출 위험과 함께 판단해야 한다.<span class="ref">출처: KRDS 신청 서비스 패턴(임시 저장 항목) · 앱 기초자료입력 안내문</span></li>
+        <li><b>모바일·좁은 화면.</b> 이번 캡처는 데스크톱(1709px)뿐이다. 창 크기를 줄인 실측은 되지 않아 결과를 판단하지 않았다.</li>
+        <li><b>접근성.</b> 색 대비, 키보드 이동, 스크린리더 읽기 순서는 측정하지 않았다. 앱에 “본문으로 바로가기” 링크와 라벨 있는 <code>nav</code>가 있음을 확인했을 뿐이다.</li>
+        <li><b>홈의 주황 “GO” 배너 문구.</b> “한눈에 보는 계약 업무 길잡이”가 어디로 가는지 화면만으로 알기 어렵다. 실제 사용자가 무엇을 기대하는지는 사용자 관찰이 필요하다.</li>
+        <li><b>영어권 사례를 한국 현장에 그대로 가져와도 되는가.</b> GOV.UK는 작은 질문을 한 화면씩 묻는 방식이 많다. 이 앱의 사용자는 숙련된 행정실 담당자이고, KRDS도 “숙련된 사용자에게 단계별 입력은 효율적이지 않다”고 적고 있다. 화면 분할 여부는 현장 의견이 필요하다.</li>
+        <li><b>Mobbin 실제 출시 앱 화면.</b> 이 보고서에는 없다. 유료 플랜 전환 후 온보딩·서류 작성·체크리스트 앱 사례를 추가 조사하면 비교 폭이 넓어진다.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>이미지 이용: 레퍼런스 스크린샷은 내부 분석용으로 캡처했습니다. GOV.UK 콘텐츠는 Open Government Licence v3.0 범위에서 재사용할 수 있고, KRDS는 사이트의 저작권정책 확인 후 외부 배포하세요. 현재 앱 화면의 입력란은 비어 있으며 실제 개인정보를 포함하지 않습니다.</p>
+  <p>“관찰” 항목은 캡처 화면과 <code>fields.json</code>에서 직접 확인한 내용입니다. 그 외 제안은 위 근거 화면에서 도출한 판단이며, 현장 검증 전에는 확정이 아닙니다.</p>
+</footer>
+</div>
+
+<script>
+const OWN = [
+  { id: 'A', title: '홈 — 계약 방식 선택', img: 'img/own-01-home.png',
+    src: '교복 학교주관구매 길라잡이 · 홈 화면 (localhost:4173)',
+    marks: [[1,50,497],[2,50,645],[3,458,790],[4,840,55]],
+    notes: [
+      [1,'obs','주황색 대형 배너에 “한눈에 보는 계약 업무 길잡이”와 GO 버튼만 있고, 눌렀을 때 어디로 가는지 문구에 드러나지 않는다.'],
+      [2,'obs','“계약방법은 시스템이 자동 판정하지 않습니다. 담당자가 직접 선택합니다.” — 책임 경계를 화면에서 미리 알려 주는 좋은 안내다.'],
+      [3,'obs','카드 4장의 제목·설명 길이가 달라 카드마다 내용의 시작 높이가 다르고, 첫 화면 아래쪽에서 “절차 확인 →” 링크가 잘린다.'],
+      [4,'obs','상단 메뉴 6개는 업무 순서(방법 → 절차 → 입력 → 서식 → 내보내기)와 일치한다. 지금 어느 단계인지 표시는 없다.']
+    ]},
+  { id: 'B', title: '계약절차 — 2인견적 수의계약', img: 'img/own-02-procedure.png',
+    src: '교복 학교주관구매 길라잡이 · 계약절차 화면',
+    marks: [[1,98,367],[2,612,632],[3,612,740],[4,1425,893]],
+    notes: [
+      [1,'obs','왼쪽 단계 목록은 번호와 이름만 있다. 완료 표시·연결선이 없어 “여기까지 했다”를 나타내지 못한다.'],
+      [2,'obs','본문 첫 문단과 “해야 할 일”의 글머리 내용이 같은 문장이다. 같은 내용이 두 번 나온다.'],
+      [3,'obs','노란 안내 상자가 “매뉴얼과 현행 규정을 최종 확인하라”고 알려 준다. 책임 문구로 적절하다.'],
+      [4,'obs','관련 서식마다 “▲ 자료필요”가 붙어 있으나, 무슨 자료가 필요한지·어디서 입력하는지 바로 가는 길이 화면에 없다.']
+    ]},
+  { id: 'C', title: '기초자료입력 — 공통 정보', img: 'img/own-03-input.png',
+    src: '교복 학교주관구매 길라잡이 · 기초자료입력 화면',
+    marks: [[1,55,316],[2,492,408],[3,735,495],[4,1000,802],[5,222,697]],
+    notes: [
+      [1,'obs','“서버 DB에 저장하지 않는다, 이 브라우저에서만 사용한다”는 안내가 입력 화면 맨 위에 있다. 개인정보 원칙이 화면에 드러난다.'],
+      [2,'obs','“엑셀로 내려받기”는 진한 주 버튼, “엑셀에서 불러오기”는 회색 브라우저 기본 버튼이다. 같은 급의 동작인데 모양 체계가 다르다.'],
+      [3,'obs','탭 7개(공통·사업·문서별·품목·업체·위원·평가)가 있으나 탭마다 입력 진행 상태를 알 수 없다.'],
+      [4,'obs','학년도 입력란 아래 힌트가 <code>$2000 \\leq 연도 \\leq 2100$</code> 그대로 노출된다. 원인: <code>public/data/fields.json</code> 149행의 <code>validation</code> 값(1223행에도 같은 형태).'],
+      [5,'obs','필수 항목은 빨간 * 로 표시한다. 필수/선택 표시 방식이 일관된다.']
+    ]},
+  { id: 'D', title: '서식함', img: 'img/own-04-forms.png',
+    src: '교복 학교주관구매 길라잡이 · 서식함 화면',
+    marks: [[1,862,243],[2,458,455],[3,285,563]],
+    notes: [
+      [1,'obs','서식명 또는 번호로 검색하는 입력란이 맨 위에 있다. 서식이 많을 때 찾기 쉬운 구성이다.'],
+      [2,'obs','제목이 한 줄인 카드와 두 줄인 카드에서 아래 유형·상태 줄의 위치가 서로 다르다. 그리드가 고르지 않게 보인다.'],
+      [3,'obs','“▲ 기초자료 필요”가 모든 카드에 똑같이 붙어 있다. 빈 상태에서는 당연하지만, 채운 뒤 어떻게 바뀌는지는 이 화면만으로 알 수 없다.']
+    ]},
+  { id: 'E', title: '내보내기', img: 'img/own-05-export.png',
+    src: '교복 학교주관구매 길라잡이 · 내보내기 화면',
+    marks: [[1,55,316],[2,400,622],[3,460,946]],
+    notes: [
+      [1,'obs','“파일은 이 브라우저에서만 만들어지며 서버로 전송되지 않는다. 보관 책임은 담당자에게 있다”고 안내한다.'],
+      [2,'obs','“기초자료 엑셀 내려받기”는 진한 남색 주 버튼이다.'],
+      [3,'obs','“완성된 서식 전체 ZIP으로 내려받기”는 브라우저 기본 회색 버튼이라 중요도에 비해 눈에 덜 띈다. 내려받기 직전에 입력 내용을 확인하는 화면도 없다.']
+    ]}
+];
+
+const REF = [
+  { id: 'R1', title: 'GOV.UK Design System — Task list', img: 'img/ref-govuk-task-list.png',
+    src: 'GOV.UK Design System · Task list 컴포넌트 예시', url: 'https://design-system.service.gov.uk/components/task-list/',
+    marks: [[1,18,67],[2,1505,124],[3,705,219],[4,1525,67]],
+    notes: [
+      [1,'obs','작업(Company Directors 등)마다 한 줄씩, 링크로 해당 입력 화면에 바로 들어간다.'],
+      [2,'obs','미완료 항목은 색 배경이 있는 “Incomplete” 태그로 오른쪽에 붙는다.'],
+      [3,'obs','한 작업 아래에 회색 보조 문장(“최근 5년치 재무 정보 포함”)으로 준비물을 알려 준다.'],
+      [4,'obs','완료된 항목은 배경 없는 평문 “Completed”라, 남은 일만 시선을 끈다.'],
+      ['→','ok','기초자료입력의 7개 탭을 이런 목록으로 요약하면, 어느 탭이 비었는지 한눈에 보인다. 서식함의 “▲ 기초자료 필요”도 “어떤 탭이 비었는가” 링크로 바꿀 수 있다.'],
+      ['→','chk','“완료”의 기준(필수 항목만? 전체?)을 탭마다 정해야 한다. 서식마다 필요한 항목이 달라 판정 규칙을 별도로 확인해야 한다.']
+    ]},
+  { id: 'R2', title: 'GOV.UK Design System — Check answers', img: 'img/ref-govuk-check-answers.png',
+    src: 'GOV.UK Design System · Check answers 패턴 예시', url: 'https://design-system.service.gov.uk/patterns/check-answers/',
+    marks: [[1,212,240],[2,212,345],[3,1065,417],[4,468,417]],
+    notes: [
+      [1,'obs','제목이 “보내기 전에 답변을 확인하세요”로, 이 화면의 목적을 그대로 말한다.'],
+      [2,'obs','“Personal details”, “Application details”처럼 묶음 제목으로 나눠 길어도 훑기 쉽다.'],
+      [3,'obs','각 행 오른쪽에 “Change” 링크가 있어 틀린 항목만 골라 고칠 수 있다.'],
+      [4,'obs','왼쪽은 항목명, 가운데는 값의 2열 구조다. 입력하지 않은 항목은 “Not provided”로 명시한다.'],
+      ['→','ok','내보내기 전에 “공통 정보 / 사업 정보 / 품목·업체·위원…” 묶음별로 값을 보여 주고 각 행에 [수정]을 붙이면, ZIP을 받기 전에 잘못 입력한 값을 잡을 수 있다.'],
+      ['→','chk','서식이 수십 종이라 요약 화면이 길어질 수 있다. 선택한 서식에 실제로 쓰이는 값만 보여 줄지 정해야 한다.']
+    ]},
+  { id: 'R3', title: 'GOV.UK — Learn to drive a car: step by step', img: 'img/ref-govuk-step-by-step.png',
+    src: 'GOV.UK · Learn to drive a car: step by step (실제 운영 페이지)', url: 'https://www.gov.uk/learn-to-drive-a-car',
+    marks: [[1,455,369],[2,200,444],[3,440,491],[4,930,107]],
+    notes: [
+      [1,'obs','“Show all steps” 링크 하나로 모든 단계를 한 번에 펼치거나 접을 수 있다.'],
+      [2,'obs','단계 번호가 원 안에 들어가고 세로 선으로 이어져 순서와 흐름을 보여 준다.'],
+      [3,'obs','각 단계는 제목과 “Show”만 먼저 보이고, 자세한 설명은 눌러야 열린다. 처음엔 전체 단계 제목만 훑는다.'],
+      [4,'obs','빵부스러기(Home › Driving and transport › …)로 지금 위치를 알려 준다. 이 앱의 계약절차에도 같은 구조가 이미 있다.'],
+      ['→','ok','계약절차 왼쪽 목록에 세로 연결선과 단계별 완료 표시를 붙이고, 11단계짜리 절차는 “전체 펼치기” 한 번으로 훑어볼 수 있게 한다.'],
+      ['→','chk','이 페이지는 단계를 마쳤는지 사용자별로 기억하지 않는 정적 안내다(체크 표시가 없다). 완료 상태를 저장할지 여부는 앞의 임시 저장 판단과 함께 결정해야 한다.']
+    ]},
+  { id: 'R4', title: 'KRDS — 단계 표시기 (Step indicator)', img: 'img/ref-krds-step-indicator.png',
+    src: 'KRDS · 컴포넌트 › 피드백 › 단계 표시기', url: 'https://www.krds.go.kr/html/site/component/component_07_01.html',
+    marks: [[1,560,975],[2,800,860],[3,917,860],[4,1149,860]],
+    notes: [
+      [1,'obs','각 단계에 “1단계” 같은 번호와 “단계 제목”을 짝으로 표기한다. KRDS 가이드는 레이블을 줄바꿈 없는 짧은 문구로 쓰라고 한다.'],
+      [2,'obs','완료된 단계는 체크 표시가 있는 원, 연결선도 진한 색이다.'],
+      [3,'obs','현재 단계는 파란 테두리의 원으로 다른 단계와 구분된다.'],
+      [4,'obs','남은 단계는 연한 회색 원이다. 완료·현재·남음 3상태가 색과 모양으로 구분된다.'],
+      ['→','ok','KRDS 가이드에 따라 단계는 3~7개로 묶고, 선택 단계는 마지막에 두어 “건너뛰기”를 제공한다. 한국 공공 서비스의 표현과 같아 행정실 사용자에게 낯설지 않다.'],
+      ['→','chk','우리 절차는 4·5·11단계다. 11단계를 7개 이하로 묶는 기준은 매뉴얼로 확인해야 한다.']
+    ]},
+  { id: 'R5', title: 'KRDS — 입력 폼 (전입신고 예시)', img: 'img/ref-krds-input-form.png',
+    src: 'KRDS · 기본 패턴 › 입력 폼', url: 'https://www.krds.go.kr/html/site/global/global_08.html',
+    marks: [[1,720,845],[2,1230,913],[3,700,1010],[4,800,1042]],
+    notes: [
+      [1,'obs','양식 제목(“전입신고”)이 먼저 나와 지금 무슨 서식을 작성하는지 알린다.'],
+      [2,'obs','5단계(유의사항 확인 → 신청인 정보 → 이사 전 살던 곳 → 이사 온 곳 → 추가 신청(선택))가 한 줄에 보인다. 마지막은 “(선택)”으로 표시한 선택 단계다.'],
+      [3,'obs','본문 위에 “1단계 / 4단계”처럼 현재 위치가 작게 다시 나온다.'],
+      [4,'obs','소제목 “유의사항 확인” 옆에 번호 표식이 있어, 안내 내용과 화면 부분을 연결한다.'],
+      ['→','ok','KRDS 가이드는 필수·선택 항목을 일관되게 구분하고, 입력 단위와 도움말을 입력란 가까이에 두라고 한다. 앱이 이미 필수 * 와 글자수 힌트를 갖고 있어 힌트 문구만 사람이 읽는 형태로 다듬으면 된다.'],
+      ['→','chk','KRDS는 “숙련된 사용자에게 단계별 입력은 비효율적”이라고 함께 적는다. 이 앱의 탭 구조(자유 이동)를 유지하면서 진행 상태만 얹을지, 순차 입력으로 바꿀지는 현장 의견을 들어야 한다.']
+    ]}
+];
+
+function render(list, mountId, isRef) {
+  const el = document.getElementById(mountId);
+  el.innerHTML = list.map(f => {
+    const marks = f.marks.map(([n, x, y]) => `<span class="mk" style="--x:${x};--y:${y}">${n}</span>`).join('');
+    const notes = f.notes.map(([n, kind, t]) => {
+      const label = { obs: '관찰', ok: '적용 가능', chk: '검증 필요' }[kind];
+      const numEl = n === '→' ? `<span class="num next">→</span>` : `<span class="num">${n}</span>`;
+      return `<li>${numEl}<div><p><span class="tag ${kind}">${label}</span>${t}</p></div></li>`;
+    }).join('');
+    const src = f.url ? `${f.src} — <a href="${f.url}" target="_blank" rel="noopener">${f.url}</a>` : f.src;
+    return `<article class="fig">
+      <div class="fig-head"><h3><span class="badge ${isRef ? 'ref' : 'own'}">${isRef ? '레퍼런스' : '현재 앱'}</span>${f.id}. ${f.title}</h3><div class="src">${src}</div></div>
+      <div class="fig-body">
+        <figure class="shot"><div class="shot-inner"><a href="${f.img}" target="_blank" rel="noopener" title="원본 크기로 보기"><img src="${f.img}" alt="${f.title} 스크린샷" width="1709" height="1065"></a>${marks}</div></figure>
+        <ol class="notes">${notes}</ol>
+      </div></article>`;
+  }).join('');
+}
+render(OWN, 'own', false);
+render(REF, 'ref', true);
+</script>
+</body>
+</html>
