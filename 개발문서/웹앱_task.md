@@ -26,7 +26,7 @@
 |---|---|---|---|---|
 | WP-03-01 | 프로젝트 스캐폴딩(`웹앱_trd.md` 기술스택) | WP-02 전체 | DONE | 이전 세션(codex CLI)이 Vite+React19+TS로 스캐폴딩. 이번 세션에서 `App.tsx` 압축 1줄 코드를 `웹앱_trd.md` §5 구조(`src/pages`~`components/`·`lib/`·`data/`)로 리팩터링 |
 | WP-03-02 | 홈(계약방법 4종 카드) | WP-03-01 | DONE | `webapp/src/components/home/HomePage.tsx`. 크롬 자동화로 4종 카드 실렌더링 확인 |
-| WP-03-03 | 계약방법 안내(4열 비교) | WP-03-01 | DONE | `webapp/src/components/contractGuide/ContractGuidePage.tsx`(신규). 크롬 자동화로 4열 비교표 실렌더링 확인 |
+| WP-03-03 | 계약방법 안내(4열 비교) | WP-03-01 | DONE | `webapp/src/components/contractGuide/ContractGuidePage.tsx`(신규). 크롬 자동화로 4열 비교표 실렌더링 확인. 2026-09-29 사용자 지적("계약에 대한 안내가 아닌 것 같다")으로 비교표를 초보자용 설명 화면(공통 흐름·방법별 쉬운 설명·누가 무엇을 하나요·용어 풀이)으로 재작성. 문구는 `contractGuideContent.ts`, 흐름·역할·서식 이름은 `workflows.json`·`forms.json`에서 가져옴 |
 | WP-03-04 | 계약절차(Stepper+단계상세) | WP-02-02, WP-03-01 | DONE | `webapp/src/components/procedure/ProcedurePage.tsx`. 크롬 자동화로 1인견적 4단계 Stepper·STEP01 상세 확인 |
 | WP-03-05 | 기초자료입력(7탭, Excel 업로드/다운로드 포함) | WP-02-04, WP-03-01 | DONE | `webapp/src/components/input/InputPage.tsx`(공통/사업/문서별/품목/업체/위원/평가 7탭). fields.json 33개 Field + 반복그룹 4종 전부 렌더링, K-01/K-02 자동계산을 크롬 자동화로 실측 확인(수량10×단가50000=500,000원). `workbook.ts`를 반복그룹 지원하도록 확장해 업로드/다운로드 버튼에 연결 |
 | WP-03-06 | 서식함(검색·필터·카드 52종) | WP-02-03, WP-03-01 | DONE | `webapp/src/components/forms/FormsPage.tsx`. 개인정보 보호 서식 배지 추가 |
